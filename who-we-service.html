@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Who We Service — All Door Supply</title>
+  <meta name="description" content="All Door Supply serves contractors, design professionals, homeowners and property managers across Southern Ontario." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .audience-section {
+      padding-block: var(--section-v);
+    }
+    .audience-section:nth-child(even) { background: var(--light); }
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .audience-grid.reverse .audience-image { order: -1; }
+    .audience-image {
+      position: relative;
+      aspect-ratio: 3/2;
+      overflow: hidden;
+      background: #ccc;
+    }
+    .audience-image img { width: 100%; height: 100%; object-fit: cover; }
+    .audience-content .section-badge { margin-bottom: 14px; }
+    .audience-content h2 {
+      font-family: var(--font-head);
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .audience-content p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #555;
+      margin-bottom: 14px;
+    }
+    .audience-content ul {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+    .audience-content ul li {
+      font-size: 14px;
+      color: #555;
+      padding: 6px 0 6px 18px;
+      position: relative;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .audience-content ul li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 6px; height: 6px;
+      background: var(--red);
+    }
+    @media (max-width: 768px) {
+      .audience-grid { grid-template-columns: 1fr; gap: 32px; }
+      .audience-grid.reverse .audience-image { order: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__logo" aria-label="All Door Supply — Home">
+          <img src="images/ADS_Logo_primary.svg" alt="All Door Supply" class="nav__logo-img" />
+        </a>
+        <nav class="nav__links" aria-label="Main navigation">
+          <a href="services.html">Services</a>
+          <a href="who-we-service.html" style="color:var(--red)">Who We Service</a>
+          <a href="manufacturers.html">Manufacturers</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="contact.html" class="btn-nav">Request a Quote</a>
+        </nav>
+        <button class="nav__hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <nav class="nav__mobile" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="services.html">Services</a><a href="who-we-service.html">Who We Service</a><a href="manufacturers.html">Manufacturers</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+      <a href="contact.html" class="btn-nav">Request a Quote</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__bg"><img src="images/who-hero.jpg" alt="" aria-hidden="true" /></div>
+      <div class="container page-hero__content">
+        <span class="section-badge">Our Customers</span>
+        <h1>Who We Service</h1>
+        <p>We work with builders, design professionals, homeowners and property managers across Southern Ontario to deliver the right products for every project.</p>
+      </div>
+    </section>
+
+    <!-- Contractors -->
+    <section class="audience-section" id="contractors">
+      <div class="container">
+        <div class="audience-grid">
+          <div class="audience-content">
+            <span class="section-badge">For Contractors</span>
+            <h2>Built Around Your Schedule.</h2>
+            <p>We understand what contractors need to keep projects moving. That means accurate specs, on-time delivery, and a team that responds fast when things change on site.</p>
+            <p>Whether you're working on a single commercial build or managing multiple sites, we have the volume, range and reliability to keep you ahead.</p>
+            <ul>
+              <li>Job-site delivery coordination</li>
+              <li>Submittal support and shop drawings</li>
+              <li>Volume pricing for ongoing accounts</li>
+              <li>24-hour service for established customers</li>
+              <li>Dedicated account management</li>
+            </ul>
+            <a href="contact.html" class="btn-primary">Open an Account</a>
+          </div>
+          <div class="audience-image">
+            <img src="images/customer-contractor.jpg" alt="Construction workers on a job site" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Professionals -->
+    <section class="audience-section" id="design">
+      <div class="container">
+        <div class="audience-grid reverse">
+          <div class="audience-content">
+            <span class="section-badge">For Design Professionals</span>
+            <h2>Spec It. Source It. Done.</h2>
+            <p>We work with architects and interior designers to source and supply exactly what's on the plans. From standard hardware schedules to unique specialty items, we can source it and get it to site.</p>
+            <p>We speak your language — bring us your hardware schedule and we'll work through it with you.</p>
+            <ul>
+              <li>Hardware schedule review and consultation</li>
+              <li>Specialty and architect-series products</li>
+              <li>Finish matching and custom options</li>
+              <li>Product samples and showroom access</li>
+              <li>Compliant substitution sourcing</li>
+            </ul>
+            <a href="contact.html" class="btn-primary">Work With Us</a>
+          </div>
+          <div class="audience-image">
+            <img src="images/customer-design.jpg" alt="Design professional reviewing architectural plans" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Homeowners -->
+    <section class="audience-section" id="homeowners">
+      <div class="container">
+        <div class="audience-grid">
+          <div class="audience-content">
+            <span class="section-badge">For Homeowners</span>
+            <h2>Premium Products. Expert Guidance.</h2>
+            <p>Whether you're renovating, building new or simply upgrading your hardware, we supply homeowners with premium products and expert guidance from our team.</p>
+            <p>Visit our showroom in Burlington and we'll help you find exactly what your project needs.</p>
+            <ul>
+              <li>Entry and interior door systems</li>
+              <li>Premium locks and hardware</li>
+              <li>Smart access and keypad systems</li>
+              <li>Showroom consultations</li>
+              <li>Installation referrals available</li>
+            </ul>
+            <a href="contact.html" class="btn-primary">Visit Our Showroom</a>
+          </div>
+          <div class="audience-image">
+            <img src="images/customer-homeowner.jpg" alt="Homeowner installing a door lock" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Property Managers -->
+    <section class="audience-section" id="property-managers">
+      <div class="container">
+        <div class="audience-grid reverse">
+          <div class="audience-content">
+            <span class="section-badge">For Property Managers</span>
+            <h2>Reliable Supply. Responsive Service.</h2>
+            <p>Property managers rely on us for fast, dependable supply of replacement hardware, doors and frames across their portfolios. We stock what you need and can deliver quickly when issues arise.</p>
+            <ul>
+              <li>Stock hardware for immediate supply</li>
+              <li>Portfolio account management</li>
+              <li>Emergency supply for urgent repairs</li>
+              <li>Consistent product matching across sites</li>
+              <li>Invoicing and account flexibility</li>
+            </ul>
+            <a href="contact.html" class="btn-primary">Set Up an Account</a>
+          </div>
+          <div class="audience-image">
+            <img src="images/customer-pm.jpg" alt="Property manager reviewing a building" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <div class="container">
+        <p class="cta-banner__eyebrow">Ready to Get Started?</p>
+        <h2>Let's Talk About Your Project.</h2>
+        <p>Contact our team today and let's find the right solution for your build.</p>
+        <a href="contact.html" class="btn-outline-white">Request a Quote</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__logo">
+          <img src="images/All-Door-Supply.svg" alt="All Door Supply" class="footer__logo-img" />
+        </div>
+        <div class="footer__col"><h4>Contact Us</h4><address><p>Toll Free: 1.866.769.3667</p><p>Phone: 1-905.335.1638</p><p>Fax: 1.905.335.6822</p><p>Email: <a href="mailto:info@alldoorsupply.com">info@alldoorsupply.com</a></p><p>Location: 559 King Forest Court,<br>Burlington, Ontario L7P 5C1</p></address></div>
+        <div class="footer__col"><h4>Navigate</h4><nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="services.html">Services</a><a href="who-we-service.html">Who We Service</a><a href="manufacturers.html">Manufacturers</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="contact.html">Request a Quote</a></nav></div>
+        <div class="footer__col"><h4>Hours</h4><p>Showroom &amp; Warehouse</p><p>Mon – Fri: 7:30am – 4:30pm</p><br/><p class="hours-highlight">24 Hour Service for<br>Established Customers</p></div>
+      </div>
+    </div>
+    <div class="footer__bottom"><p>© 2026 All Door Supply. All Rights Reserved.</p></div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

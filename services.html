@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — All Door Supply</title>
+  <meta name="description" content="Comprehensive Division 8 supply, installation and project solutions. Custom fabrication, automatic operators, and full project management." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .service-detail {
+      padding-block: var(--section-v);
+    }
+    .service-detail:nth-child(even) {
+      background: var(--light);
+    }
+    .service-detail__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .service-detail__grid.reverse .service-detail__image {
+      order: -1;
+    }
+    .service-detail__image {
+      background: #ccc;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+    .service-detail__image img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .service-detail__content .section-badge { margin-bottom: 14px; }
+    .service-detail__content h2 {
+      font-family: var(--font-head);
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .service-detail__content p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #555;
+      margin-bottom: 14px;
+    }
+    .service-detail__content ul {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+    .service-detail__content ul li {
+      font-size: 14px;
+      color: #555;
+      padding: 6px 0 6px 18px;
+      position: relative;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .service-detail__content ul li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 6px; height: 6px;
+      background: var(--red);
+    }
+    @media (max-width: 768px) {
+      .service-detail__grid { grid-template-columns: 1fr; gap: 32px; }
+      .service-detail__grid.reverse .service-detail__image { order: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__logo" aria-label="All Door Supply — Home">
+          <img src="images/ADS_Logo_primary.svg" alt="All Door Supply" class="nav__logo-img" />
+        </a>
+        <nav class="nav__links" aria-label="Main navigation">
+          <a href="services.html" style="color:var(--red)">Services</a>
+          <a href="who-we-service.html">Who We Service</a>
+          <a href="manufacturers.html">Manufacturers</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="contact.html" class="btn-nav">Request a Quote</a>
+        </nav>
+        <button class="nav__hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="nav__mobile" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="services.html">Services</a><a href="who-we-service.html">Who We Service</a><a href="manufacturers.html">Manufacturers</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+      <a href="contact.html" class="btn-nav">Request a Quote</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="page-hero__bg"><img src="images/services-hero.jpg" alt="" aria-hidden="true" /></div>
+      <div class="container page-hero__content">
+        <span class="section-badge">What We Do</span>
+        <h1>Our Services</h1>
+        <p>From supply and fabrication to installation and project management — we deliver complete Division 8 solutions for every scale of build.</p>
+      </div>
+    </section>
+
+    <!-- Service 1: Supply -->
+    <section class="service-detail" id="supply">
+      <div class="container">
+        <div class="service-detail__grid">
+          <div class="service-detail__content">
+            <span class="section-badge">Division 8 Supply</span>
+            <h2>Supply of Division 8 Material</h2>
+            <p>We source and supply a comprehensive range of Division 8 products from industry-leading manufacturers. Our relationships with top suppliers mean you get the right product at the right spec, on time.</p>
+            <ul>
+              <li>Hollow metal doors and frames</li>
+              <li>Wood and specialty doors</li>
+              <li>Door hardware and locking systems</li>
+              <li>Frames, jambs and related accessories</li>
+              <li>Thresholds, sweeps and weather-stripping</li>
+            </ul>
+            <a href="contact.html" class="btn-primary">Request a Quote</a>
+          </div>
+          <div class="service-detail__image">
+            <img src="images/service-supply.jpg" alt="Division 8 door and frame supply" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service 2: Weld Shop -->
+    <section class="service-detail" id="weld-shop">
+      <div class="container">
+        <div class="service-detail__grid reverse">
+          <div class="service-detail__content">
+            <span class="section-badge">Custom Fabrication</span>
+            <h2>Custom Division 8 Products Via Weld Shop</h2>
+            <p>Our in-house weld shop allows us to fabricate custom frames, specialty doors and unique assemblies built to your exact specifications. When standard products won't do, we build it.</p>
+            <ul>
+              <li>Custom hollow metal frames</li>
+              <li>Specialty door assemblies</li>
+              <li>Non-standard opening sizes</li>
+              <li>Custom hardware cutouts and preps</li>
+              <li>Fire-rated custom assemblies</li>
+            </ul>
+            <a href="contact.html" class="btn-primary">Discuss Your Project</a>
+          </div>
+          <div class="service-detail__image">
+            <img src="images/service-weld-shop.jpg" alt="Custom metal fabrication in our weld shop" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service 3: Installation -->
+    <section class="service-detail" id="installation">
+      <div class="container">
+        <div class="service-detail__grid">
+          <div class="service-detail__content">
+            <span class="section-badge">Installation</span>
+            <h2>Division 8 Installation</h2>
+            <p>Our professional installation team ensures every product is fitted to specification and code. We work on projects of all sizes, from single openings to full multi-suite commercial builds.</p>
+            <ul>
+              <li>Door and frame installation</li>
+              <li>Hardware fitting and alignment</li>
+              <li>Code-compliant installations</li>
+              <li>Coordination with other trades</li>
+              <li>Post-installation inspection and adjustment</li>
+            </ul>
+            <a href="contact.html" class="btn-primary">Request a Quote</a>
+          </div>
+          <div class="service-detail__image">
+            <img src="images/service-installation.jpg" alt="Professional door installation" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service 4: Automatic Operators -->
+    <section class="service-detail" id="automatic-operators">
+      <div class="container">
+        <div class="service-detail__grid reverse">
+          <div class="service-detail__content">
+            <span class="section-badge">Automation</span>
+            <h2>Supply &amp; Installation of Automatic Operators</h2>
+            <p>We provide complete supply and installation of automatic door operators for commercial applications. From accessible entrances to high-traffic retail and institutional openings, we have the right system.</p>
+            <ul>
+              <li>Swing door operators</li>
+              <li>Sliding automatic door systems</li>
+              <li>Accessibility-compliant installations</li>
+              <li>Sensor and activation systems</li>
+              <li>Service and maintenance programs</li>
+            </ul>
+            <a href="contact.html" class="btn-primary">Get a Quote</a>
+          </div>
+          <div class="service-detail__image">
+            <img src="images/service-operators.jpg" alt="Automatic door operator installation" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service 5: Project Management -->
+    <section class="service-detail" id="project-management">
+      <div class="container">
+        <div class="service-detail__grid">
+          <div class="service-detail__content">
+            <span class="section-badge">Project Management</span>
+            <h2>Project Management</h2>
+            <p>End-to-end coordination keeping your build on schedule and on budget. Our project management service ensures all Division 8 elements are delivered, installed and inspected without delays to your timeline.</p>
+            <ul>
+              <li>Submittal and shop drawing coordination</li>
+              <li>Delivery scheduling and staging</li>
+              <li>Installation sequencing with GC</li>
+              <li>Deficiency resolution and closeout</li>
+              <li>Dedicated project contact throughout</li>
+            </ul>
+            <a href="contact.html" class="btn-primary">Start Your Project</a>
+          </div>
+          <div class="service-detail__image">
+            <img src="images/service-pm.jpg" alt="Project management and coordination" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-banner">
+      <div class="container">
+        <p class="cta-banner__eyebrow">Ready to Get Started?</p>
+        <h2>Let's Talk About Your Project.</h2>
+        <p>Contact our team today and let's find the right solution for your build.</p>
+        <a href="contact.html" class="btn-outline-white">Request a Quote</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__logo">
+          <img src="images/All-Door-Supply.svg" alt="All Door Supply" class="footer__logo-img" />
+        </div>
+        <div class="footer__col"><h4>Contact Us</h4><address><p>Toll Free: 1.866.769.3667</p><p>Phone: 1-905.335.1638</p><p>Fax: 1.905.335.6822</p><p>Email: <a href="mailto:info@alldoorsupply.com">info@alldoorsupply.com</a></p><p>Location: 559 King Forest Court,<br>Burlington, Ontario L7P 5C1</p></address></div>
+        <div class="footer__col"><h4>Navigate</h4><nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="services.html">Services</a><a href="who-we-service.html">Who We Service</a><a href="manufacturers.html">Manufacturers</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="contact.html">Request a Quote</a></nav></div>
+        <div class="footer__col"><h4>Hours</h4><p>Showroom &amp; Warehouse</p><p>Mon – Fri: 7:30am – 4:30pm</p><br/><p class="hours-highlight">24 Hour Service for<br>Established Customers</p></div>
+      </div>
+    </div>
+    <div class="footer__bottom"><p>© 2026 All Door Supply. All Rights Reserved.</p></div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

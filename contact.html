@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — All Door Supply</title>
+  <meta name="description" content="Contact All Door Supply. Request a quote, visit our showroom, or call us. Located at 559 King Forest Court, Burlington, Ontario." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .contact-section {
+      padding-block: var(--section-v);
+      background: var(--white);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .contact-info h2 {
+      font-family: var(--font-head);
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .contact-info > p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #555;
+      margin-bottom: 36px;
+    }
+    .contact-detail {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+    .contact-detail__icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .contact-detail__icon svg { width: 18px; height: 18px; }
+    .contact-detail__body h4 {
+      font-family: var(--font-head);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 4px;
+    }
+    .contact-detail__body p,
+    .contact-detail__body a {
+      font-size: 15px;
+      color: var(--black);
+      line-height: 1.6;
+      transition: color 0.2s;
+    }
+    .contact-detail__body a:hover { color: var(--red); }
+    .hours-card {
+      background: var(--dark-2);
+      padding: 28px;
+      margin-top: 32px;
+    }
+    .hours-card h4 {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 14px;
+    }
+    .hours-card p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.75; }
+    .hours-card .highlight { color: var(--red); font-weight: 600; margin-top: 12px; }
+    /* Form */
+    .contact-form-wrap h2 {
+      font-family: var(--font-head);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 24px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #d8d8d8;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--black);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--red);
+    }
+    .form-group textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Cpath stroke='%23666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+    .form-submit {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .form-submit p {
+      font-size: 13px;
+      color: #999;
+    }
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__logo" aria-label="All Door Supply — Home">
+          <img src="images/ADS_Logo_primary.svg" alt="All Door Supply" class="nav__logo-img" />
+        </a>
+        <nav class="nav__links" aria-label="Main navigation">
+          <a href="services.html">Services</a>
+          <a href="who-we-service.html">Who We Service</a>
+          <a href="manufacturers.html">Manufacturers</a>
+          <a href="about.html">About</a>
+          <a href="contact.html" style="color:var(--red)">Contact</a>
+          <a href="contact.html" class="btn-nav">Request a Quote</a>
+        </nav>
+        <button class="nav__hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <nav class="nav__mobile" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="services.html">Services</a><a href="who-we-service.html">Who We Service</a><a href="manufacturers.html">Manufacturers</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+      <a href="contact.html" class="btn-nav">Request a Quote</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__bg"><img src="images/contact-hero.jpg" alt="" aria-hidden="true" /></div>
+      <div class="container page-hero__content">
+        <span class="section-badge">Get In Touch</span>
+        <h1>Let's Talk About Your Project.</h1>
+        <p>Request a quote, ask a question or visit us at our Burlington showroom. Our team is ready to help.</p>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- Contact info -->
+          <div class="contact-info">
+            <span class="section-badge">Contact Details</span>
+            <h2>We're Here When You Need Us.</h2>
+            <p>Reach us by phone, email or stop by our Burlington showroom and warehouse. For established customers, we offer 24-hour service.</p>
+
+            <div class="contact-detail">
+              <div class="contact-detail__icon" aria-hidden="true">
+                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 2h3l1.5 3.5-1.75 1.75a11 11 0 0 0 4 4L11.5 9.5 15 11v3a1 1 0 0 1-1 1C6 15 3 6 3 3a1 1 0 0 1 1-1z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="contact-detail__body">
+                <h4>Phone</h4>
+                <p><a href="tel:+19053351638">1-905.335.1638</a></p>
+                <p><a href="tel:+18667693667">Toll Free: 1.866.769.3667</a></p>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-detail__icon" aria-hidden="true">
+                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="4" width="14" height="10" rx="1" stroke="white" stroke-width="1.5"/><path d="M2 5l7 5 7-5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <div class="contact-detail__body">
+                <h4>Email</h4>
+                <p><a href="mailto:info@alldoorsupply.com">info@alldoorsupply.com</a></p>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-detail__icon" aria-hidden="true">
+                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 2C6.24 2 4 4.24 4 7c0 4.25 5 9 5 9s5-4.75 5-9c0-2.76-2.24-5-5-5z" stroke="white" stroke-width="1.5"/><circle cx="9" cy="7" r="1.5" stroke="white" stroke-width="1.5"/></svg>
+              </div>
+              <div class="contact-detail__body">
+                <h4>Location</h4>
+                <p>559 King Forest Court<br>Burlington, Ontario L7P 5C1</p>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-detail__icon" aria-hidden="true">
+                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="3" width="14" height="12" rx="1" stroke="white" stroke-width="1.5"/><line x1="2" y1="7" x2="16" y2="7" stroke="white" stroke-width="1.5"/><line x1="6" y1="3" x2="6" y2="7" stroke="white" stroke-width="1.5"/><line x1="12" y1="3" x2="12" y2="7" stroke="white" stroke-width="1.5"/></svg>
+              </div>
+              <div class="contact-detail__body">
+                <h4>Fax</h4>
+                <p>1.905.335.6822</p>
+              </div>
+            </div>
+
+            <div class="hours-card">
+              <h4>Hours</h4>
+              <p>Showroom &amp; Warehouse<br>Monday – Friday: 7:30am – 4:30pm</p>
+              <p class="highlight">24 Hour Service Available<br>for Established Customers</p>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <div class="contact-form-wrap">
+            <h2>Request a Quote</h2>
+            <form action="#" method="post" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fname">First Name <span aria-hidden="true">*</span></label>
+                  <input type="text" id="fname" name="first_name" required autocomplete="given-name" placeholder="John" />
+                </div>
+                <div class="form-group">
+                  <label for="lname">Last Name <span aria-hidden="true">*</span></label>
+                  <input type="text" id="lname" name="last_name" required autocomplete="family-name" placeholder="Smith" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">Email <span aria-hidden="true">*</span></label>
+                  <input type="email" id="email" name="email" required autocomplete="email" placeholder="john@company.com" />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="905-555-0100" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="company">Company / Organization</label>
+                <input type="text" id="company" name="company" autocomplete="organization" placeholder="Your company name" />
+              </div>
+              <div class="form-group">
+                <label for="customer_type">I am a… <span aria-hidden="true">*</span></label>
+                <select id="customer_type" name="customer_type" required>
+                  <option value="" disabled selected>Select customer type</option>
+                  <option value="contractor">General Contractor</option>
+                  <option value="subcontractor">Subcontractor</option>
+                  <option value="design">Design Professional</option>
+                  <option value="property">Property Manager</option>
+                  <option value="homeowner">Homeowner</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="service">Service Required</label>
+                <select id="service" name="service">
+                  <option value="" disabled selected>Select a service</option>
+                  <option value="supply">Division 8 Supply</option>
+                  <option value="fabrication">Custom Fabrication / Weld Shop</option>
+                  <option value="installation">Installation</option>
+                  <option value="operators">Automatic Operators</option>
+                  <option value="pm">Project Management</option>
+                  <option value="div10">Division 10 Products</option>
+                  <option value="other">Other / General Inquiry</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Project Details <span aria-hidden="true">*</span></label>
+                <textarea id="message" name="message" required placeholder="Describe your project, quantities, timeline, or any specific requirements…"></textarea>
+              </div>
+              <div class="form-submit">
+                <button type="submit" class="btn-primary" style="border:none;cursor:pointer;">Submit Request</button>
+                <p>We'll respond within 1 business day.</p>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__logo">
+          <img src="images/All-Door-Supply.svg" alt="All Door Supply" class="footer__logo-img" />
+        </div>
+        <div class="footer__col"><h4>Contact Us</h4><address><p>Toll Free: 1.866.769.3667</p><p>Phone: 1-905.335.1638</p><p>Fax: 1.905.335.6822</p><p>Email: <a href="mailto:info@alldoorsupply.com">info@alldoorsupply.com</a></p><p>Location: 559 King Forest Court,<br>Burlington, Ontario L7P 5C1</p></address></div>
+        <div class="footer__col"><h4>Navigate</h4><nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="services.html">Services</a><a href="who-we-service.html">Who We Service</a><a href="manufacturers.html">Manufacturers</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="contact.html">Request a Quote</a></nav></div>
+        <div class="footer__col"><h4>Hours</h4><p>Showroom &amp; Warehouse</p><p>Mon – Fri: 7:30am – 4:30pm</p><br/><p class="hours-highlight">24 Hour Service for<br>Established Customers</p></div>
+      </div>
+    </div>
+    <div class="footer__bottom"><p>© 2026 All Door Supply. All Rights Reserved.</p></div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
