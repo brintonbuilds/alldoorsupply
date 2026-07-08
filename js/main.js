@@ -23,6 +23,13 @@
     });
   });
 
+  /* Keep review links inert while preserving their visual styling */
+  document.querySelectorAll('a[href="#"]').forEach(function (link) {
+    link.addEventListener('click', function (event) {
+      event.preventDefault();
+    });
+  });
+
   /* --- Scroll: transparent hero nav ----------------------- */
   if (nav && nav.classList.contains('nav--hero')) {
     var heroSection = document.querySelector('.hero');
