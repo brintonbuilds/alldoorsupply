@@ -1119,14 +1119,17 @@ ul { list-style: none; }
 
 /* Emphasis line — larger condensed bold white, like the Figma */
 .testimonial__text strong {
-  display: block;
-  margin-top: 10px;
+  display: inline;
   font-family: var(--font-head);
   font-size: clamp(26px, 2.5vw, 36px);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: 0.005em;
   color: var(--white);
+}
+
+.testimonial__nowrap {
+  white-space: nowrap;
 }
 
 .testimonial__attribution {
@@ -1661,6 +1664,10 @@ ul { list-style: none; }
   .footer__grid {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+
+  .testimonial__nowrap {
+    white-space: normal;
   }
 
   .services__cards {
