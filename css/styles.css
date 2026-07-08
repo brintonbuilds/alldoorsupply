@@ -173,7 +173,11 @@ ul { list-style: none; }
 .nav__hamburger {
   display: none;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 5px;
+  width: 44px;
+  height: 44px;
   cursor: pointer;
   padding: 8px;
   background: none;
@@ -287,8 +291,8 @@ ul { list-style: none; }
 }
 
 .hero__text {
-  width: 50%;
-  max-width: 580px;
+  width: 56%;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -312,7 +316,7 @@ ul { list-style: none; }
   font-size: 16px;
   line-height: 1.6;
   color: rgba(255,255,255,0.88);
-  max-width: 440px;
+  max-width: 540px;
   margin-bottom: 36px;
 }
 
@@ -429,6 +433,15 @@ ul { list-style: none; }
 .brand-logo-img--fleming { height: 33px; }
 .brand-logo-img--hes { height: 38px; }
 
+/* Compound lockup (CAMDEN + DOOR CONTROLS) — dominant primary word with a
+   small subtitle, so it needs less height than Fleming/HES to read balanced.
+   Its artwork has ~17% empty space at the top, so a small upward nudge
+   optically re-centres it on the shared baseline with the other marks. */
+.brand-logo-img--camden {
+  height: 30px;
+  transform: translateY(-2.5px);
+}
+
 /* Reduced motion — stop marquee, show first set only */
 @media (prefers-reduced-motion: reduce) {
   .hero__brand-logos {
@@ -468,7 +481,7 @@ ul { list-style: none; }
    → this artwork (z:1) → section content (z:2). */
 .midpage__bg {
   position: absolute;
-  right: -190px;
+  right: -110px;
   bottom: -44px;
   height: min(900px, 74%);
   width: auto;
@@ -566,6 +579,17 @@ ul { list-style: none; }
 .btn-outline--white:hover {
   background: var(--white);
   color: var(--black);
+}
+
+/* Red keyline on dark — per Figma "Who We Are" button */
+.btn-outline--red {
+  border-color: var(--red);
+  color: var(--white);
+}
+
+.btn-outline--red:hover {
+  background: var(--red);
+  color: var(--white);
 }
 
 .services__cards {
@@ -688,6 +712,7 @@ ul { list-style: none; }
 /* Charcoal + faint door line-work base keeps the card intentional
    while its photograph loads (or is missing) */
 .customer-card__image {
+  position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
   background:
@@ -706,8 +731,32 @@ ul { list-style: none; }
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Colour layer sits exactly over the B&W image and fades in on hover
+   for a premium "colour reveal". Both layers share the zoom so they
+   stay aligned through the transition. Selector is scoped to
+   `.customer-card__image img` specificity so the opacity transition
+   isn't dropped by the base image rule. */
+.customer-card__image img.customer-card__img--colour {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .customer-card:hover .customer-card__image img {
   transform: scale(1.05);
+}
+
+.customer-card:hover .customer-card__img--colour {
+  opacity: 1;
+}
+
+/* Default to black & white on devices without hover (touch/mobile) so
+   the cards never depend on hover to look right */
+@media (hover: none) {
+  .customer-card__img--colour { opacity: 0; }
 }
 
 .customer-card__overlay {
@@ -928,22 +977,32 @@ ul { list-style: none; }
   overflow: hidden;
 }
 
-/* Building artwork — subtle, cropped off the lower-right corner */
+/* Building artwork — subtle architectural watermark, cropped off the
+   lower-right. Darkened + low opacity so it reads as a soft dark-grey
+   blend against the charcoal, never competing with the content. */
 .whoweare__bg {
   position: absolute;
-  right: -70px;
-  bottom: -60px;
-  width: min(560px, 46%);
+  right: -60px;
+  bottom: -40px;
+  width: min(620px, 50%);
   height: auto;
-  opacity: 0.05;
+  opacity: 0.07;
+  filter: brightness(0.72);
   z-index: 0;
   pointer-events: none;
 }
 
 .about {
   background: transparent;
-  padding-block: 84px 0;
+  padding-block: 66px 0;
   position: relative;
+}
+
+/* Slightly wider than the site container so this section reads with the
+   Figma's more expansive composition — keeps the logo large while the
+   body copy wraps to six lines rather than eight */
+.whoweare .container {
+  max-width: 1160px;
 }
 
 .about .container {
@@ -953,8 +1012,8 @@ ul { list-style: none; }
 
 .about__grid {
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
-  gap: 72px;
+  grid-template-columns: 360px 1fr;
+  gap: 52px;
   align-items: center;
 }
 
@@ -967,7 +1026,7 @@ ul { list-style: none; }
 .about__logo-img {
   display: block;
   width: 100%;
-  max-width: 360px;
+  max-width: 388px;
   height: auto;
 }
 
@@ -983,26 +1042,26 @@ ul { list-style: none; }
   letter-spacing: 0.15em;
   text-transform: uppercase;
   padding: 4px 10px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .about__content h2 {
   font-family: var(--font-head);
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: clamp(30px, 3.6vw, 44px);
   font-weight: 800;
   color: var(--white);
-  line-height: 1.1;
-  margin-bottom: 20px;
+  line-height: 1.08;
+  margin-bottom: 16px;
 }
 
 .about__content p {
   font-size: 15px;
-  line-height: 1.7;
+  line-height: 1.6;
   color: rgba(255,255,255,0.65);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
-.about__content p:last-of-type { margin-bottom: 28px; }
+.about__content p:last-of-type { margin-bottom: 24px; }
 
 /* ============================================================
    TESTIMONIAL — sits below the two-column block, wide across
@@ -1010,7 +1069,7 @@ ul { list-style: none; }
    ============================================================ */
 .testimonial {
   background: transparent;
-  padding-block: 56px 92px;
+  padding-block: 40px 76px;
   position: relative;
 }
 
@@ -1019,49 +1078,59 @@ ul { list-style: none; }
   z-index: 1;
 }
 
-/* Divider above the quote — left-aligned, stops before mid-width */
+/* Divider above the quote — left-aligned, subtle red-into-dark tone */
 .testimonial__divider {
-  width: min(480px, 60%);
+  width: min(760px, 68%);
   height: 1px;
-  background: rgba(255,255,255,0.14);
-  margin-bottom: 44px;
+  background: linear-gradient(
+    90deg,
+    rgba(197,32,40,0.55) 0%,
+    rgba(255,255,255,0.14) 22%,
+    rgba(255,255,255,0.05) 100%
+  );
+  margin-bottom: 34px;
 }
 
 /* Red quote mark hangs in a left gutter beside the text */
 .testimonial__body {
   display: flex;
   align-items: flex-start;
-  gap: 20px;
-  max-width: 780px;
+  gap: 22px;
+  max-width: 940px;
 }
 
 .testimonial__quote-mark {
   flex-shrink: 0;
-  padding-top: 6px;
+  padding-top: 8px;
 }
 
 .testimonial__quote-mark svg {
-  width: 40px;
-  height: 31px;
+  width: 44px;
+  height: 34px;
 }
 
 .testimonial__text {
   font-family: var(--font-body);
-  font-size: clamp(18px, 1.7vw, 22px);
-  line-height: 1.55;
-  color: rgba(255,255,255,0.6);
+  font-size: clamp(19px, 1.55vw, 24px);
+  line-height: 1.5;
+  color: rgba(255,255,255,0.62);
   margin-bottom: 18px;
 }
 
+/* Emphasis line — larger condensed bold white, like the Figma */
 .testimonial__text strong {
   display: block;
-  margin-top: 4px;
+  margin-top: 10px;
+  font-family: var(--font-head);
+  font-size: clamp(26px, 2.5vw, 36px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 0.005em;
   color: var(--white);
-  font-weight: 700;
 }
 
 .testimonial__attribution {
-  font-size: 13px;
+  font-size: 14px;
   font-style: italic;
   font-weight: 600;
   color: rgba(255,255,255,0.5);
@@ -1072,7 +1141,7 @@ ul { list-style: none; }
    ============================================================ */
 .cta-banner {
   background: var(--red);
-  padding-block: 64px;
+  padding-block: 52px;
   text-align: center;
 }
 
@@ -1082,23 +1151,23 @@ ul { list-style: none; }
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.65);
-  margin-bottom: 12px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 10px;
 }
 
 .cta-banner h2 {
   font-family: var(--font-head);
-  font-size: clamp(32px, 5vw, 52px);
+  font-size: clamp(30px, 4vw, 46px);
   font-weight: 800;
   color: var(--white);
-  line-height: 1.1;
-  margin-bottom: 12px;
+  line-height: 1.08;
+  margin-bottom: 10px;
 }
 
 .cta-banner p {
   font-size: 15px;
-  color: rgba(255,255,255,0.75);
-  margin-bottom: 32px;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 26px;
 }
 
 .btn-outline-white {
@@ -1260,65 +1329,98 @@ ul { list-style: none; }
    FOOTER
    ============================================================ */
 .footer {
-  background: var(--dark-2);
-  padding-block: 60px 0;
+  background: var(--white);
+  border-top: 3px solid var(--red);
+}
+
+/* Footer runs wider than the site container so columns match the Figma's
+   generous spacing and contact/location lines stay on a single line */
+.footer .container {
+  max-width: 1280px;
 }
 
 .footer__grid {
   display: grid;
-  grid-template-columns: 220px 1fr 1fr 1fr;
-  gap: 48px;
-  padding-bottom: 48px;
+  grid-template-columns: 240px 1.12fr 1.12fr 1fr;
+  gap: 0;
+  padding-block: 88px 60px;
+  align-items: stretch;
 }
 
-.footer__logo {}
+.footer__logo {
+  display: flex;
+  align-items: center;
+  padding-right: 56px;
+}
 
 .footer__logo-img {
   display: block;
-  width: 180px;
+  width: 200px;
   height: auto;
 }
 
+/* Hairline vertical rules separate each text column, like the Figma */
+.footer__col {
+  border-left: 1px solid #e5e5e5;
+  padding-inline: 56px 24px;
+}
+
+.footer__col:last-child {
+  padding-right: 0;
+}
+
 .footer__col h4 {
-  font-family: var(--font-head);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
-  margin-bottom: 16px;
+  color: var(--red);
+  margin-bottom: 26px;
 }
 
 .footer__col p,
 .footer__col address {
-  font-size: 14px;
-  line-height: 1.75;
-  color: rgba(255,255,255,0.65);
+  font-size: 16px;
+  line-height: 2;
+  color: #1c1c1c;
   font-style: normal;
 }
 
 .footer__col a {
   display: block;
-  font-size: 14px;
-  color: rgba(255,255,255,0.65);
+  font-size: 16px;
+  color: #1c1c1c;
   line-height: 2;
   transition: color 0.2s;
 }
 
-.footer__col a:hover { color: var(--white); }
+.footer__col address a {
+  display: inline;
+  line-height: inherit;
+}
+
+.footer__col a:hover { color: var(--red); }
 
 .footer__col .hours-highlight {
   color: var(--red);
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .footer__bottom {
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding-block: 20px;
-  text-align: center;
-  font-size: 13px;
-  color: rgba(255,255,255,0.3);
+  background: var(--white);
+}
+
+.footer__bottom .container {
+  border-top: 1px solid #ececec;
+  padding-block: 26px;
+  text-align: left;
+}
+
+.footer__bottom p {
+  font-size: 15px;
+  color: #9a9a9a;
 }
 
 /* ============================================================
@@ -1418,7 +1520,20 @@ ul { list-style: none; }
 
   .footer__grid {
     grid-template-columns: 1fr 1fr;
-    gap: 36px;
+    gap: 40px 48px;
+    padding-block: 56px 48px;
+    align-items: start;
+  }
+
+  /* No vertical rules once the columns stack */
+  .footer__logo {
+    grid-column: 1 / -1;
+    padding-right: 0;
+  }
+
+  .footer__col {
+    border-left: none;
+    padding-inline: 0;
   }
 }
 
@@ -1487,6 +1602,7 @@ ul { list-style: none; }
   .brand-logo-img--taymor { height: 22px; }
   .brand-logo-img--fleming { height: 26px; }
   .brand-logo-img--hes { height: 30px; }
+  .brand-logo-img--camden { height: 24px; transform: translateY(-2px); }
 
   .hero__brand-logos {
     -webkit-mask-image: linear-gradient(
