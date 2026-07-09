@@ -494,17 +494,16 @@ ul { list-style: none; }
   overflow: hidden;
 }
 
-/* Figma export — building/logo artwork. Sits low-right: begins behind
-   the lower-right of Services (clear of the service copy) and flows down
-   behind the cards, aggressively cropped off the right page edge so the
-   tallest tower falls to the right of the services grid.
+/* Figma export — building/logo artwork. Positioned to match the
+   Who We Service frame so it begins behind Services and runs to the
+   bottom edge of the Build for Every Build section.
    Layer order inside .midpage: white base → grey angled panel (z:-1)
    → this artwork (z:1) → section content (z:2). */
 .midpage__bg {
   position: absolute;
-  right: -110px;
-  bottom: -44px;
-  height: min(900px, 74%);
+  right: 2px;
+  bottom: 0;
+  height: 955px;
   width: auto;
   z-index: 1;
   pointer-events: none;
@@ -666,21 +665,21 @@ ul { list-style: none; }
 .built {
   background: transparent;
   margin-top: 100px;
-  padding-block: 56px 104px;
+  padding-block: 115px 81px;
   position: relative;
 }
 
 /* Figma export — grey angled panel. Left-anchored behind the Build
-   section; its angled top edge pokes up into the Services area.
+   section at the same size and offset as the Figma vector.
    z:-1 escapes to the .midpage stacking context so the shared
    artwork (z:1) paints above it. Vertical stretch is fine — the
    shape is flat apart from the angled top edge. */
 .built__bg-panel {
   position: absolute;
-  top: -56px;
+  top: 0;
   left: 0;
-  width: max(55%, 620px);
-  height: calc(100% + 56px);
+  width: 794px;
+  height: 740px;
   object-fit: fill;
   z-index: -1;
   pointer-events: none;
@@ -689,33 +688,39 @@ ul { list-style: none; }
 .built .container {
   position: relative;
   z-index: 2;
+  max-width: none;
+  padding-inline: 119px;
 }
 
 .built__header {
-  margin-bottom: 40px;
+  width: 579px;
+  margin-bottom: 45px;
 }
 
 .built__header h2 {
   font-family: var(--font-head);
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: 48px;
   font-weight: 700;
   color: var(--red);
   line-height: normal;
   letter-spacing: 0;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .built__header p {
   font-size: 15px;
-  color: #575757;
-  max-width: 560px;
+  color: var(--black);
+  max-width: 579px;
+  min-height: 50px;
   line-height: 24px;
 }
 
 .built__cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(3, 375px);
+  gap: 37px;
+  width: 1199px;
+  margin-left: 3px;
 }
 
 /* Editorial audience card — full-bleed image, quiet elevation */
@@ -723,8 +728,10 @@ ul { list-style: none; }
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  border-radius: 2px;
-  box-shadow: 0 2px 14px rgba(15,12,10,0.10);
+  width: 375px;
+  height: 375px;
+  border-radius: 8px;
+  box-shadow: none;
   transition:
     transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
@@ -740,7 +747,7 @@ ul { list-style: none; }
 .customer-card__image {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 100%;
   background:
     url("../images/door-elevation-lines-light.svg?v=2") no-repeat right -70px bottom -120px / 320px auto,
     linear-gradient(160deg, #262220 0%, #16120F 100%);
@@ -750,8 +757,12 @@ ul { list-style: none; }
 /* Photography is pre-graded black & white in the exported assets —
    no filter, so tones match the Figma exactly */
 .customer-card__image img {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: -11px;
+  left: -11px;
+  width: 402px;
+  height: 402px;
+  max-width: none;
   object-fit: cover;
   object-position: center;
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
@@ -764,7 +775,6 @@ ul { list-style: none; }
    isn't dropped by the base image rule. */
 .customer-card__image img.customer-card__img--colour {
   position: absolute;
-  inset: 0;
   opacity: 0;
   transition:
     opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
@@ -787,24 +797,24 @@ ul { list-style: none; }
 
 .customer-card__overlay {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 380px;
+  height: 380px;
   background: linear-gradient(
     180deg,
-    rgba(13,10,9,0) 0%,
-    rgba(13,10,9,0.30) 36%,
-    rgba(13,10,9,0.68) 62%,
-    rgba(13,10,9,0.94) 100%
+    rgba(217,217,217,0) 0%,
+    #1A1A1A 67.3077%
   );
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 28px;
 }
 
 /* Audience label — red badge, per reference */
 .customer-card__label {
+  position: absolute;
+  top: 189px;
+  left: 22px;
   display: inline-flex;
-  align-self: flex-start;
+  align-items: center;
   font-family: var(--font-body);
   font-size: 11px;
   font-weight: 500;
@@ -813,27 +823,37 @@ ul { list-style: none; }
   text-transform: uppercase;
   color: var(--white);
   background: var(--red);
-  padding: 3px 8px;
-  margin-bottom: 10px;
+  height: 21px;
+  padding-inline: 8px;
 }
 
 .customer-card__title {
+  position: absolute;
+  top: 218px;
+  left: 22px;
+  width: 305px;
   font-family: var(--font-head);
-  font-size: 21px;
+  font-size: 32px;
   font-weight: 700;
   color: var(--white);
   line-height: normal;
-  margin-bottom: 10px;
 }
 
 .customer-card__desc {
+  position: absolute;
+  top: 264px;
+  left: 22px;
+  width: 335px;
+  height: 72px;
   font-size: 15px;
-  line-height: 24px;
-  color: rgba(255,255,255,0.72);
-  margin-bottom: 18px;
+  line-height: 21px;
+  color: var(--white);
 }
 
 .customer-card__link {
+  position: absolute;
+  top: 342px;
+  left: 22px;
   font-family: var(--font-body);
   font-size: 11px;
   font-weight: 500;
@@ -841,7 +861,6 @@ ul { list-style: none; }
   line-height: normal;
   text-transform: uppercase;
   color: var(--white);
-  align-self: flex-start;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -1584,6 +1603,71 @@ ul { list-style: none; }
     line-height: 24px;
   }
 
+  .built .container {
+    max-width: var(--max-w);
+    padding-inline: 32px;
+  }
+
+  .built__header {
+    width: 100%;
+  }
+
+  .built__cards {
+    width: 100%;
+    margin-left: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .customer-card {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .customer-card__image,
+  .customer-card__overlay {
+    width: 100%;
+    height: 100%;
+  }
+
+  .customer-card__image img {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .customer-card__overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px;
+  }
+
+  .customer-card__label,
+  .customer-card__title,
+  .customer-card__desc,
+  .customer-card__link {
+    position: static;
+    width: auto;
+  }
+
+  .customer-card__label {
+    align-self: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .customer-card__title {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  .customer-card__desc {
+    line-height: 21px;
+    margin-bottom: 18px;
+  }
+
   .services .container {
     padding-inline: 32px;
   }
@@ -1745,15 +1829,35 @@ ul { list-style: none; }
 
   .built {
     background: #EBEBEB;
+    padding-block: 56px 64px;
   }
 
   .midpage__bg {
     display: none;
   }
 
+  .built .container {
+    padding-inline: 20px;
+  }
+
+  .built__header {
+    margin-bottom: 32px;
+  }
+
   .built__cards {
     grid-template-columns: 1fr;
+    gap: 24px;
+    width: 100%;
+    margin-left: 0;
     max-width: 420px;
+  }
+
+  .customer-card__overlay {
+    padding: 28px;
+  }
+
+  .customer-card__title {
+    font-size: 32px;
   }
 
   .who-service__cards {
