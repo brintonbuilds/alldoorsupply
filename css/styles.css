@@ -1034,6 +1034,103 @@ ul { list-style: none; }
   transform: scale(1.04);
 }
 
+#manufacturers {
+  padding-block: 96px 179px;
+}
+
+#manufacturers > .container {
+  max-width: 1330px;
+  padding-inline: 64px;
+}
+
+#manufacturers .manufacturers__header {
+  width: 580px;
+  margin-bottom: 70px;
+}
+
+#manufacturers .manufacturers__eyebrow {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  min-height: 21px;
+  padding: 4px 8px;
+  line-height: 13px;
+  margin-bottom: 17px;
+}
+
+#manufacturers .manufacturers__header h2 {
+  width: 580px;
+  margin-bottom: 14px;
+}
+
+#manufacturers .manufacturers__header p {
+  width: 580px;
+  max-width: 580px;
+  min-height: 50px;
+  color: #000;
+}
+
+#manufacturers .manufacturers__grid {
+  grid-template-columns: repeat(2, 579px);
+  gap: 48px 42px;
+  width: 1201px;
+  margin-left: 1px;
+}
+
+#manufacturers .mfr-card {
+  width: 579px;
+  min-height: 280px;
+  height: 280px;
+  grid-template-columns: 257px 323px;
+  border: none;
+  box-shadow: inset 0 0 0 1.5px #E6E6E6;
+}
+
+#manufacturers .mfr-card:hover {
+  transform: none;
+  border-color: transparent;
+  box-shadow: inset 0 0 0 1.5px #E6E6E6;
+}
+
+#manufacturers .mfr-card__body {
+  display: block;
+  position: relative;
+  width: 257px;
+  height: 280px;
+  padding: 66px 27px 25px;
+}
+
+#manufacturers .mfr-card__body h3 {
+  width: 203px;
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+#manufacturers .mfr-card__body p {
+  width: 205px;
+  min-height: 89px;
+  line-height: 21px;
+  color: #000;
+  margin-bottom: 40px;
+}
+
+#manufacturers .mfr-card__link {
+  position: absolute;
+  left: 27px;
+  top: 241px;
+  display: flex;
+  line-height: 13px;
+}
+
+#manufacturers .mfr-card__image {
+  width: 323px;
+  height: 280px;
+}
+
+#manufacturers .mfr-card:hover .mfr-card__image img {
+  transform: none;
+}
+
 /* ============================================================
    WHO WE ARE  (shared dark canvas for About + Testimonial)
    ============================================================ */
@@ -1713,6 +1810,25 @@ ul { list-style: none; }
     gap: 22px;
   }
 
+  #manufacturers {
+    padding-block: 72px 96px;
+  }
+
+  #manufacturers > .container {
+    max-width: 100%;
+    padding-inline: 32px;
+  }
+
+  #manufacturers .manufacturers__grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 22px;
+  }
+
+  #manufacturers .mfr-card {
+    width: 100%;
+  }
+
   .about__grid {
     grid-template-columns: 1fr;
     gap: 48px;
@@ -1766,7 +1882,34 @@ ul { list-style: none; }
     margin-bottom: 32px;
   }
 
+  #manufacturers {
+    padding-block: 56px 64px;
+  }
+
+  #manufacturers > .container {
+    padding-inline: 20px;
+  }
+
+  #manufacturers .manufacturers__header {
+    width: auto;
+    margin-bottom: 32px;
+  }
+
   .manufacturers__header h2 {
+    font-size: 34px;
+  }
+
+  #manufacturers .manufacturers__header h2,
+  #manufacturers .manufacturers__header p {
+    width: auto;
+    max-width: none;
+  }
+
+  #manufacturers .manufacturers__header p {
+    min-height: 0;
+  }
+
+  #manufacturers .manufacturers__header h2 {
     font-size: 34px;
   }
 
@@ -1785,8 +1928,42 @@ ul { list-style: none; }
     padding: 24px 22px;
   }
 
+  #manufacturers .mfr-card {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    height: auto;
+  }
+
+  #manufacturers .mfr-card__image {
+    order: -1;
+    width: 100%;
+    height: 190px;
+  }
+
+  #manufacturers .mfr-card__body {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 24px 22px;
+  }
+
+  #manufacturers .mfr-card__body h3,
+  #manufacturers .mfr-card__body p {
+    width: auto;
+  }
+
   .mfr-card__body p {
     margin-bottom: 20px;
+  }
+
+  #manufacturers .mfr-card__body p {
+    min-height: 0;
+    margin-bottom: 20px;
+  }
+
+  #manufacturers .mfr-card__link {
+    position: static;
+    display: inline-flex;
   }
 
   .mfr-card__link {
