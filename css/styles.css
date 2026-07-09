@@ -507,13 +507,15 @@ ul { list-style: none; }
    ============================================================ */
 .services {
   background: transparent;
-  padding-block: 96px 104px;
+  padding-block: 72px 40px;
   position: relative;
 }
 
 .services .container {
   position: relative;
   z-index: 2;
+  max-width: 1288px;
+  padding-inline: 64px;
 }
 
 /* Shared kicker — red carries emphasis so headings can stay charcoal */
@@ -610,7 +612,7 @@ ul { list-style: none; }
 .services__cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px 64px;
+  gap: 63px 96px;
 }
 
 /* Service module — icon beside the title, description below */
@@ -1561,6 +1563,10 @@ ul { list-style: none; }
 @media (max-width: 1024px) {
   :root { --section-v: 64px; }
 
+  .services .container {
+    padding-inline: 32px;
+  }
+
   .services__grid {
     grid-template-columns: 1fr;
     gap: 48px;
@@ -1605,6 +1611,10 @@ ul { list-style: none; }
   :root { --section-v: 56px; }
 
   .container { padding-inline: 20px; }
+
+  .services .container {
+    padding-inline: 20px;
+  }
 
   .nav__links { display: none; }
   .nav__hamburger { display: flex; }
