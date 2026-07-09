@@ -1291,7 +1291,7 @@ ul { list-style: none; }
   line-height: 36px;
   letter-spacing: 0;
   color: rgba(255,255,255,0.62);
-  margin-bottom: 16px;
+  margin-bottom: 0;
 }
 
 .testimonial__line {
@@ -1315,13 +1315,18 @@ ul { list-style: none; }
 }
 
 .testimonial__attribution {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 16px;
   font-family: var(--font-body);
   font-size: 13px;
   line-height: 36px;
   font-style: italic;
   font-weight: 600;
-  letter-spacing: 0;
+  letter-spacing: 0px;
   color: rgba(255,255,255,0.5);
+  white-space: nowrap;
 }
 
 /* ============================================================
@@ -2091,6 +2096,10 @@ ul { list-style: none; }
   }
 
   .testimonial__line--closing {
+    white-space: normal;
+  }
+
+  .testimonial__attribution {
     white-space: normal;
   }
 
