@@ -852,11 +852,16 @@ ul { list-style: none; }
    ============================================================ */
 .manufacturers {
   background: var(--white);
-  padding-block: 96px 104px;
+  padding-block: 64px 82px;
+}
+
+.manufacturers > .container {
+  max-width: 1512px;
+  padding-inline: 64px;
 }
 
 .manufacturers__header {
-  margin-bottom: 48px;
+  margin-bottom: 94px;
 }
 
 /* Black chip eyebrow — per Figma */
@@ -887,25 +892,26 @@ ul { list-style: none; }
 .manufacturers__header p {
   font-size: 15px;
   line-height: 24px;
-  color: #575757;
-  max-width: 520px;
+  color: #111;
+  max-width: 600px;
 }
 
 .manufacturers__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  gap: 56px 48px;
 }
 
 /* Horizontal card — text left, image right half */
 .mfr-card {
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
+  grid-template-columns: 296px minmax(0, 1fr);
   align-items: stretch;
-  min-height: 194px;
+  min-height: 322px;
+  height: 322px;
   background: var(--white);
   border: 1px solid #E4E2DE;
-  border-radius: 10px;
+  border-radius: 8px;
   overflow: hidden;
   transition:
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
@@ -922,8 +928,8 @@ ul { list-style: none; }
 .mfr-card__body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 30px 28px;
+  justify-content: flex-start;
+  padding: 92px 32px 28px;
 }
 
 .mfr-card__body h3 {
@@ -938,14 +944,15 @@ ul { list-style: none; }
 .mfr-card__body p {
   font-size: 15px;
   line-height: 24px;
-  color: #4a4a4a;
-  margin-bottom: 20px;
+  color: #161616;
+  margin-bottom: 0;
 }
 
 .mfr-card__link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  margin-top: auto;
   font-family: var(--font-body);
   font-size: 11px;
   font-weight: 500;
@@ -1279,16 +1286,16 @@ ul { list-style: none; }
    ============================================================ */
 .manufacturers {
   background: var(--white);
-  padding-block: var(--section-v);
+  padding-block: 64px 82px;
 }
 
 .manufacturers__header {
-  margin-bottom: 52px;
+  margin-bottom: 94px;
 }
 
 .manufacturers__header h2 {
   font-family: var(--font-head);
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: 48px;
   font-weight: 700;
   color: var(--red);
   line-height: normal;
@@ -1299,8 +1306,8 @@ ul { list-style: none; }
 .manufacturers__header p {
   font-size: 15px;
   line-height: 24px;
-  color: #666;
-  max-width: 500px;
+  color: #111;
+  max-width: 600px;
 }
 
 .product-cards {
@@ -1607,6 +1614,10 @@ ul { list-style: none; }
     padding-block: 56px 64px;
   }
 
+  .manufacturers > .container {
+    padding-inline: 20px;
+  }
+
   .manufacturers__header {
     margin-bottom: 32px;
   }
@@ -1618,6 +1629,7 @@ ul { list-style: none; }
   .mfr-card {
     grid-template-columns: 1fr;
     min-height: 0;
+    height: auto;
   }
 
   .mfr-card__image {
@@ -1627,6 +1639,14 @@ ul { list-style: none; }
 
   .mfr-card__body {
     padding: 24px 22px;
+  }
+
+  .mfr-card__body p {
+    margin-bottom: 20px;
+  }
+
+  .mfr-card__link {
+    margin-top: 0;
   }
 
   .hero { min-height: 90vh; }
