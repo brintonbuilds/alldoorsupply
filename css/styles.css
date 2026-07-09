@@ -1078,6 +1078,10 @@ ul { list-style: none; }
   z-index: 1;
 }
 
+.testimonial .container {
+  max-width: 1320px;
+}
+
 /* Divider above the quote — left-aligned, subtle red-into-dark tone */
 .testimonial__divider {
   width: min(760px, 68%);
@@ -1096,7 +1100,12 @@ ul { list-style: none; }
   display: flex;
   align-items: flex-start;
   gap: 22px;
-  max-width: 1096px;
+  max-width: none;
+}
+
+.testimonial__body blockquote {
+  flex: 1;
+  min-width: 0;
 }
 
 .testimonial__quote-mark {
@@ -1111,25 +1120,30 @@ ul { list-style: none; }
 
 .testimonial__text {
   font-family: var(--font-body);
-  font-size: clamp(19px, 1.55vw, 24px);
-  line-height: 1.5;
+  font-size: clamp(18px, 1.35vw, 22px);
+  line-height: 1.32;
   color: rgba(255,255,255,0.62);
-  margin-bottom: 18px;
+  margin-bottom: 16px;
+}
+
+.testimonial__line {
+  display: block;
+}
+
+.testimonial__line--closing {
+  margin-top: 6px;
+  white-space: nowrap;
 }
 
 /* Emphasis line — larger condensed bold white, like the Figma */
 .testimonial__text strong {
   display: inline;
   font-family: var(--font-head);
-  font-size: clamp(26px, 2.2vw, 32px);
+  font-size: clamp(25px, 2.05vw, 31px);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1;
   letter-spacing: 0.005em;
   color: var(--white);
-}
-
-.testimonial__nowrap {
-  white-space: nowrap;
 }
 
 .testimonial__attribution {
@@ -1666,7 +1680,7 @@ ul { list-style: none; }
     gap: 32px;
   }
 
-  .testimonial__nowrap {
+  .testimonial__line--closing {
     white-space: normal;
   }
 
