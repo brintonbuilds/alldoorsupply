@@ -315,9 +315,9 @@ ul { list-style: none; }
 
 .hero__headline {
   font-family: var(--font-head);
-  font-size: clamp(40px, 6vw, 56px);
+  font-size: clamp(40px, 6.31vw, 56px);
   font-weight: 700;
-  line-height: normal;
+  line-height: 0.92;
   color: var(--white);
   margin-bottom: 20px;
   letter-spacing: 0;
