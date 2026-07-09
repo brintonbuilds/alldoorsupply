@@ -1771,8 +1771,9 @@ ul { list-style: none; }
   .nav--compact .nav__inner { height: 76px; }
 
   .hero__content {
+    justify-content: center;
     align-items: flex-start;
-    padding-block: 100px 60px;
+    padding-block: 96px 0;
   }
 
   .hero__text {
