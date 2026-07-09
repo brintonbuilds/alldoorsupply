@@ -1096,7 +1096,7 @@ ul { list-style: none; }
   display: flex;
   align-items: flex-start;
   gap: 22px;
-  max-width: 940px;
+  max-width: 1096px;
 }
 
 .testimonial__quote-mark {
@@ -1121,7 +1121,7 @@ ul { list-style: none; }
 .testimonial__text strong {
   display: inline;
   font-family: var(--font-head);
-  font-size: clamp(26px, 2.5vw, 36px);
+  font-size: clamp(26px, 2.2vw, 32px);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: 0.005em;
