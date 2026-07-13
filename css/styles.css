@@ -691,15 +691,20 @@ ul { list-style: none; }
   pointer-events: none;
 }
 
+/* Centered composition — the content column (max 1199px cards + 119px
+   gutters) is capped and auto-centred so the section balances on the
+   page instead of hugging the left. Gutter scales with the viewport. */
 .built .container {
   position: relative;
   z-index: 2;
-  max-width: none;
-  padding-inline: 119px;
+  max-width: 1437px;
+  margin-inline: auto;
+  padding-inline: clamp(24px, 8vw, 119px);
 }
 
 .built__header {
-  width: 579px;
+  width: 100%;
+  max-width: 579px;
   margin-bottom: 45px;
 }
 
@@ -721,12 +726,15 @@ ul { list-style: none; }
   line-height: 24px;
 }
 
+/* Fluid 3-up grid — columns share the row equally and shrink together,
+   so the cards stay balanced and evenly spaced at any width. Capped at
+   the Figma content width (1199px) and left-aligned with the header. */
 .built__cards {
   display: grid;
-  grid-template-columns: repeat(3, 375px);
-  gap: 37px;
-  width: 1199px;
-  margin-left: 3px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 37px);
+  width: 100%;
+  max-width: 1199px;
 }
 
 /* Editorial audience card — full-bleed image, quiet elevation */
@@ -734,8 +742,8 @@ ul { list-style: none; }
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  width: 375px;
-  height: 375px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   border-radius: 8px;
   box-shadow: none;
   transition:
@@ -764,10 +772,9 @@ ul { list-style: none; }
    no filter, so tones match the Figma exactly */
 .customer-card__image img {
   position: absolute;
-  top: -11px;
-  left: -11px;
-  width: 402px;
-  height: 402px;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   max-width: none;
   object-fit: cover;
   object-position: center;
@@ -801,12 +808,16 @@ ul { list-style: none; }
   .customer-card__img--colour { opacity: 0; }
 }
 
+/* Bottom-anchored content flow — the gradient fills the card and the
+   copy stacks up from the bottom edge. Flow layout (not fixed px)
+   means the text stays correctly placed as the card scales. */
 .customer-card__overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 380px;
-  height: 380px;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 22px;
   background: linear-gradient(
     180deg,
     rgba(217,217,217,0) 0%,
@@ -816,9 +827,7 @@ ul { list-style: none; }
 
 /* Audience label — red badge, per reference */
 .customer-card__label {
-  position: absolute;
-  top: 189px;
-  left: 22px;
+  align-self: flex-start;
   display: inline-flex;
   align-items: center;
   font-family: var(--font-body);
@@ -831,35 +840,26 @@ ul { list-style: none; }
   background: var(--red);
   height: 21px;
   padding-inline: 8px;
+  margin-bottom: 12px;
 }
 
 .customer-card__title {
-  position: absolute;
-  top: 218px;
-  left: 22px;
-  width: 305px;
   font-family: var(--font-head);
   font-size: 32px;
   font-weight: 700;
   color: var(--white);
   line-height: normal;
+  margin-bottom: 8px;
 }
 
 .customer-card__desc {
-  position: absolute;
-  top: 264px;
-  left: 22px;
-  width: 335px;
-  height: 72px;
   font-size: 15px;
   line-height: 21px;
   color: var(--white);
+  margin-bottom: 18px;
 }
 
 .customer-card__link {
-  position: absolute;
-  top: 342px;
-  left: 22px;
   align-self: flex-start;
   font-family: var(--font-body);
   font-size: 11px;
@@ -1734,69 +1734,24 @@ ul { list-style: none; }
     line-height: 24px;
   }
 
+  /* Tablet — cards keep the fluid 3-up grid from the base rules; just
+     ease the gutter and dial the title back so the smaller cards
+     don't crowd. (Card internals are already flow-based in the base.) */
   .built .container {
-    max-width: var(--max-w);
     padding-inline: 32px;
   }
 
-  .built__header {
-    width: 100%;
-  }
-
   .built__cards {
-    width: 100%;
-    margin-left: 0;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
   }
 
-  .customer-card {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1;
-  }
-
-  .customer-card__image,
   .customer-card__overlay {
-    width: 100%;
-    height: 100%;
-  }
-
-  .customer-card__image img {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .customer-card__overlay {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 24px;
-  }
-
-  .customer-card__label,
-  .customer-card__title,
-  .customer-card__desc,
-  .customer-card__link {
-    position: static;
-    width: auto;
-  }
-
-  .customer-card__label {
-    align-self: flex-start;
-    margin-bottom: 10px;
+    padding: 20px;
   }
 
   .customer-card__title {
     font-size: 26px;
-    margin-bottom: 10px;
-  }
-
-  .customer-card__desc {
-    line-height: 21px;
-    margin-bottom: 18px;
+    margin-bottom: 6px;
   }
 
   .services .container {
@@ -1859,6 +1814,24 @@ ul { list-style: none; }
   .footer__col {
     border-left: none;
     padding-inline: 0;
+  }
+}
+
+/* Small tablet / large phone — three narrow cards can't hold the copy
+   comfortably, so stack to a single centred column well before mobile
+   for a clean, uncramped transition. */
+@media (max-width: 900px) {
+  .built__cards {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    width: 100%;
+    max-width: 420px;
+    margin-inline: auto;
+  }
+
+  .customer-card__title {
+    font-size: 30px;
+    margin-bottom: 8px;
   }
 }
 
@@ -2060,8 +2033,8 @@ ul { list-style: none; }
     grid-template-columns: 1fr;
     gap: 24px;
     width: 100%;
-    margin-left: 0;
     max-width: 420px;
+    margin-inline: auto;
   }
 
   .customer-card__overlay {
