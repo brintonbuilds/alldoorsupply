@@ -103,17 +103,17 @@ ul { list-style: none; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 96px;
+  height: 80px; /* Figma Nav/Hero bar = 1439 × 80 */
   transition: height 0.25s ease;
 }
 
 /* Compact state — applied on scroll */
 .nav--compact .nav__inner {
-  height: 82px;
+  height: 70px;
 }
 
 .nav--compact .nav__logo-img {
-  height: 70px;
+  height: 50px;
 }
 
 /* Logo */
@@ -125,7 +125,7 @@ ul { list-style: none; }
 
 .nav__logo-img {
   display: block;
-  height: 80px;
+  height: 56px;
   width: auto;
   transition: height 0.25s ease;
 }
@@ -643,7 +643,7 @@ ul { list-style: none; }
 }
 
 .service-card__icon img {
-  height: 44px;
+  height: 50px;
   width: auto;
   display: block;
 }
@@ -1040,11 +1040,12 @@ ul { list-style: none; }
 
 #manufacturers > .container {
   max-width: 1330px;
-  padding-inline: 64px;
+  padding-inline: clamp(24px, 5vw, 64px);
 }
 
 #manufacturers .manufacturers__header {
-  width: 580px;
+  width: 100%;
+  max-width: 580px;
   margin-bottom: 70px;
 }
 
@@ -1059,29 +1060,36 @@ ul { list-style: none; }
 }
 
 #manufacturers .manufacturers__header h2 {
-  width: 580px;
+  width: 100%;
+  max-width: 580px;
   margin-bottom: 14px;
 }
 
 #manufacturers .manufacturers__header p {
-  width: 580px;
+  width: 100%;
   max-width: 580px;
   min-height: 50px;
   color: #000;
 }
 
+/* Fluid 2-up grid — columns share the row equally and scale together,
+   capped at the Figma content width (1201px) and left-aligned with the
+   header. Replaces the fixed 1201px block that overflowed < 1330px. */
 #manufacturers .manufacturers__grid {
-  grid-template-columns: repeat(2, 579px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 48px 42px;
-  width: 1201px;
-  margin-left: 1px;
+  width: 100%;
+  max-width: 1201px;
+  margin-inline: 0;
 }
 
+/* Card holds the Figma 257 : 323 body-to-image ratio via fr units, so it
+   scales with the column instead of locking to 579px. */
 #manufacturers .mfr-card {
-  width: 579px;
+  width: 100%;
   min-height: 280px;
-  height: 280px;
-  grid-template-columns: 257px 323px;
+  height: auto;
+  grid-template-columns: minmax(0, 257fr) minmax(0, 323fr);
   border: none;
   box-shadow: inset 0 0 0 1.5px #E6E6E6;
 }
@@ -1092,39 +1100,43 @@ ul { list-style: none; }
   box-shadow: inset 0 0 0 1.5px #E6E6E6;
 }
 
+/* Flow layout (not absolute) — copy stacks from the top, the link is
+   pinned to the bottom with margin-top:auto, so text placement holds at
+   any card size. */
 #manufacturers .mfr-card__body {
-  display: block;
-  position: relative;
-  width: 257px;
-  height: 280px;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
   padding: 66px 27px 25px;
 }
 
 #manufacturers .mfr-card__body h3 {
-  width: 203px;
+  width: auto;
   font-size: 32px;
   margin-bottom: 8px;
 }
 
 #manufacturers .mfr-card__body p {
-  width: 205px;
-  min-height: 89px;
+  width: auto;
   line-height: 21px;
   color: #000;
-  margin-bottom: 40px;
+  margin-bottom: 0;
 }
 
 #manufacturers .mfr-card__link {
-  position: absolute;
-  left: 27px;
-  top: 241px;
+  position: static;
+  left: auto;
+  top: auto;
+  margin-top: auto;
+  padding-top: 24px;
   display: flex;
   line-height: 13px;
 }
 
 #manufacturers .mfr-card__image {
-  width: 323px;
-  height: 280px;
+  width: 100%;
+  height: 100%;
 }
 
 #manufacturers .mfr-card:hover .mfr-card__image img {
