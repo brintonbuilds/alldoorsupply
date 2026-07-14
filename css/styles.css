@@ -370,50 +370,86 @@ ul { list-style: none; }
 .hero__brands {
   position: relative;
   z-index: 2;
-  padding-block: 6px 30px;
+  overflow: hidden;
+  --brand-gap: clamp(124px, 8vw, 162px);
+  --brand-fade: clamp(150px, 13vw, 280px);
+  --brand-duration: 86s;
+  padding-block: 16px 50px;
 }
 
 .hero__brands-label {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 1.6vw, 26px);
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 500;
-  letter-spacing: 0;
+  letter-spacing: 0.04em;
   line-height: normal;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.32);
-  margin-bottom: 16px;
+  color: rgba(255,255,255,0.68);
+  margin: 0 0 28px;
+}
+
+.hero__brands-label::after {
+  content: "";
+  flex: 1 1 auto;
+  min-width: 64px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.34) 0%,
+    rgba(255,255,255,0.22) 68%,
+    rgba(255,255,255,0.07) 100%
+  );
+  transform: scaleY(0.5);
+  transform-origin: center;
 }
 
 /* Marquee viewport — clips the scrolling track */
 .hero__brand-logos {
-  overflow: hidden;
   position: relative;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  max-width: 100vw;
+  min-height: 62px;
+  margin-inline: calc(50% - 50vw);
+  padding-block: 5px;
+  overflow: hidden;
   /* Fade edges so logos enter/exit softly rather than hard-cutting */
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0,
-    rgba(0,0,0,1) 100px,
-    rgba(0,0,0,1) calc(100% - 100px),
+    rgba(0,0,0,0.06) 36px,
+    rgba(0,0,0,1) var(--brand-fade),
+    rgba(0,0,0,1) calc(100% - var(--brand-fade)),
+    rgba(0,0,0,0.06) calc(100% - 36px),
     transparent 100%
   );
   mask-image: linear-gradient(
     to right,
     transparent 0,
-    rgba(0,0,0,1) 100px,
-    rgba(0,0,0,1) calc(100% - 100px),
+    rgba(0,0,0,0.06) 36px,
+    rgba(0,0,0,1) var(--brand-fade),
+    rgba(0,0,0,1) calc(100% - var(--brand-fade)),
+    rgba(0,0,0,0.06) calc(100% - 36px),
     transparent 100%
   );
 }
 
 /* Scrolling track — contains 2× logo set for seamless loop.
-   gap (not margin) gives every logo identical rhythm, including the
-   seam between the two duplicated sets. */
+   The trailing padding equals one gap so translateX(-50%) lands exactly
+   on the duplicate set with no half-gap jump at the seam. */
 .hero__brand-track {
   display: flex;
   align-items: center;
+  flex: 0 0 auto;
   width: max-content;
-  gap: 68px;
-  animation: brand-marquee 36s linear infinite;
+  gap: var(--brand-gap);
+  padding-right: var(--brand-gap);
+  animation: brand-marquee var(--brand-duration) linear infinite;
+  will-change: transform;
 }
 
 .hero__brand-logos:hover .hero__brand-track {
@@ -433,45 +469,99 @@ ul { list-style: none; }
    individually so the actual lettering — not the artboard — matches. */
 .brand-logo-img {
   display: block;
-  height: 24px;
+  height: 28px;
   width: auto;
   flex-shrink: 0;
-  opacity: 0.65;
-  transition: opacity 0.25s;
+  opacity: 0.72;
+  filter: brightness(1.02);
+  transition: opacity 0.25s ease, filter 0.25s ease;
 }
 
 .brand-logo-img:hover {
   opacity: 0.95;
+  filter: brightness(1.08);
 }
 
 /* Bold, edge-to-edge wordmarks — already visually heavy, dialed back slightly */
-.brand-logo-img--weiser { height: 20px; }
-.brand-logo-img--record { height: 21px; }
+.brand-logo-img--weiser { height: 26px; }
+.brand-logo-img--record { height: 27px; }
 
 /* Full-bleed wordmark — already dense at any height; its wide aspect ratio
    gives it plenty of presence, so only a small bump keeps it in check */
-.brand-logo-img--daybar { height: 22px; }
+.brand-logo-img--daybar { height: 29px; }
 
 /* Fine cursive strokes need extra size to read at the same weight as bold sans marks */
-.brand-logo-img--taymor { height: 28px; }
+.brand-logo-img--taymor { height: 36px; }
 
 /* Compound lockups — most of the artboard is whitespace/sub-text, so the
    box must grow well beyond the others for the primary wordmark to match */
-.brand-logo-img--fleming { height: 33px; }
-.brand-logo-img--hes { height: 38px; }
+.brand-logo-img--fleming { height: 44px; }
+.brand-logo-img--hes { height: 49px; }
 
 /* Compound lockup (CAMDEN + DOOR CONTROLS) — dominant primary word with a
    small subtitle, so it needs less height than Fleming/HES to read balanced.
    Its artwork has ~17% empty space at the top, so a small upward nudge
    optically re-centres it on the shared baseline with the other marks. */
 .brand-logo-img--camden {
-  height: 30px;
-  transform: translateY(-2.5px);
+  height: 39px;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1440px) {
+  .hero__brands {
+    --brand-gap: 122px;
+    --brand-fade: 170px;
+    --brand-duration: 78s;
+    padding-block: 14px 46px;
+  }
+
+  .hero__brands-label {
+    margin-bottom: 26px;
+  }
+
+  .brand-logo-img--weiser { height: 24px; }
+  .brand-logo-img--record { height: 25px; }
+  .brand-logo-img--daybar { height: 27px; }
+  .brand-logo-img--taymor { height: 34px; }
+  .brand-logo-img--fleming { height: 42px; }
+  .brand-logo-img--hes { height: 46px; }
+  .brand-logo-img--camden { height: 37px; transform: translateY(-2px); }
+}
+
+@media (max-width: 1024px) {
+  .hero__brands {
+    --brand-gap: 94px;
+    --brand-fade: 120px;
+    --brand-duration: 62s;
+    padding-block: 12px 40px;
+  }
+
+  .hero__brands-label {
+    margin-bottom: 22px;
+  }
+
+  .hero__brand-logos {
+    min-height: 56px;
+  }
+
+  .brand-logo-img--weiser { height: 21px; }
+  .brand-logo-img--record { height: 22px; }
+  .brand-logo-img--daybar { height: 24px; }
+  .brand-logo-img--taymor { height: 31px; }
+  .brand-logo-img--fleming { height: 38px; }
+  .brand-logo-img--hes { height: 42px; }
+  .brand-logo-img--camden { height: 34px; transform: translateY(-2px); }
 }
 
 /* Reduced motion — stop marquee, show first set only */
 @media (prefers-reduced-motion: reduce) {
   .hero__brand-logos {
+    width: auto;
+    max-width: none;
+    min-height: 0;
+    margin-inline: 0;
+    padding-block: 0;
+    overflow: visible;
     -webkit-mask-image: none;
     mask-image: none;
   }
@@ -479,8 +569,11 @@ ul { list-style: none; }
   .hero__brand-track {
     animation: none;
     flex-wrap: wrap;
-    gap: 28px;
+    justify-content: center;
+    gap: clamp(32px, 4vw, 56px);
     width: 100%;
+    padding-right: 0;
+    will-change: auto;
   }
 
   .hero__brand-track img[aria-hidden="true"] {
@@ -679,19 +772,14 @@ ul { list-style: none; }
   position: relative;
 }
 
-/* Figma export — grey angled panel. Left-anchored behind the Build
-   section at the same size and offset as the Figma vector.
-   z:-1 escapes to the .midpage stacking context so the shared
-   artwork (z:1) paints above it. Vertical stretch is fine — the
-   shape is flat apart from the angled top edge. */
-/* Also centre-anchored: right edge lands 73px right of centre (+793px in
-   the 1441 frame), so the grey panel and the building artwork keep the
-   Figma ~19px gap and track the centred content on any screen width. */
+/* Figma export — grey angled panel. Its right edge stays locked to the
+   Figma composition, while the left edge clamps to the viewport so it
+   bleeds off-canvas on extra-wide screens instead of floating inward. */
 .built__bg-panel {
   position: absolute;
   top: 0;
-  left: calc(50% - 721px);
-  width: 794px;
+  left: min(0px, calc(50% - 721px));
+  width: max(794px, calc(50% + 73px));
   height: 740px;
   object-fit: fill;
   z-index: -1;
@@ -1090,13 +1178,13 @@ ul { list-style: none; }
   margin-inline: 0;
 }
 
-/* Card holds the Figma 257 : 323 body-to-image ratio via fr units, so it
-   scales with the column instead of locking to 579px. */
+/* Card keeps the Figma footprint while giving the copy enough measure
+   for the product descriptions to sit at four desktop lines. */
 #manufacturers .mfr-card {
   width: 100%;
   min-height: 280px;
   height: auto;
-  grid-template-columns: minmax(0, 257fr) minmax(0, 323fr);
+  grid-template-columns: minmax(0, 285fr) minmax(0, 295fr);
   border: none;
   box-shadow: inset 0 0 0 1.5px #E6E6E6;
 }
@@ -1115,7 +1203,7 @@ ul { list-style: none; }
   flex-direction: column;
   width: auto;
   height: auto;
-  padding: 66px 27px 25px;
+  padding: 66px 21px 25px;
 }
 
 #manufacturers .mfr-card__body h3 {
@@ -1160,32 +1248,29 @@ ul { list-style: none; }
   overflow: hidden;
 }
 
-/* Building artwork — subtle architectural watermark, cropped off the
-   lower-right. Darkened + low opacity so it reads as a soft dark-grey
-   blend against the charcoal, never competing with the content. */
+/* Building artwork — mirrors the Figma multiply treatment so the mark
+   darkens into the charcoal canvas rather than reading as pale grey. */
 .whoweare__bg {
   position: absolute;
-  right: -60px;
-  bottom: -40px;
-  width: min(620px, 50%);
+  right: 0;
+  bottom: 0;
+  width: min(626px, 46%);
   height: auto;
-  opacity: 0.07;
-  filter: brightness(0.72);
+  opacity: 1;
+  filter: none;
+  mix-blend-mode: multiply;
   z-index: 0;
   pointer-events: none;
 }
 
 .about {
   background: transparent;
-  padding-block: 66px 0;
+  padding-block: 95px 0;
   position: relative;
 }
 
-/* Slightly wider than the site container so this section reads with the
-   Figma's more expansive composition — keeps the logo large while the
-   body copy wraps to six lines rather than eight */
 .whoweare .container {
-  max-width: 1160px;
+  max-width: 1200px;
 }
 
 .about .container {
@@ -1195,25 +1280,27 @@ ul { list-style: none; }
 
 .about__grid {
   display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: 52px;
-  align-items: center;
+  grid-template-columns: 409px minmax(0, 683px);
+  gap: 108px;
+  align-items: start;
 }
 
 .about__logo-wrap {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .about__logo-img {
   display: block;
   width: 100%;
-  max-width: 388px;
+  max-width: 409px;
   height: auto;
 }
 
-.about__content {}
+.about__content {
+  padding-top: 13px;
+}
 
 .badge {
   display: inline-block;
@@ -1225,8 +1312,8 @@ ul { list-style: none; }
   letter-spacing: 0;
   line-height: normal;
   text-transform: uppercase;
-  padding: 4px 10px;
-  margin-bottom: 16px;
+  padding: 4px 8px;
+  margin-bottom: 14px;
 }
 
 .about__content h2 {
@@ -1242,7 +1329,7 @@ ul { list-style: none; }
 .about__content p {
   font-size: 15px;
   line-height: 24px;
-  color: rgba(255,255,255,0.65);
+  color: var(--white);
   margin-bottom: 12px;
 }
 
@@ -1317,6 +1404,10 @@ ul { list-style: none; }
   display: block;
 }
 
+.testimonial__line--timing {
+  white-space: nowrap;
+}
+
 .testimonial__line--closing {
   margin-top: 0;
   white-space: nowrap;
@@ -1353,7 +1444,7 @@ ul { list-style: none; }
    ============================================================ */
 .cta-banner {
   background: var(--red);
-  padding-block: 52px;
+  padding-block: 76px;
   text-align: center;
 }
 
@@ -1581,28 +1672,30 @@ ul { list-style: none; }
 
 .footer__grid {
   display: grid;
-  grid-template-columns: 240px 1.12fr 1.12fr 1fr;
+  grid-template-columns: 302px 337px 309px minmax(0, 268px);
   gap: 0;
-  padding-block: 88px 60px;
+  padding-block: 88px 0;
   align-items: stretch;
 }
 
 .footer__logo {
   display: flex;
   align-items: center;
-  padding-right: 56px;
+  min-height: 300px;
+  padding-inline: 20px 62px;
 }
 
 .footer__logo-img {
   display: block;
-  width: 200px;
+  width: 220px;
   height: auto;
 }
 
 /* Hairline vertical rules separate each text column, like the Figma */
 .footer__col {
   border-left: 1px solid #e5e5e5;
-  padding-inline: 56px 24px;
+  min-height: 300px;
+  padding: 12px 24px 0 62px;
 }
 
 .footer__col:last-child {
@@ -1617,13 +1710,13 @@ ul { list-style: none; }
   line-height: normal;
   text-transform: uppercase;
   color: var(--red);
-  margin-bottom: 26px;
+  margin-bottom: 20px;
 }
 
 .footer__col p,
 .footer__col address {
   font-size: 15px;
-  line-height: 24px;
+  line-height: 28px;
   color: #1c1c1c;
   font-style: normal;
 }
@@ -1632,7 +1725,7 @@ ul { list-style: none; }
   display: block;
   font-size: 15px;
   color: #1c1c1c;
-  line-height: 24px;
+  line-height: 28px;
   transition: color 0.2s;
 }
 
@@ -1651,16 +1744,17 @@ ul { list-style: none; }
 
 .footer__bottom {
   background: var(--white);
+  border-top: 1px solid #ececec;
 }
 
 .footer__bottom .container {
-  border-top: 1px solid #ececec;
   padding-block: 26px;
   text-align: left;
 }
 
 .footer__bottom p {
   font-size: 15px;
+  line-height: 24px;
   color: #9a9a9a;
 }
 
@@ -1827,12 +1921,14 @@ ul { list-style: none; }
   /* No vertical rules once the columns stack */
   .footer__logo {
     grid-column: 1 / -1;
+    min-height: 0;
     padding-right: 0;
   }
 
   .footer__col {
     border-left: none;
-    padding-inline: 0;
+    min-height: 0;
+    padding: 0;
   }
 }
 
@@ -1842,6 +1938,28 @@ ul { list-style: none; }
 @media (max-width: 1080px) {
   .nav__links { display: none; }
   .nav__hamburger { display: flex; }
+}
+
+@media (max-width: 1240px) and (min-width: 1025px) {
+  .footer__grid {
+    grid-template-columns: 260px 1fr 1fr 0.9fr;
+  }
+
+  .footer__logo {
+    padding-inline: 0 48px;
+  }
+
+  .footer__logo-img {
+    width: 204px;
+  }
+
+  .footer__col {
+    padding-left: 44px;
+  }
+
+  .footer__col:last-child {
+    padding-left: 36px;
+  }
 }
 
 /* Tablet — the 3-up grid gets too cramped below ~900px. The angled grey
@@ -2008,38 +2126,31 @@ ul { list-style: none; }
     font-size: 16px;
   }
 
-  .hero__brand-track {
-    gap: 52px;
+  .hero__brands {
+    --brand-gap: 76px;
+    --brand-fade: 82px;
+    --brand-duration: 54s;
+    padding-block: 10px 34px;
   }
 
-  .brand-logo-img {
-    height: 19px;
+  .hero__brands-label {
+    font-size: 11px;
+    letter-spacing: 0.035em;
+    margin-bottom: 20px;
   }
-
-  .brand-logo-img--weiser { height: 16px; }
-  .brand-logo-img--record { height: 16px; }
-  .brand-logo-img--daybar { height: 17px; }
-  .brand-logo-img--taymor { height: 22px; }
-  .brand-logo-img--fleming { height: 26px; }
-  .brand-logo-img--hes { height: 30px; }
-  .brand-logo-img--camden { height: 24px; transform: translateY(-2px); }
 
   .hero__brand-logos {
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      rgba(0,0,0,1) 60px,
-      rgba(0,0,0,1) calc(100% - 60px),
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      rgba(0,0,0,1) 60px,
-      rgba(0,0,0,1) calc(100% - 60px),
-      transparent 100%
-    );
+    min-height: 50px;
+    padding-block: 3px;
   }
+
+  .brand-logo-img--weiser { height: 19px; }
+  .brand-logo-img--record { height: 20px; }
+  .brand-logo-img--daybar { height: 22px; }
+  .brand-logo-img--taymor { height: 27px; }
+  .brand-logo-img--fleming { height: 34px; }
+  .brand-logo-img--hes { height: 37px; }
+  .brand-logo-img--camden { height: 30px; transform: translateY(-2px); }
 
   /* Small screens — swap the angled panel export for a simple
      solid grey section background and drop the large artwork */
@@ -2093,6 +2204,7 @@ ul { list-style: none; }
     gap: 32px;
   }
 
+  .testimonial__line--timing,
   .testimonial__line--closing {
     white-space: normal;
   }
@@ -2134,6 +2246,31 @@ ul { list-style: none; }
   .hero__sub br {
     display: none;
   }
+
+  .hero__brands {
+    --brand-gap: 62px;
+    --brand-fade: 58px;
+    --brand-duration: 48s;
+    padding-block: 8px 30px;
+  }
+
+  .hero__brands-label {
+    font-size: 10px;
+    letter-spacing: 0.03em;
+    margin-bottom: 18px;
+  }
+
+  .hero__brand-logos {
+    min-height: 46px;
+  }
+
+  .brand-logo-img--weiser { height: 18px; }
+  .brand-logo-img--record { height: 18px; }
+  .brand-logo-img--daybar { height: 20px; }
+  .brand-logo-img--taymor { height: 25px; }
+  .brand-logo-img--fleming { height: 33px; }
+  .brand-logo-img--hes { height: 36px; }
+  .brand-logo-img--camden { height: 29px; transform: translateY(-2px); }
 
   .about__logo-text .a1 { font-size: 32px; }
 }
