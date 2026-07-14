@@ -505,9 +505,13 @@ ul { list-style: none; }
    bottom edge of the Build for Every Build section.
    Layer order inside .midpage: white base → grey angled panel (z:-1)
    → this artwork (z:1) → section content (z:2). */
+/* Anchored to the centre of the composition (not the viewport edge) so it
+   holds the Figma relationship: its left edge sits 91px right of centre,
+   which is +812px in the 1441-wide frame. This keeps the ~19px gap to the
+   grey panel constant at every width instead of drifting into it. */
 .midpage__bg {
   position: absolute;
-  right: 2px;
+  left: calc(50% + 91px);
   bottom: 0;
   height: 955px;
   width: auto;
@@ -680,10 +684,13 @@ ul { list-style: none; }
    z:-1 escapes to the .midpage stacking context so the shared
    artwork (z:1) paints above it. Vertical stretch is fine — the
    shape is flat apart from the angled top edge. */
+/* Also centre-anchored: right edge lands 73px right of centre (+793px in
+   the 1441 frame), so the grey panel and the building artwork keep the
+   Figma ~19px gap and track the centred content on any screen width. */
 .built__bg-panel {
   position: absolute;
   top: 0;
-  left: 0;
+  left: calc(50% - 721px);
   width: 794px;
   height: 740px;
   object-fit: fill;
@@ -1829,21 +1836,40 @@ ul { list-style: none; }
   }
 }
 
-/* Small tablet / large phone — three narrow cards can't hold the copy
-   comfortably, so stack to a single centred column well before mobile
-   for a clean, uncramped transition. */
+/* Below ~1080px the full desktop nav (logo + 5 links + CTA) runs out of
+   breathing room — "Who We Service" starts wrapping and the logo collides
+   with the links — so switch to the hamburger here rather than at mobile. */
+@media (max-width: 1080px) {
+  .nav__links { display: none; }
+  .nav__hamburger { display: flex; }
+}
+
+/* Tablet — the 3-up grid gets too cramped below ~900px. The angled grey
+   panel + building artwork are a desktop-composition device, so drop them
+   for a clean flat-grey field and lay the cards out 2-up (the third card
+   sits left-aligned on the next row). This uses the tablet width properly
+   instead of stranding one narrow, centred card over a busy background. */
 @media (max-width: 900px) {
+  .built {
+    background: #EBEBEB;
+  }
+
+  .built__bg-panel,
+  .midpage__bg {
+    display: none;
+  }
+
   .built__cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
     width: 100%;
-    max-width: 420px;
-    margin-inline: auto;
+    max-width: none;
+    margin-inline: 0;
   }
 
   .customer-card__title {
-    font-size: 30px;
-    margin-bottom: 8px;
+    font-size: 26px;
+    margin-bottom: 6px;
   }
 }
 
@@ -1855,9 +1881,6 @@ ul { list-style: none; }
   .services .container {
     padding-inline: 20px;
   }
-
-  .nav__links { display: none; }
-  .nav__hamburger { display: flex; }
 
   /* Manufacturer cards go vertical — image on top, text below */
   .manufacturers {
@@ -2041,20 +2064,10 @@ ul { list-style: none; }
     margin-bottom: 32px;
   }
 
-  .built__cards {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    width: 100%;
-    max-width: 420px;
-    margin-inline: auto;
-  }
-
+  /* Cards stay 2-up down to 600px (see the max-width:900 block); only the
+     overlay padding tightens here. */
   .customer-card__overlay {
-    padding: 28px;
-  }
-
-  .customer-card__title {
-    font-size: 32px;
+    padding: 24px;
   }
 
   .who-service__cards {
@@ -2090,6 +2103,20 @@ ul { list-style: none; }
 
   .services__cards {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Phones — 2-up cards get too small below ~600px, so stack to a single
+   centred column. */
+@media (max-width: 600px) {
+  .built__cards {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    margin-inline: auto;
+  }
+
+  .customer-card__title {
+    font-size: 30px;
   }
 }
 
