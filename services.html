@@ -35,18 +35,15 @@
       object-fit: cover;
       object-position: center;
     }
-    /* Figma overlay — subtle scrim (gradient #D9D9D9 → #282425). The wood
-       stays clearly visible; only the left, where the title sits, is
-       gently darkened for legibility, fading to clear on the right. */
+    /* Figma overlay — exact Dev Mode value: top-to-bottom scrim that
+       keeps the top bright and darkens toward the bottom for legibility. */
     .svc-hero__overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(
-        100deg,
-        rgba(26,21,19,0.58) 0%,
-        rgba(26,21,19,0.30) 38%,
-        rgba(26,21,19,0.04) 64%,
-        rgba(26,21,19,0) 100%
+        180deg,
+        rgba(217, 217, 217, 0) 0%,
+        rgba(40, 36, 37, 0.65) 75%
       );
     }
     .svc-hero {
@@ -186,7 +183,7 @@
     .svc-card { display: flex; flex-direction: column; }
     .svc-card__image {
       width: 100%;
-      aspect-ratio: 55 / 24;
+      aspect-ratio: 550 / 175;
       overflow: hidden;
       border-radius: 8px;
       background: linear-gradient(160deg, #2a2624 0%, #16120f 100%);
@@ -202,27 +199,27 @@
       display: flex;
       align-items: center;
       gap: 16px;
-      margin-bottom: 16px;
+      margin-bottom: 28px;
     }
     .svc-card__head img {
-      height: 44px;
+      height: 50px;
       width: auto;
       flex-shrink: 0;
       display: block;
     }
     .svc-card__head h3 {
       font-family: var(--font-head);
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 700;
       text-transform: uppercase;
-      color: #141414;
+      color: #000000;
       line-height: 1.1;
       letter-spacing: 0;
     }
     .svc-card__body p {
       font-size: 15px;
       line-height: 24px;
-      color: #4a4a4a;
+      color: #1a1a1a;
       margin-bottom: 18px;
     }
     .svc-card__body p:last-child { margin-bottom: 0; }
