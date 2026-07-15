@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,600&display=swap" rel="stylesheet" />
 
   <link rel="icon" href="images/ADS_Logo_primary.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="css/styles.css?v=20260715-services-products" />
+  <link rel="stylesheet" href="css/styles.css?v=20260715-services-nav" />
 
   <style>
     /* ============================================================
@@ -75,15 +75,6 @@
       line-height: 24px;
       color: #ffffff;
       max-width: 860px;
-    }
-
-    /* Nav is wider on interior pages (6 links incl. Projects), matching
-       the Figma nav that spans the full frame. */
-    .nav .container { max-width: 1280px; }
-    .nav__links { gap: 32px; }
-    @media (max-width: 1200px) {
-      .nav__links { display: none; }
-      .nav__hamburger { display: flex; }
     }
 
     /* --- What We Do + service cards ----------------------------- */
@@ -273,19 +264,18 @@
       <div class="nav__inner">
 
         <!-- Logo -->
-        <a href="index.html" class="nav__logo" aria-label="All Door Supply — Home">
-          <img src="images/All-Door-Supply.svg" alt="All Door Supply" class="nav__logo-img nav__logo-img--boxed" />
+        <a href="#" class="nav__logo" aria-label="All Door Supply — Home">
+          <img src="images/ADS_Logo_primary.svg" alt="All Door Supply" class="nav__logo-img" />
         </a>
 
         <!-- Desktop links -->
         <nav class="nav__links" aria-label="Main navigation">
-          <a href="services.html">Services</a>
-          <a href="who-we-service.html">Who We Service</a>
-          <a href="manufacturers.html">Manufacturers</a>
-          <a href="#">Projects</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-          <a href="contact.html" class="btn-nav" aria-label="Request a quote">Request a Quote</a>
+          <a href="#">Services</a>
+          <a href="#">Who We Service</a>
+          <a href="#">Manufacturers</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+          <a href="#" class="btn-nav" aria-label="Request a quote">Request a Quote</a>
         </nav>
 
         <!-- Hamburger -->
@@ -305,13 +295,12 @@
 
     <!-- Mobile nav -->
     <nav class="nav__mobile" id="mobile-nav" aria-label="Mobile navigation">
-      <a href="services.html">Services</a>
-      <a href="who-we-service.html">Who We Service</a>
-      <a href="manufacturers.html">Manufacturers</a>
-      <a href="#">Projects</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="contact.html" class="btn-nav">Request a Quote</a>
+      <a href="#">Services</a>
+      <a href="#">Who We Service</a>
+      <a href="#">Manufacturers</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="#" class="btn-nav">Request a Quote</a>
     </nav>
   </header>
 
