@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,600&display=swap" rel="stylesheet" />
 
   <link rel="icon" href="images/ADS_Logo_primary.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="css/styles.css?v=20260714-services-polish" />
+  <link rel="stylesheet" href="css/styles.css?v=20260715-services-products" />
 
   <style>
     /* ============================================================
@@ -95,7 +95,64 @@
     /* Products callout on the Services page sits on Figma light grey.
        The homepage Manufacturers section stays white via the shared CSS. */
     #manufacturers {
-      background: #EBEBEB;
+      background: #EFEFF0;
+    }
+
+    @media (min-width: 1100px) {
+      #manufacturers {
+        padding-block: 26px 50px;
+      }
+
+      #manufacturers .manufacturers__header {
+        width: 100%;
+        max-width: 860px;
+        margin-bottom: 67px;
+      }
+
+      #manufacturers .manufacturers__eyebrow {
+        min-height: 21px;
+        margin-bottom: 22px;
+      }
+
+      #manufacturers .manufacturers__header h2 {
+        width: 100%;
+        max-width: 860px;
+        line-height: 1;
+        margin-bottom: 19px;
+      }
+
+      #manufacturers .manufacturers__header p {
+        width: 100%;
+        max-width: 760px;
+        min-height: 0;
+      }
+
+      #manufacturers .manufacturers__grid {
+        max-width: 1202px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 49px 42px;
+      }
+
+      #manufacturers .mfr-card {
+        min-height: 280px;
+        height: 280px;
+        grid-template-columns: 256px minmax(0, 1fr);
+        border: 1px solid #DEDEDE;
+        box-shadow: none;
+      }
+
+      #manufacturers .mfr-card:hover {
+        border-color: #DEDEDE;
+        box-shadow: none;
+      }
+
+      #manufacturers .mfr-card__body {
+        padding: 70px 28px 19px;
+      }
+
+      #manufacturers .mfr-card__body h3 {
+        margin-bottom: 8px;
+      }
     }
     .svc-grid {
       max-width: 1280px;
