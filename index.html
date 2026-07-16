@@ -12,7 +12,87 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,600&display=swap" rel="stylesheet" />
 
   <link rel="icon" href="images/ADS_Logo_primary.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="css/styles.css?v=20260713-hero-partners-line" />
+  <link rel="stylesheet" href="css/styles.css?v=20260715-mfr-hover" />
+
+  <!-- ============================================================
+       PRODUCTS YOU CAN TRUST — premium card micro-interactions
+       Restrained, engineered hover. Three layers, each on its own
+       timing so the card gains physical depth: the surface lifts
+       with a two-part shadow (tight contact + soft ambient), the
+       photograph slowly blooms behind its frame, and the marker
+       advances. Nothing announces itself; the whole thing just
+       feels weighted and precise. Motion honours reduced-motion.
+       ============================================================ -->
+  <style>
+    #manufacturers .mfr-card {
+      transition:
+        transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    #manufacturers .mfr-card:hover {
+      transform: translateY(-6px);
+      border-color: transparent;
+      box-shadow:
+        inset 0 0 0 1.5px #DCD9D3,
+        0 2px 3px rgba(15, 12, 10, 0.04),
+        0 26px 48px -20px rgba(15, 12, 10, 0.24);
+    }
+
+    /* Tactile settle on press — the surface has real weight. */
+    #manufacturers .mfr-card:active {
+      transform: translateY(-3px);
+      transition-duration: 0.12s;
+    }
+
+    /* Keyboard focus mirrors hover so the interaction is inclusive. */
+    #manufacturers .mfr-card:focus-visible {
+      outline: none;
+      transform: translateY(-6px);
+      box-shadow:
+        inset 0 0 0 1.5px #DCD9D3,
+        0 0 0 3px rgba(197, 32, 40, 0.35),
+        0 26px 48px -20px rgba(15, 12, 10, 0.24);
+    }
+
+    /* Photograph: a slow bloom (scale + a whisper of warmth) on a
+       longer curve than the lift, so it reads as depth, not a zoom. */
+    #manufacturers .mfr-card__image img {
+      transition:
+        transform 0.9s cubic-bezier(0.19, 1, 0.22, 1),
+        filter 0.9s ease;
+      will-change: transform;
+      backface-visibility: hidden;
+    }
+    #manufacturers .mfr-card:hover .mfr-card__image img,
+    #manufacturers .mfr-card:focus-visible .mfr-card__image img {
+      transform: scale(1.045);
+      filter: saturate(1.05) brightness(1.02);
+    }
+
+    /* View Brands marker advances with intent. */
+    #manufacturers .mfr-card__link::after {
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    #manufacturers .mfr-card:hover .mfr-card__link::after,
+    #manufacturers .mfr-card:focus-visible .mfr-card__link::after {
+      transform: translateX(6px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #manufacturers .mfr-card,
+      #manufacturers .mfr-card__image img,
+      #manufacturers .mfr-card__link::after { transition: none; }
+      #manufacturers .mfr-card:hover,
+      #manufacturers .mfr-card:focus-visible { transform: none; }
+      #manufacturers .mfr-card:hover .mfr-card__image img,
+      #manufacturers .mfr-card:focus-visible .mfr-card__image img { transform: none; filter: none; }
+      #manufacturers .mfr-card:hover .mfr-card__link::after,
+      #manufacturers .mfr-card:focus-visible .mfr-card__link::after { transform: none; }
+    }
+  </style>
+
   <!-- ============================================================
        INTRO LOADER — plays once on first visit / refresh, then
        hands off to the homepage. Critical CSS is inlined so the
