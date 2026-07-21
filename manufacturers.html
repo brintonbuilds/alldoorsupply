@@ -4,263 +4,284 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Manufacturers — All Door Supply</title>
-  <meta name="description" content="We partner with the industry's most respected manufacturers to bring you premium doors, hardware, automation and specialty products." />
+  <meta name="description" content="Decades of relationships with the industry's most trusted door, hardware, automation and specialty manufacturers — giving you direct access to premium products, technical support and dependable pricing." />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=20260709-testimonial-lines" />
+
+  <link rel="icon" href="images/ADS_Logo_primary.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/styles.css?v=20260718-mfr-grey" />
+
   <style>
-    .mfr-category {
-      padding-block: var(--section-v);
+    /* ============================================================
+       MANUFACTURERS HUB — page-specific (Figma 156:682)
+       ============================================================ */
+    .mfr-hero {
+      align-items: flex-end;
     }
-    .mfr-category:nth-child(even) { background: var(--light); }
-    .mfr-category__header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: center;
-      margin-bottom: 48px;
+    .mfr-hero .hero-band__image img {
+      object-position: 50% 58%;
     }
-    .mfr-category__header.reverse .mfr-category__image { order: -1; }
-    .mfr-category__image {
-      aspect-ratio: 16/9;
-      overflow: hidden;
-      background: #ccc;
+    .mfr-hero .hero-band__overlay {
+      background: linear-gradient(
+        180deg,
+        rgba(217, 217, 217, 0) 0%,
+        rgba(40, 36, 37, 0.65) 100%
+      );
     }
-    .mfr-category__image img { width:100%; height:100%; object-fit:cover; }
-    .mfr-category__intro .section-badge { margin-bottom: 12px; }
-    .mfr-category__intro h2 {
-      font-family: var(--font-head);
-      font-size: clamp(32px, 4vw, 48px);
-      font-weight: 700;
-      color: var(--red);
-      line-height: normal;
-      letter-spacing: 0;
-      margin-bottom: 14px;
+    .mfr-hero .hero-band__content {
+      padding-top: 0;
+      padding-bottom: 56px;
     }
-    .mfr-category__intro p {
-      font-size: 15px;
-      line-height: 24px;
-      color: #555;
+    .mfr-hero h1 {
+      font-size: 78px;
+      line-height: 86px;
+      margin-bottom: 19px;
     }
-    .mfr-brand-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 16px;
+    .mfr-hero .hero-band__sub {
+      max-width: 1048px;
+      min-height: 76px;
     }
-    .mfr-brand-card {
-      border: 1.5px solid #e0e0e0;
-      padding: 28px 20px;
-      text-align: center;
-      cursor: pointer;
-      transition: border-color 0.2s, box-shadow 0.2s;
+    @media (max-width: 1024px) { .mfr-hero h1 { font-size: 64px; } }
+    @media (max-width: 768px) { .hero-band h1 { font-size: 40px; } }
+
+    /* --- Manufacturer Network intro (Figma 156:826) ------------- */
+    /* Wrapper so the building accent graphic spans BOTH the intro and the
+       "Products You Can Trust" grid — same idea as the homepage .midpage. */
+    .mfr-mid { position: relative; isolation: isolate; background: #fff; overflow: hidden; }
+    .mfr-mid__bg {
+      position: absolute; left: calc(50% + 31px); top: 138px; z-index: 0;
+      height: 955px; width: auto;
+      pointer-events: none;
     }
-    .mfr-brand-card:hover {
-      border-color: var(--red);
-      box-shadow: 0 2px 12px rgba(197,19,46,0.1);
+    .mfr-mid__fade {
+      position: absolute; left: calc(50% + 31px); top: 515px; z-index: 1;
+      width: 689px; height: 598px;
+      pointer-events: none;
     }
-    .mfr-brand-card__name {
-      font-family: var(--font-head);
-      font-size: 21px;
-      font-weight: 700;
-      color: var(--black);
-      line-height: normal;
-      letter-spacing: 0;
-      text-transform: uppercase;
+    /* Sections sit transparent over the wrapper so the graphic shows through
+       both, with their content held above it. */
+    .mfr-mid .manufacturer-network,
+    .mfr-mid #manufacturers { background: transparent; }
+    .mfr-mid .manufacturer-network__inner,
+    .mfr-mid #manufacturers > .container { position: relative; z-index: 2; }
+
+    .manufacturer-network { padding-block: 132px 0; }
+    .manufacturer-network__inner {
+      max-width: 1280px; margin-inline: auto; padding-inline: 40px;
     }
-    .mfr-brand-card__sub {
-      display: block;
+    .manufacturer-network h2 {
+      font-family: var(--font-head); font-size: 48px; font-weight: 700;
+      color: var(--red); line-height: 1; letter-spacing: 0;
+      max-width: 853px; margin-bottom: 24px;
+    }
+    .manufacturer-network p {
+      font-size: 15px; line-height: 24px; color: #000;
+      max-width: 791px; margin-bottom: 16px;
+    }
+    .manufacturer-network p:last-child { margin-bottom: 0; }
+
+    #manufacturers.mfr-products {
+      padding-block: 191px 232px;
+    }
+    #manufacturers.mfr-products .manufacturers__eyebrow {
+      min-height: 21px;
+      padding: 4px 8px;
       font-size: 11px;
-      font-weight: 500;
-      color: #aaa;
-      letter-spacing: 0;
-      margin-top: 4px;
+      line-height: 13px;
+      letter-spacing: 0.55px;
+    }
+
+    .mfr-cta {
+      padding-block: 68px;
+    }
+
+    @media (min-width: 1025px) {
+      .mfr-footer .footer__grid {
+        padding-block: 40px 0;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .manufacturer-network { padding-block: 72px 0; }
+      .mfr-mid__bg,
+      .mfr-mid__fade { display: none; }
+      #manufacturers.mfr-products { padding-block: 72px 96px; }
     }
     @media (max-width: 768px) {
-      .mfr-category__header { grid-template-columns: 1fr; gap: 32px; }
-      .mfr-category__header.reverse .mfr-category__image { order: 0; }
+      .manufacturer-network__inner { padding-inline: 20px; }
+      .manufacturer-network h2 { font-size: 36px; }
+      #manufacturers.mfr-products { padding-block: 56px 64px; }
     }
   </style>
 </head>
 <body>
 
-  <header class="nav" id="nav">
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <header class="nav nav--hero" id="nav" role="banner">
     <div class="container">
       <div class="nav__inner">
-        <a href="#" class="nav__logo" aria-label="All Door Supply — Home">
+
+        <a href="index.html" class="nav__logo" aria-label="All Door Supply — Home">
           <img src="images/ADS_Logo_primary.svg" alt="All Door Supply" class="nav__logo-img" />
         </a>
+
         <nav class="nav__links" aria-label="Main navigation">
-          <a href="#">Services</a>
-          <a href="#">Who We Service</a>
-          <a href="#" style="color:var(--red)">Manufacturers</a>
+          <a href="services.html">Services</a>
+
+          <div class="nav__item">
+            <a href="#" class="nav__toplink" aria-haspopup="true"><span class="nav__label">Who We Service</span>
+              <svg class="nav__caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <div class="nav__dropdown" role="menu">
+              <a href="contractors.html" role="menuitem">Contractors</a>
+              <a href="#" role="menuitem">Design Professionals</a>
+              <a href="#" role="menuitem">Residential Homeowners</a>
+            </div>
+          </div>
+
+          <div class="nav__item">
+            <a href="manufacturers.html" class="nav__toplink is-section" aria-current="page" aria-haspopup="true"><span class="nav__label">Manufacturers</span>
+              <svg class="nav__caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <div class="nav__dropdown" role="menu">
+              <a href="#" role="menuitem">Doors</a>
+              <a href="#" role="menuitem">Door Automation</a>
+              <a href="#" role="menuitem">Hardware</a>
+              <a href="#" role="menuitem">Division 10</a>
+            </div>
+          </div>
+
+          <a href="#">Projects</a>
           <a href="#">About</a>
           <a href="#">Contact</a>
-          <a href="#" class="btn-nav">Request a Quote</a>
+          <a href="#" class="btn-nav" aria-label="Request a quote">Request a Quote</a>
         </nav>
+
         <button class="nav__hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
       </div>
     </div>
+
     <nav class="nav__mobile" id="mobile-nav" aria-label="Mobile navigation">
-      <a href="#">Services</a><a href="#">Who We Service</a><a href="#">Manufacturers</a><a href="#">About</a><a href="#">Contact</a>
+      <a href="services.html">Services</a>
+      <a href="#">Who We Service</a>
+      <a href="contractors.html" class="nav__mobile-sub">Contractors</a>
+      <a href="#" class="nav__mobile-sub">Design Professionals</a>
+      <a href="#" class="nav__mobile-sub">Residential Homeowners</a>
+      <a href="manufacturers.html" aria-current="page">Manufacturers</a>
+      <a href="#" class="nav__mobile-sub">Doors</a>
+      <a href="#" class="nav__mobile-sub">Door Automation</a>
+      <a href="#" class="nav__mobile-sub">Hardware</a>
+      <a href="#" class="nav__mobile-sub">Division 10</a>
+      <a href="#">Projects</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
       <a href="#" class="btn-nav">Request a Quote</a>
     </nav>
   </header>
 
   <main>
-    <section class="page-hero">
-      <div class="page-hero__bg"><img src="images/mfr-hero.jpg" alt="" aria-hidden="true" /></div>
-      <div class="container page-hero__content">
-        <span class="section-badge">Our Manufacturers</span>
-        <h1>Products You Can Trust</h1>
-        <p>We partner with the industry's most respected manufacturers to bring you premium doors, hardware, automation and specialty products.</p>
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero-band mfr-hero" aria-label="Our Manufacturers">
+      <div class="hero-band__image">
+        <img src="images/manufacturers-hero.jpg" alt="Workbench with door hardware and tools" loading="eager" />
+      </div>
+      <div class="hero-band__overlay" aria-hidden="true"></div>
+      <div class="hero-band__content">
+        <h1>Our Manufacturers</h1>
+        <p class="hero-band__sub">Comprehensive Division 8 supply, installation and project solutions for every scale of build.</p>
       </div>
     </section>
 
-    <!-- Product category cards (matching homepage screenshot) -->
-    <section style="background:var(--white); padding-block:var(--section-v);">
+    <!-- ============================================================
+         MANUFACTURER NETWORK
+         ============================================================ -->
+    <!-- Wrapper: building accent graphic spans the intro AND the product grid -->
+    <div class="mfr-mid">
+      <img class="mfr-mid__bg" src="images/Logo%20Building%20Design%20Accent.png" alt="" aria-hidden="true" />
+      <img class="mfr-mid__fade" src="images/manufacturers-white-gradient.svg" alt="" aria-hidden="true" />
+
+    <section class="manufacturer-network" aria-label="Our manufacturer network">
+      <div class="manufacturer-network__inner">
+        <h2>Decades of Relationships. Built for Your Project.</h2>
+        <p>All Door Supply has spent over 35 years building relationships with the industry's most trusted manufacturers — partnerships earned through consistency, reliability, and a shared commitment to quality. That network gives us direct access to premium products, technical support, and the kind of pricing and availability that only comes from long-standing trust.</p>
+        <p>Whether you're a contractor managing a tight schedule, a design professional specifying for a demanding client, or a homeowner upgrading your entry, you benefit from the same thing: a supplier who's already done the work of finding the right manufacturer, so you don't have to.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PRODUCTS YOU CAN TRUST — shared reusable component (white)
+         ============================================================ -->
+    <section class="manufacturers mfr-products" id="manufacturers" aria-label="Our Manufacturers">
       <div class="container">
         <div class="manufacturers__header">
-          <span class="section-badge">Our Manufacturers</span>
-          <h2 style="font-family:var(--font-head);font-size:clamp(32px,4vw,48px);font-weight:700;color:var(--red);line-height:normal;letter-spacing:0;margin-bottom:12px;">Products You Can Trust</h2>
-          <p style="font-size:15px;line-height:24px;color:#666;max-width:500px;">We partner with the industry's most respected manufacturers to bring you premium doors, hardware, automation and specialty products.</p>
+          <span class="manufacturers__eyebrow">Our Manufacturers</span>
+          <h2>Products You Can Trust.</h2>
+          <p>We partner with the industry's most respected manufacturers to bring you premium doors, hardware, automation and specialty products.</p>
         </div>
-        <div class="product-cards">
 
-          <article class="product-card">
-            <div class="product-card__content">
+        <div class="manufacturers__grid">
+
+          <a href="#" class="mfr-card">
+            <div class="mfr-card__body">
               <h3>Doors</h3>
               <p>Interior and exterior door solutions for residential, commercial and institutional applications.</p>
-              <span class="product-card__link">View Brands
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6H10M10 6L7 3M10 6L7 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
+              <span class="mfr-card__link">View Brands</span>
             </div>
-            <div class="product-card__image"><img src="images/product-doors.jpg" alt="Exterior residential door" loading="lazy"/></div>
-          </article>
+            <div class="mfr-card__image">
+              <img src="images/Manufacturer%20Card%20-%20Doors%20Image.png" alt="Wooden residential entry door" loading="lazy">
+            </div>
+          </a>
 
-          <article class="product-card">
-            <div class="product-card__content">
+          <a href="#" class="mfr-card">
+            <div class="mfr-card__body">
               <h3>Door Automation</h3>
               <p>Automatic operators, access control and powered door systems for commercial and accessibility applications.</p>
-              <span class="product-card__link">View Brands
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6H10M10 6L7 3M10 6L7 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
+              <span class="mfr-card__link">View Brands</span>
             </div>
-            <div class="product-card__image"><img src="images/product-automation.jpg" alt="Commercial automatic sliding doors" loading="lazy"/></div>
-          </article>
+            <div class="mfr-card__image">
+              <img src="images/Manufacturer%20Card%20-%20Door%20Automation%20Image.png" alt="Automatic sliding glass door entrance" loading="lazy">
+            </div>
+          </a>
 
-          <article class="product-card">
-            <div class="product-card__content">
+          <a href="#" class="mfr-card">
+            <div class="mfr-card__body">
               <h3>Hardware</h3>
               <p>Handles, hinges, locks, closers and architectural hardware from the industry's most trusted manufacturers.</p>
-              <span class="product-card__link">View Brands
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6H10M10 6L7 3M10 6L7 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
+              <span class="mfr-card__link">View Brands</span>
             </div>
-            <div class="product-card__image"><img src="images/product-hardware.jpg" alt="Door hardware and handles" loading="lazy"/></div>
-          </article>
+            <div class="mfr-card__image">
+              <img src="images/Manufacturer%20Card%20-%20Hardware%20Image.png" alt="Modern door with lever handle and locks" loading="lazy">
+            </div>
+          </a>
 
-          <article class="product-card">
-            <div class="product-card__content">
+          <a href="#" class="mfr-card">
+            <div class="mfr-card__body">
               <h3>Division 10</h3>
               <p>Specialty construction products including toilet partitions, lockers, visual display and washroom accessories.</p>
-              <span class="product-card__link">View Brands
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6H10M10 6L7 3M10 6L7 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
+              <span class="mfr-card__link">View Brands</span>
             </div>
-            <div class="product-card__image"><img src="images/product-div10.jpg" alt="Division 10 washroom partitions" loading="lazy"/></div>
-          </article>
+            <div class="mfr-card__image">
+              <img src="images/Manufacturer%20Card%20-%20Division10%20Image.png" alt="Commercial toilet partitions" loading="lazy">
+            </div>
+          </a>
 
-        </div>
-      </div>
+        </div><!-- /.manufacturers__grid -->
+      </div><!-- /.container -->
     </section>
+    </div><!-- /.mfr-mid -->
 
-    <!-- Brand listings -->
-    <section class="mfr-category" id="doors">
-      <div class="container">
-        <div class="mfr-category__header">
-          <div class="mfr-category__intro">
-            <span class="section-badge">Doors</span>
-            <h2>Door Manufacturers</h2>
-            <p>We carry a comprehensive range of door products from industry-leading manufacturers, covering hollow metal, wood, fibreglass and specialty door solutions for every application.</p>
-          </div>
-          <div class="mfr-category__image"><img src="images/product-doors.jpg" alt="Residential front door" loading="lazy"/></div>
-        </div>
-        <div class="mfr-brand-grid">
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">Daybar</span></div>
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">Fleming</span><span class="mfr-brand-card__sub">Assa Abloy</span></div>
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">Curries</span><span class="mfr-brand-card__sub">Assa Abloy</span></div>
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">Ceco</span><span class="mfr-brand-card__sub">Assa Abloy</span></div>
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">Masonite</span></div>
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">VT Industries</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="mfr-category" id="automation">
-      <div class="container">
-        <div class="mfr-category__header reverse">
-          <div class="mfr-category__intro">
-            <span class="section-badge">Automation</span>
-            <h2>Door Automation Brands</h2>
-            <p>We supply and install automatic door systems from trusted manufacturers delivering accessible, commercial-grade powered entrances and access control solutions.</p>
-          </div>
-          <div class="mfr-category__image"><img src="images/product-automation.jpg" alt="Commercial automatic door system" loading="lazy"/></div>
-        </div>
-        <div class="mfr-brand-grid">
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">Record</span></div>
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">H.E.S</span><span class="mfr-brand-card__sub">Assa Abloy</span></div>
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">LCN</span></div>
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">Norton</span></div>
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">Dorma</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="mfr-category" id="hardware">
-      <div class="container">
-        <div class="mfr-category__header">
-          <div class="mfr-category__intro">
-            <span class="section-badge">Hardware</span>
-            <h2>Hardware Manufacturers</h2>
-            <p>Our hardware range covers everything from entry-level residential to high-security commercial grade. We stock and source from the brands architects and contractors trust most.</p>
-          </div>
-          <div class="mfr-category__image"><img src="images/product-hardware.jpg" alt="Door hardware collection" loading="lazy"/></div>
-        </div>
-        <div class="mfr-brand-grid">
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">Weiser</span></div>
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">Taymor</span></div>
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">Schlage</span></div>
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">Yale</span></div>
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">Sargent</span></div>
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">Hager</span></div>
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">Ives</span></div>
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">McKinney</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="mfr-category" id="division-10">
-      <div class="container">
-        <div class="mfr-category__header reverse">
-          <div class="mfr-category__intro">
-            <span class="section-badge">Division 10</span>
-            <h2>Division 10 Brands</h2>
-            <p>We supply Division 10 specialty construction products including toilet partitions, lockers, visual display systems and washroom accessories from trusted commercial manufacturers.</p>
-          </div>
-          <div class="mfr-category__image"><img src="images/product-div10.jpg" alt="Division 10 toilet partitions and lockers" loading="lazy"/></div>
-        </div>
-        <div class="mfr-brand-grid">
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">Bobrick</span></div>
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">Bradley</span></div>
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">Hadrian</span></div>
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">Penco</span></div>
-          <div class="mfr-brand-card"><span class="mfr-brand-card__name">Republic</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta-banner">
+    <!-- ============================================================
+         CTA BANNER
+         ============================================================ -->
+    <section class="cta-banner mfr-cta" aria-label="Request a quote">
       <div class="container">
         <p class="cta-banner__eyebrow">Ready to Get Started?</p>
         <h2>Let's Talk About Your Project.</h2>
@@ -268,16 +289,20 @@
         <a href="#" class="btn-outline-white">Request a Quote</a>
       </div>
     </section>
+
   </main>
 
-  <footer class="footer">
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer mfr-footer" role="contentinfo">
     <div class="container">
       <div class="footer__grid">
         <div class="footer__logo">
           <img src="images/ADS_Logo_primary.svg" alt="All Door Supply" class="footer__logo-img" />
         </div>
-        <div class="footer__col"><h4>Contact Us</h4><address><p>Toll Free: 1.866.769.3667</p><p>Phone: 1-905.335.1638</p><p>Fax: 1.905.335.6822</p><p>Email: <a href="#">info@alldoorsupply.com</a></p><p>Location: 559 King Forest Court,<br>Burlington, Ontario L7P 5C1</p></address></div>
-        <div class="footer__col"><h4>Navigate</h4><nav aria-label="Footer navigation"><a href="#">Home</a><a href="#">Services</a><a href="#">Who We Service</a><a href="#">Manufacturers</a><a href="#">Projects</a><a href="#">About</a><a href="#">Contact</a><a href="#">Request a Quote</a></nav></div>
+        <div class="footer__col"><h4>Contact Us</h4><address><p>Toll Free: 1.866.769.3667</p><p>Phone: 1-905.335.1638</p><p>Fax: 1.905.335.6822</p><p>Email: <a href="mailto:info@alldoorsupply.com">info@alldoorsupply.com</a></p><p>Location: 559 King Forest Court,<br>Burlington, Ontario L7P 5C1</p></address></div>
+        <div class="footer__col"><h4>Navigate</h4><nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="services.html">Services</a><a href="#">Who We Service</a><a href="manufacturers.html">Manufacturers</a><a href="#">Projects</a><a href="#">About</a><a href="#">Contact</a><a href="#">Request a Quote</a></nav></div>
         <div class="footer__col"><h4>Hours</h4><p>Showroom &amp; Warehouse</p><p>Mon – Fri: 7:30am – 4:30pm</p><br/><p class="hours-highlight">24 Hour Service for<br>Established Customers</p></div>
       </div>
     </div>

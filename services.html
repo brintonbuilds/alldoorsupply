@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,600&display=swap" rel="stylesheet" />
 
   <link rel="icon" href="images/ADS_Logo_primary.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="css/styles.css?v=20260715-services-nav" />
+  <link rel="stylesheet" href="css/styles.css?v=20260718-mfr-grey" />
 
   <style>
     /* ============================================================
@@ -37,111 +37,52 @@
     }
     /* Figma overlay — exact Dev Mode value: top-to-bottom scrim that
        keeps the top bright and darkens toward the bottom for legibility. */
+    /* Figma "Hero Gradient" (155:342): transparent → rgba(40,36,37,0.65) @ 100% */
     .svc-hero__overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(
         180deg,
         rgba(217, 217, 217, 0) 0%,
-        rgba(40, 36, 37, 0.65) 75%
+        rgba(40, 36, 37, 0.65) 100%
       );
     }
-    .svc-hero {
-      align-items: center;
-    }
-    /* Content aligns to the same ~117px gutter as the nav (Figma) rather
-       than the narrower default 1080px container. */
+    /* Content aligns to the ~117px Figma gutter; headline sits at ~163px
+       from the top (bottom-aligned block, sub box reserves Figma's height). */
     .svc-hero__content {
       position: relative;
       z-index: 2;
       width: 100%;
       max-width: 1280px;
-      padding-top: 52px;
+      padding-bottom: 56px;
     }
     .svc-hero h1 {
       font-family: var(--font-head);
-      font-size: 92px;
+      font-size: 78px;
       font-weight: 700;
       color: var(--white);
       line-height: 86px;
       letter-spacing: 0;
-      margin-bottom: 16px;
+      margin-bottom: 19px;
     }
     .svc-hero__sub {
       font-size: 18px;
       line-height: 24px;
       color: #ffffff;
-      max-width: 860px;
+      max-width: 1048px;
+      min-height: 76px;
     }
 
     /* --- What We Do + service cards ----------------------------- */
     .svc-work {
       background: #fff;
-      padding-block: 134px 96px;
+      padding-block: 134px 183px;
     }
 
-    /* Products callout on the Services page sits on Figma light grey.
-       The homepage Manufacturers section stays white via the shared CSS. */
-    #manufacturers {
-      background: #EFEFF0;
-    }
-
-    @media (min-width: 1100px) {
-      #manufacturers {
-        padding-block: 26px 50px;
-      }
-
-      #manufacturers .manufacturers__header {
-        width: 100%;
-        max-width: 860px;
-        margin-bottom: 67px;
-      }
-
-      #manufacturers .manufacturers__eyebrow {
-        min-height: 21px;
-        margin-bottom: 22px;
-      }
-
-      #manufacturers .manufacturers__header h2 {
-        width: 100%;
-        max-width: 860px;
-        line-height: 1;
-        margin-bottom: 19px;
-      }
-
-      #manufacturers .manufacturers__header p {
-        width: 100%;
-        max-width: 760px;
-        min-height: 0;
-      }
-
-      #manufacturers .manufacturers__grid {
-        max-width: 1202px;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 49px 42px;
-      }
-
-      #manufacturers .mfr-card {
-        min-height: 280px;
-        height: 280px;
-        grid-template-columns: 256px minmax(0, 1fr);
-        border: 1px solid #DEDEDE;
-        box-shadow: none;
-      }
-
-      #manufacturers .mfr-card:hover {
-        border-color: #DEDEDE;
-        box-shadow: none;
-      }
-
-      #manufacturers .mfr-card__body {
-        padding: 70px 28px 19px;
-      }
-
-      #manufacturers .mfr-card__body h3 {
-        margin-bottom: 8px;
-      }
-    }
+    /* The "Explore the Products Behind Our Services" section is the shared,
+       reusable manufacturers component — identical to the homepage's
+       "Products You Can Trust" (layout + hover animation live in
+       css/styles.css). Only the header text below differs per page. */
     .svc-grid {
       max-width: 1280px;
       margin-inline: auto;
@@ -149,33 +90,35 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       column-gap: 100px;
-      row-gap: 56px;
+      row-gap: 90px;
       align-items: start;
     }
 
-    /* Intro cell — logo + What We Do + copy */
+    /* Intro cell — logo + What We Do + copy (Figma: logo 266×199,
+       heading 48px red, body 15px black at 451px; 24px rhythm). */
     .svc-intro { display: flex; flex-direction: column; }
     .svc-intro__logo {
       display: block;
       width: 100%;
-      max-width: 340px;
+      max-width: 266px;
       height: auto;
-      margin-bottom: 30px;
+      margin-bottom: 24px;
     }
     .svc-intro h2 {
       font-family: var(--font-head);
       font-size: 48px;
       font-weight: 700;
       color: var(--red);
-      line-height: 1;
+      line-height: normal;
       letter-spacing: 0;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
     .svc-intro p {
       font-size: 15px;
       line-height: 24px;
-      color: #4a4a4a;
-      margin-bottom: 20px;
+      color: #000000;
+      max-width: 451px;
+      margin-bottom: 24px;
     }
     .svc-intro p:last-child { margin-bottom: 0; }
 
@@ -187,7 +130,7 @@
       overflow: hidden;
       border-radius: 8px;
       background: linear-gradient(160deg, #2a2624 0%, #16120f 100%);
-      margin-bottom: 24px;
+      margin-bottom: 31px;
     }
     .svc-card__image img {
       width: 100%;
@@ -198,8 +141,8 @@
     .svc-card__head {
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 28px;
+      gap: 14px;
+      margin-bottom: 24px;
     }
     .svc-card__head img {
       height: 50px;
@@ -209,20 +152,36 @@
     }
     .svc-card__head h3 {
       font-family: var(--font-head);
-      font-size: 21px;
+      font-size: 24px;
       font-weight: 700;
       text-transform: uppercase;
       color: #000000;
-      line-height: 1.1;
+      line-height: normal;
       letter-spacing: 0;
     }
     .svc-card__body p {
       font-size: 15px;
       line-height: 24px;
-      color: #1a1a1a;
-      margin-bottom: 18px;
+      letter-spacing: -0.15px;
+      color: #000000;
+      margin-bottom: 24px;
     }
     .svc-card__body p:last-child { margin-bottom: 0; }
+
+    .svc-manufacturers {
+      background: rgba(208, 210, 211, 0.2);
+    }
+    #manufacturers.svc-manufacturers .manufacturers__eyebrow {
+      min-height: 21px;
+      padding: 4px 8px;
+      font-size: 11px;
+      line-height: 13px;
+      letter-spacing: 0.55px;
+    }
+
+    .svc-cta {
+      padding-block: 74px 64px;
+    }
 
     /* --- Responsive -------------------------------------------- */
     @media (max-width: 1024px) {
@@ -261,15 +220,38 @@
       <div class="nav__inner">
 
         <!-- Logo -->
-        <a href="#" class="nav__logo" aria-label="All Door Supply — Home">
+        <a href="index.html" class="nav__logo" aria-label="All Door Supply — Home">
           <img src="images/ADS_Logo_primary.svg" alt="All Door Supply" class="nav__logo-img" />
         </a>
 
         <!-- Desktop links -->
         <nav class="nav__links" aria-label="Main navigation">
-          <a href="#">Services</a>
-          <a href="#">Who We Service</a>
-          <a href="#">Manufacturers</a>
+          <a href="services.html" aria-current="page">Services</a>
+
+          <div class="nav__item">
+            <a href="#" class="nav__toplink" aria-haspopup="true"><span class="nav__label">Who We Service</span>
+              <svg class="nav__caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <div class="nav__dropdown" role="menu">
+              <a href="contractors.html" role="menuitem">Contractors</a>
+              <a href="#" role="menuitem">Design Professionals</a>
+              <a href="#" role="menuitem">Residential Homeowners</a>
+            </div>
+          </div>
+
+          <div class="nav__item">
+            <a href="manufacturers.html" class="nav__toplink" aria-haspopup="true"><span class="nav__label">Manufacturers</span>
+              <svg class="nav__caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <div class="nav__dropdown" role="menu">
+              <a href="#" role="menuitem">Doors</a>
+              <a href="#" role="menuitem">Door Automation</a>
+              <a href="#" role="menuitem">Hardware</a>
+              <a href="#" role="menuitem">Division 10</a>
+            </div>
+          </div>
+
+          <a href="#">Projects</a>
           <a href="#">About</a>
           <a href="#">Contact</a>
           <a href="#" class="btn-nav" aria-label="Request a quote">Request a Quote</a>
@@ -292,9 +274,17 @@
 
     <!-- Mobile nav -->
     <nav class="nav__mobile" id="mobile-nav" aria-label="Mobile navigation">
-      <a href="#">Services</a>
+      <a href="services.html" aria-current="page">Services</a>
       <a href="#">Who We Service</a>
-      <a href="#">Manufacturers</a>
+      <a href="contractors.html" class="nav__mobile-sub">Contractors</a>
+      <a href="#" class="nav__mobile-sub">Design Professionals</a>
+      <a href="#" class="nav__mobile-sub">Residential Homeowners</a>
+      <a href="manufacturers.html">Manufacturers</a>
+      <a href="#" class="nav__mobile-sub">Doors</a>
+      <a href="#" class="nav__mobile-sub">Door Automation</a>
+      <a href="#" class="nav__mobile-sub">Hardware</a>
+      <a href="#" class="nav__mobile-sub">Division 10</a>
+      <a href="#">Projects</a>
       <a href="#">About</a>
       <a href="#">Contact</a>
       <a href="#" class="btn-nav">Request a Quote</a>
@@ -333,7 +323,7 @@
           <img src="images/ADS_Logo_primary.svg" alt="All Door Supply" class="svc-intro__logo" />
           <h2>What We Do.</h2>
           <p>All Door Supply delivers end-to-end support for commercial and architectural door, hardware, and specialty product needs — from initial material sourcing through custom fabrication and on-site installation.</p>
-          <p>Whether you're managing a single renovation or a multi-phase commercial build, our team has the technical expertise and manufacturer relationships to keep your project moving.</p>
+          <p>Whether you're managing a single renovation or a multi-phase commercial build, our team brings the technical expertise and manufacturer relationships to keep your project moving.</p>
         </div>
 
         <!-- Supply of Division 8 Material -->
@@ -355,7 +345,7 @@
         <!-- Division 8 Installation Services -->
         <article class="svc-card">
           <div class="svc-card__image">
-            <img src="images/Contractors_Colour.png" alt="Installer fitting a door on a job site" loading="lazy" onerror="this.remove()" />
+            <img src="images/services-division-8-installation.jpg" alt="Door hardware installed above a glass entry" loading="lazy" onerror="this.remove()" />
           </div>
           <div class="svc-card__head">
             <img src="images/division-8-installation.svg" alt="" width="39" height="44" />
@@ -370,7 +360,7 @@
         <!-- Project Management Services -->
         <article class="svc-card">
           <div class="svc-card__image">
-            <img src="images/DesignProfessionals_Colour.png" alt="Project schedule and coordination" loading="lazy" onerror="this.remove()" />
+            <img src="images/services-project-management.jpg" alt="Project schedule on a tablet" loading="lazy" onerror="this.remove()" />
           </div>
           <div class="svc-card__head">
             <img src="images/project-management.svg" alt="" width="44" height="43" />
@@ -385,7 +375,7 @@
         <!-- Custom Division 8 Products via Weld Shop -->
         <article class="svc-card">
           <div class="svc-card__image">
-            <img src="images/Manufacturer%20Card%20-%20Hardware%20Image.png" alt="Custom fabricated door hardware" loading="lazy" onerror="this.remove()" />
+            <img src="images/services-custom-products-weld-shop.jpg" alt="Welding torch fabricating metal" loading="lazy" onerror="this.remove()" />
           </div>
           <div class="svc-card__head">
             <img src="images/custom-division-8-products-via-weld-shop.svg" alt="" width="36" height="44" />
@@ -418,7 +408,7 @@
     <!-- ============================================================
          EXPLORE THE PRODUCTS BEHIND OUR SERVICES — Manufacturers
          ============================================================ -->
-    <section class="manufacturers" id="manufacturers" aria-label="Our Manufacturers">
+    <section class="manufacturers manufacturers--grey svc-manufacturers" id="manufacturers" aria-label="Our Manufacturers">
       <div class="container">
         <div class="manufacturers__header">
           <span class="manufacturers__eyebrow">Our Manufacturers</span>
@@ -432,7 +422,7 @@
         <div class="manufacturers__grid">
 
           <!-- Doors -->
-          <a href="manufacturers.html" class="mfr-card">
+          <a href="#" class="mfr-card">
             <div class="mfr-card__body">
               <h3>Doors</h3>
               <p>Interior and exterior door solutions for residential, commercial and institutional applications.</p>
@@ -444,7 +434,7 @@
           </a>
 
           <!-- Door Automation -->
-          <a href="manufacturers.html" class="mfr-card">
+          <a href="#" class="mfr-card">
             <div class="mfr-card__body">
               <h3>Door Automation</h3>
               <p>Automatic operators, access control and powered door systems for commercial and accessibility applications.</p>
@@ -456,7 +446,7 @@
           </a>
 
           <!-- Hardware -->
-          <a href="manufacturers.html" class="mfr-card">
+          <a href="#" class="mfr-card">
             <div class="mfr-card__body">
               <h3>Hardware</h3>
               <p>Handles, hinges, locks, closers and architectural hardware from the industry's most trusted manufacturers.</p>
@@ -468,7 +458,7 @@
           </a>
 
           <!-- Division 10 -->
-          <a href="manufacturers.html" class="mfr-card">
+          <a href="#" class="mfr-card">
             <div class="mfr-card__body">
               <h3>Division 10</h3>
               <p>Specialty construction products including toilet partitions, lockers, visual display and washroom accessories.</p>
@@ -486,12 +476,12 @@
     <!-- ============================================================
          CTA BANNER
          ============================================================ -->
-    <section class="cta-banner" aria-label="Request a quote">
+    <section class="cta-banner svc-cta" aria-label="Request a quote">
       <div class="container">
         <p class="cta-banner__eyebrow">Ready to Get Started?</p>
         <h2>Let's Talk About Your Project.</h2>
         <p>Contact our team today and let's find the right solution for your build.</p>
-        <a href="contact.html" class="btn-outline-white">Request a Quote</a>
+        <a href="#" class="btn-outline-white">Request a Quote</a>
       </div>
     </section>
 
@@ -516,7 +506,7 @@
             <p>Toll Free: 1.866.769.3667</p>
             <p>Phone: 1-905.335.1638</p>
             <p>Fax: 1.905.335.6822</p>
-            <p>Email: <a href="#">info@alldoorsupply.com</a></p>
+            <p>Email: <a href="mailto:info@alldoorsupply.com">info@alldoorsupply.com</a></p>
             <p>Location: 559 King Forest Court,<br>Burlington, Ontario L7P 5C1</p>
           </address>
         </div>
@@ -527,12 +517,12 @@
           <nav aria-label="Footer navigation">
             <a href="index.html">Home</a>
             <a href="services.html">Services</a>
-            <a href="who-we-service.html">Who We Service</a>
+            <a href="#">Who We Service</a>
             <a href="manufacturers.html">Manufacturers</a>
             <a href="#">Projects</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="contact.html">Request a Quote</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Request a Quote</a>
           </nav>
         </div>
 

@@ -69,10 +69,6 @@ ul { list-style: none; }
   color: var(--white);
 }
 
-.nav--hero .nav__links a:hover {
-  color: rgba(255,255,255,0.7);
-}
-
 .nav--hero .nav__hamburger span {
   background: var(--white);
 }
@@ -87,11 +83,6 @@ ul { list-style: none; }
 .nav--hero.nav--scrolled .nav__links a,
 .nav--hero.nav--open .nav__links a {
   color: var(--black);
-}
-
-.nav--hero.nav--scrolled .nav__links a:hover,
-.nav--hero.nav--open .nav__links a:hover {
-  color: var(--red);
 }
 
 .nav--hero.nav--scrolled .nav__hamburger span,
@@ -148,7 +139,8 @@ ul { list-style: none; }
   transition: color 0.2s;
 }
 
-.nav__links a:hover { color: var(--red); }
+/* Hover feedback for primary links lives in the shared underline
+   system below (see “NAV — active-page + hover indicator”). */
 
 .btn-nav {
   display: inline-flex;
@@ -240,6 +232,165 @@ ul { list-style: none; }
 }
 
 .nav--open .nav__mobile { display: flex; }
+
+/* ============================================================
+   NAV — dropdown menus (Who We Serve / Products & Manufacturers)
+   ============================================================ */
+
+/* Interior nav carries the fuller menu — give it more room and a
+   slightly tighter gap so everything fits on one line. */
+.nav .container { max-width: 1280px; }
+.nav__links { gap: 28px; }
+
+/* ============================================================
+   NAV — active-page + hover indicator (shared underline system)
+   The active item keeps the SAME text colour as its siblings — white
+   on the translucent hero nav, dark on the solid/scrolled nav — and is
+   marked by a thin, centred red underline plus a subtle weight bump.
+   Hover shows a faint preview of the same underline, so it never
+   competes with the active state or the red “Request a Quote” CTA.
+   Chevrons use currentColor, so they follow the link text colour.
+   ============================================================ */
+
+/* Underline carrier — every primary link + dropdown top-link label.
+   Top-links wrap their text in .nav__label so the underline hugs the
+   text only, never the chevron. */
+.nav__links > a:not(.btn-nav),
+.nav__toplink .nav__label {
+  position: relative;
+}
+
+.nav__links > a:not(.btn-nav)::after,
+.nav__toplink .nav__label::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  width: calc(100% - 12px); /* slightly shorter than the label, centred */
+  height: 2px;
+  background: var(--red);
+  border-radius: 1px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+/* Hover — understated underline preview (text colour stays put).
+   Excludes the active item so its underline never fades on hover. */
+.nav__links > a:not(.btn-nav):not([aria-current="page"]):hover::after,
+.nav__item:hover .nav__toplink:not(.is-section):not([aria-current="page"]) .nav__label::after {
+  opacity: 0.4;
+}
+
+/* Active page, and active dropdown parent (via .is-section on a child
+   page, or aria-current on its own page) — solid underline + weight. */
+.nav__links > a[aria-current="page"]:not(.btn-nav),
+.nav__toplink.is-section,
+.nav__toplink[aria-current="page"] {
+  font-weight: 600;
+}
+.nav__links > a[aria-current="page"]:not(.btn-nav)::after,
+.nav__toplink.is-section .nav__label::after,
+.nav__toplink[aria-current="page"] .nav__label::after {
+  opacity: 1;
+}
+
+/* Dropdown panel child item keeps a clear active marker on its white
+   panel (contrast/CTA concerns don’t apply inside the menu). */
+.nav__dropdown a[aria-current="page"] { color: var(--red) !important; }
+
+/* Mobile — the stacked menu uses a red edge accent + weight bump
+   instead of red text (the CTA button is excluded). */
+.nav__mobile a[aria-current="page"]:not(.btn-nav) {
+  color: var(--black) !important;
+  font-weight: 600;
+  box-shadow: inset 3px 0 0 var(--red);
+}
+
+/* Dropdown parent */
+.nav__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.nav__toplink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+.nav__caret {
+  width: 9px;
+  height: 9px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+.nav__item:hover .nav__caret,
+.nav__item:focus-within .nav__caret { transform: rotate(180deg); }
+
+/* Invisible bridge so the pointer can travel from the top link
+   into the panel without the hover state dropping. */
+.nav__item::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -12px;
+  right: -12px;
+  height: 18px;
+}
+
+.nav__dropdown {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 0;
+  min-width: 248px;
+  background: var(--white);
+  border: 1px solid #e8e8e8;
+  border-top: 2px solid var(--red);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  z-index: 60;
+}
+.nav__item:hover .nav__dropdown,
+.nav__item:focus-within .nav__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Dropdown items sit on a solid white panel — force dark text even
+   inside the translucent hero nav, where top links are white. */
+.nav__dropdown a {
+  display: block;
+  padding: 11px 24px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: normal;
+  text-transform: uppercase;
+  color: var(--black) !important;
+  white-space: nowrap;
+  transition: color 0.2s, background 0.2s;
+}
+.nav__dropdown a:hover {
+  color: var(--red) !important;
+  background: #f7f7f7;
+}
+
+/* Mobile submenu items — indented children under their parent. */
+.nav__mobile-sub {
+  padding-left: 52px !important;
+  font-size: 13px !important;
+  color: #666 !important;
+}
 
 /* ============================================================
    HERO
@@ -1037,7 +1188,12 @@ ul { list-style: none; }
   gap: 56px 48px;
 }
 
-/* Horizontal card — text left, image right half */
+/* Horizontal card — text left, image right half.
+   Premium hover micro-interaction (reusable across every .manufacturers
+   section): three layers on their own timing so the card gains physical
+   depth — the surface lifts with a two-part shadow (tight contact + soft
+   ambient), the photograph slowly blooms, and the marker advances.
+   Motion honours prefers-reduced-motion (see block below). */
 .mfr-card {
   display: grid;
   grid-template-columns: 296px minmax(0, 1fr);
@@ -1049,15 +1205,36 @@ ul { list-style: none; }
   border-radius: 8px;
   overflow: hidden;
   transition:
-    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.4s ease;
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.55s ease;
+  will-change: transform;
 }
 
 .mfr-card:hover {
+  transform: translateY(-6px);
+  border-color: transparent;
+  box-shadow:
+    inset 0 0 0 1.5px #DCD9D3,
+    0 2px 3px rgba(15, 12, 10, 0.04),
+    0 26px 48px -20px rgba(15, 12, 10, 0.24);
+}
+
+/* Tactile settle on press — the surface has real weight. */
+.mfr-card:active {
   transform: translateY(-3px);
-  border-color: #DAD8D3;
-  box-shadow: 0 16px 36px rgba(15,12,10,0.12);
+  transition-duration: 0.12s;
+}
+
+/* Keyboard focus mirrors hover so the interaction is inclusive. */
+.mfr-card:focus-visible {
+  outline: none;
+  transform: translateY(-6px);
+  border-color: transparent;
+  box-shadow:
+    inset 0 0 0 1.5px #DCD9D3,
+    0 0 0 3px rgba(197, 32, 40, 0.35),
+    0 26px 48px -20px rgba(15, 12, 10, 0.24);
 }
 
 .mfr-card__body {
@@ -1098,7 +1275,7 @@ ul { list-style: none; }
   color: var(--black);
 }
 
-/* Red triangle marker */
+/* Red triangle marker — advances with intent on hover/focus. */
 .mfr-card__link::after {
   content: '';
   width: 0;
@@ -1106,27 +1283,49 @@ ul { list-style: none; }
   border-style: solid;
   border-width: 4px 0 4px 6px;
   border-color: transparent transparent transparent var(--red);
-  transition: transform 0.25s ease;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.mfr-card:hover .mfr-card__link::after {
-  transform: translateX(3px);
+.mfr-card:hover .mfr-card__link::after,
+.mfr-card:focus-visible .mfr-card__link::after {
+  transform: translateX(6px);
 }
 
 .mfr-card__image {
   overflow: hidden;
 }
 
+/* Photograph: a slow bloom (scale + a whisper of warmth) on a longer
+   curve than the lift, so it reads as depth, not a zoom. */
 .mfr-card__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    transform 0.9s cubic-bezier(0.19, 1, 0.22, 1),
+    filter 0.9s ease;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
-.mfr-card:hover .mfr-card__image img {
-  transform: scale(1.04);
+.mfr-card:hover .mfr-card__image img,
+.mfr-card:focus-visible .mfr-card__image img {
+  transform: scale(1.045);
+  filter: saturate(1.05) brightness(1.02);
+}
+
+/* Motion honours reduced-motion. */
+@media (prefers-reduced-motion: reduce) {
+  .mfr-card,
+  .mfr-card__image img,
+  .mfr-card__link::after { transition: none; }
+  .mfr-card:hover,
+  .mfr-card:focus-visible { transform: none; }
+  .mfr-card:hover .mfr-card__image img,
+  .mfr-card:focus-visible .mfr-card__image img { transform: none; filter: none; }
+  .mfr-card:hover .mfr-card__link::after,
+  .mfr-card:focus-visible .mfr-card__link::after { transform: none; }
 }
 
 #manufacturers {
@@ -1140,7 +1339,7 @@ ul { list-style: none; }
 
 #manufacturers .manufacturers__header {
   width: 100%;
-  max-width: 580px;
+  max-width: none; /* let the heading sit on one line (Figma); body is capped below */
   margin-bottom: 70px;
 }
 
@@ -1156,7 +1355,7 @@ ul { list-style: none; }
 
 #manufacturers .manufacturers__header h2 {
   width: 100%;
-  max-width: 580px;
+  max-width: none; /* heading stays on one line on desktop (Figma) */
   margin-bottom: 14px;
 }
 
@@ -1189,10 +1388,30 @@ ul { list-style: none; }
   box-shadow: inset 0 0 0 1.5px #E6E6E6;
 }
 
+/* Premium hover/focus — must live at #manufacturers scope to win over the
+   resting inset "border" (#manufacturers .mfr-card box-shadow) above. */
 #manufacturers .mfr-card:hover {
-  transform: none;
+  transform: translateY(-6px);
   border-color: transparent;
-  box-shadow: inset 0 0 0 1.5px #E6E6E6;
+  box-shadow:
+    inset 0 0 0 1.5px #DCD9D3,
+    0 2px 3px rgba(15, 12, 10, 0.04),
+    0 26px 48px -20px rgba(15, 12, 10, 0.24);
+}
+
+#manufacturers .mfr-card:active {
+  transform: translateY(-3px);
+  transition-duration: 0.12s;
+}
+
+#manufacturers .mfr-card:focus-visible {
+  outline: none;
+  transform: translateY(-6px);
+  border-color: transparent;
+  box-shadow:
+    inset 0 0 0 1.5px #DCD9D3,
+    0 0 0 3px rgba(197, 32, 40, 0.35),
+    0 26px 48px -20px rgba(15, 12, 10, 0.24);
 }
 
 /* Flow layout (not absolute) — copy stacks from the top, the link is
@@ -1234,8 +1453,29 @@ ul { list-style: none; }
   height: 100%;
 }
 
-#manufacturers .mfr-card:hover .mfr-card__image img {
-  transform: none;
+#manufacturers .mfr-card:hover .mfr-card__image img,
+#manufacturers .mfr-card:focus-visible .mfr-card__image img {
+  transform: scale(1.045);
+  filter: saturate(1.05) brightness(1.02);
+}
+
+#manufacturers .mfr-card:hover .mfr-card__link::after,
+#manufacturers .mfr-card:focus-visible .mfr-card__link::after {
+  transform: translateX(6px);
+}
+
+/* Motion honours reduced-motion at this scope too (the #manufacturers
+   hover rules out-specify the base .mfr-card reduced-motion block). */
+@media (prefers-reduced-motion: reduce) {
+  #manufacturers .mfr-card:hover,
+  #manufacturers .mfr-card:focus-visible {
+    transform: none;
+    box-shadow: inset 0 0 0 1.5px #DCD9D3;
+  }
+  #manufacturers .mfr-card:hover .mfr-card__image img,
+  #manufacturers .mfr-card:focus-visible .mfr-card__image img { transform: none; filter: none; }
+  #manufacturers .mfr-card:hover .mfr-card__link::after,
+  #manufacturers .mfr-card:focus-visible .mfr-card__link::after { transform: none; }
 }
 
 /* ============================================================
@@ -1544,6 +1784,19 @@ ul { list-style: none; }
   padding-block: 64px 82px;
 }
 
+/* Background variant — Figma uses light grey for the interior-page callouts
+   ("Explore the Products…"); the homepage "Products You Can Trust" stays
+   white. Add class `manufacturers--grey` to the section to opt in. */
+.manufacturers--grey {
+  background: #EFEFF0;
+}
+
+/* The interior callouts carry a longer body than the homepage; give it the
+   Figma width so it sits on two lines (homepage keeps its narrower 580px). */
+#manufacturers.manufacturers--grey .manufacturers__header p {
+  max-width: 720px;
+}
+
 .manufacturers__header {
   margin-bottom: 94px;
 }
@@ -1806,6 +2059,102 @@ ul { list-style: none; }
 }
 
 /* ============================================================
+   INTERIOR PAGE HERO — 400px image band
+   Shared foundation for interior pages (matches Services /
+   Contractors). Pairs with a translucent .nav--hero.
+   ============================================================ */
+.hero-band {
+  position: relative;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--dark);
+}
+.hero-band__image { position: absolute; inset: 0; }
+.hero-band__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.hero-band__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(217, 217, 217, 0) 0%,
+    rgba(40, 36, 37, 0.65) 75%
+  );
+}
+.hero-band__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 32px;
+  padding-top: 52px;
+}
+.hero-band h1 {
+  font-family: var(--font-head);
+  font-size: 92px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 86px;
+  letter-spacing: 0;
+  margin-bottom: 16px;
+}
+.hero-band__sub {
+  font-size: 18px;
+  line-height: 24px;
+  color: #ffffff;
+  max-width: 860px;
+}
+
+/* Interior page intro — foundation block for pages awaiting full
+   content design. */
+.page-intro { background: #fff; padding-block: 96px; }
+.page-intro__inner {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 32px;
+}
+.page-intro h2 {
+  font-family: var(--font-head);
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--red);
+  line-height: 1;
+  letter-spacing: 0;
+  margin-bottom: 16px;
+}
+.page-intro p {
+  font-size: 15px;
+  line-height: 24px;
+  color: #1a1a1a;
+  max-width: 720px;
+  margin-bottom: 16px;
+}
+.page-intro p:last-child { margin-bottom: 0; }
+
+@media (max-width: 1024px) {
+  .hero-band h1 { font-size: 64px; }
+}
+@media (max-width: 768px) {
+  .hero-band { height: 300px; }
+  .hero-band h1 { font-size: 46px; line-height: 1; }
+  .hero-band__sub { font-size: 15px; }
+  .page-intro { padding-block: 56px; }
+  .page-intro h2 { font-size: 36px; }
+  .hero-band__content,
+  .page-intro__inner { padding-inline: 20px; }
+}
+@media (max-width: 480px) {
+  .hero-band h1 { font-size: 40px; }
+}
+
+/* ============================================================
    UTILITY
    ============================================================ */
 .section-badge {
@@ -1935,7 +2284,7 @@ ul { list-style: none; }
 /* Below ~1080px the full desktop nav (logo + 5 links + CTA) runs out of
    breathing room — "Who We Service" starts wrapping and the logo collides
    with the links — so switch to the hamburger here rather than at mobile. */
-@media (max-width: 1080px) {
+@media (max-width: 1200px) {
   .nav__links { display: none; }
   .nav__hamburger { display: flex; }
 }
