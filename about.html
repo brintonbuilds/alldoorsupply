@@ -121,29 +121,37 @@
     .team-card__contact a:hover { color: var(--red); }
 
     /* --- Testimonial (dark band) --------------------------------- */
-    .abt-quote { background: #231F20; padding-block: 72px; }
+    /* Figma "Testimonial" (1440x523): reversed logo 363x269 at 120/96, quote
+       column starts at x=570 (729 wide). Quote is Barlow Condensed 32/46.4. */
+    .abt-quote { background: #231F20; padding-block: 96px; }
     .abt-quote__layout {
-      display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
-      gap: 60px; align-items: center;
+      display: grid; grid-template-columns: 363px minmax(0, 729px);
+      column-gap: 87px; align-items: start;
     }
-    .abt-quote__logo { width: 200px; height: auto; }
-    .abt-quote__mark { display: block; width: 40px; height: auto; margin-bottom: 20px; }
+    .abt-quote__logo { display: block; width: 363px; height: auto; }
+    .abt-quote__mark { display: block; width: 41.46px; height: 27.12px; margin-bottom: 24px; }
     .abt-quote blockquote { margin: 0; }
     .abt-quote__text {
-      font-size: 18px; line-height: 30px; color: #fff; margin: 0 0 24px;
+      font-family: var(--font-head); font-size: 32px; font-weight: 700;
+      line-height: 46.4px; letter-spacing: 0; color: #fff; margin: 0 0 30px;
     }
-    .abt-quote__rule { width: 48px; height: 2px; background: var(--red); border: 0; margin: 0 0 16px; }
+    .abt-quote__rule { width: 48px; height: 2px; background: var(--red); border: 0; margin: 0 0 22px; }
     .abt-quote__name {
-      font-family: var(--font-head); font-size: 20px; font-weight: 700;
-      color: #fff; margin: 0 0 2px;
+      font-family: var(--font-body); font-size: 15px; font-weight: 500;
+      line-height: 18px; color: #fff; margin: 0 0 6px;
     }
-    .abt-quote__title { font-size: 13px; line-height: 19.5px; color: rgba(255,255,255,0.7); margin: 0; }
+    .abt-quote__title {
+      font-size: 13px; line-height: 16px; letter-spacing: 0.65px;
+      color: rgba(255,255,255,0.6); margin: 0;
+    }
 
     /* --- Responsive ---------------------------------------------- */
     @media (max-width: 1024px) {
       .abt-hero h1 { font-size: 60px; line-height: 1.04; }
       .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .abt-quote__layout { grid-template-columns: 1fr; gap: 32px; }
+      .abt-quote__logo { width: 280px; }
+      .abt-quote__text { font-size: 28px; line-height: 1.35; }
       .abt-who, .abt-team { padding-block: 72px; }
     }
     @media (max-width: 768px) {
@@ -152,6 +160,9 @@
       .abt-hero__logo { width: 160px; }
       .abt-inner { padding-inline: 20px; }
       .abt-heading { font-size: 36px; }
+      .abt-quote { padding-block: 64px; }
+      .abt-quote__logo { width: 220px; }
+      .abt-quote__text { font-size: 24px; }
       .abt-who__cols { grid-template-columns: 1fr; gap: 20px; }
       .team-grid { grid-template-columns: 1fr; }
       .value { flex: 1 1 100%; }
@@ -483,8 +494,8 @@
         <div class="abt-quote__layout">
           <img class="abt-quote__logo" src="images/ADS_Logo_REV%202.svg" alt="All Door Supply" />
           <div>
-            <svg class="abt-quote__mark" viewBox="0 0 52 40" fill="none" aria-hidden="true">
-              <path d="M0 40V26.4C0 17.6 2.13333 10.6667 6.4 5.6C10.6667 0.533333 17.0667 0 25.6 0V8C21.3333 8 18.1333 9.46667 16 12.4C13.8667 15.3333 12.8 19.4667 12.8 24.8H22.4V40H0ZM29.6 40V26.4C29.6 17.6 31.7333 10.6667 36 5.6C40.2667 0.533333 46.6667 0 55.2 0V8C50.9333 8 47.7333 9.46667 45.6 12.4C43.4667 15.3333 42.4 19.4667 42.4 24.8H52V40H29.6Z" fill="#C52028"/>
+            <svg class="abt-quote__mark" viewBox="0 0 42 28" fill="none" aria-hidden="true">
+              <path d="M0.119527 25.4399L8.39953 1.19995C8.63953 0.479951 9.11952 0 9.95952 0H20.1595C21.1195 0 21.5995 0.480059 21.3595 1.56006L16.0795 25.7998C15.9595 26.6398 15.3595 27.1201 14.5195 27.1201H1.19951C0.239514 27.1201 -0.240473 26.5199 0.119527 25.4399ZM20.2795 25.4399L28.5595 1.19995C28.7995 0.479951 29.2795 0 30.1195 0H40.1995C41.1595 0 41.6395 0.480059 41.3995 1.56006L36.3595 25.7998C36.2395 26.6398 35.6395 27.1201 34.7995 27.1201H21.3595C20.3995 27.1201 19.9195 26.5199 20.2795 25.4399Z" fill="#C52028"/>
             </svg>
             <blockquote>
               <p class="abt-quote__text">All Door Supply has been our go-to supplier for Division 8 products for over a decade. Their knowledge, reliability and ability to source exactly what we need — on time and on spec — makes them an invaluable partner on every project.</p>
