@@ -2836,3 +2836,37 @@ ul { list-style: none; }
   .nav__mobile .nav__mobile-sub { padding-left: 36px !important; }
   .nav__mobile .btn-nav { margin: 16px 20px 0; }
 }
+
+/* Project Experience is a menu heading, not a page: the desktop top item is a
+   non-link trigger for its dropdown, and in the mobile menu it's a plain label
+   above its two pages. */
+span.nav__toplink { cursor: default; }
+.nav__mobile-label {
+  display: block;
+  padding: 12px 32px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: normal;
+  text-transform: uppercase;
+  color: var(--black);
+  border-bottom: 1px solid #f0f0f0;
+}
+@media (max-width: 768px) {
+  .nav__mobile-label { padding-inline: 20px; }
+}
+.nav__links span.nav__toplink {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: normal;
+  text-transform: uppercase;
+  color: var(--black);
+  transition: color 0.2s;
+}
+.nav--hero .nav__links span.nav__toplink { color: var(--white); }
+.nav--hero.nav--scrolled .nav__links span.nav__toplink,
+.nav--hero.nav--open .nav__links span.nav__toplink { color: var(--black); }
+.nav__links span.nav__toplink:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }

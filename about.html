@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,600&display=swap" rel="stylesheet" />
 
   <link rel="icon" href="images/ADS_Logo_primary.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="css/styles.css?v=20261010-mnav3" />
+  <link rel="stylesheet" href="css/styles.css?v=20261020-menu2" />
 
   <style>
     /* ============================================================
@@ -88,42 +88,9 @@
     .value p { font-size: 13px; line-height: 19.5px; color: #737578; margin: 0; }
 
     /* --- Our Services -------------------------------------------- */
-    .abt-services { background: rgba(208, 210, 211, 0.25); padding-block: 96px; }
-    .abt-services__layout {
-      display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 800px);
-      gap: 60px; align-items: start; justify-content: space-between;
-    }
-    /* Figma: "Our Services." is red and centred within its own column. */
-    .abt-services__intro { text-align: center; }
-    .abt-services__intro h2 { color: var(--red); margin-bottom: 16px; }
-    .abt-services__intro p {
-      font-size: 15px; line-height: 24px; color: #737578; margin: 0 0 24px;
-    }
-    .btn-outline-red {
-      display: inline-flex; align-items: center; justify-content: center;
-      padding: 12px 24px; border: 1.5px solid var(--red); background: transparent;
-      color: #000; font-family: var(--font-body); font-size: 13px; font-weight: 500;
-      line-height: 18px; text-transform: uppercase; letter-spacing: 0.5px;
-      transition: background 0.2s, color 0.2s;
-    }
-    .btn-outline-red:hover, .btn-outline-red:focus-visible { background: var(--red); color: #fff; }
-
-    /* Figma: Service Cards Grid — two columns, 100px gutter. */
-    .service-grid {
-      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-      column-gap: 100px; row-gap: 40px;
-    }
-    .service-card__head {
-      display: flex; align-items: flex-start; gap: 16px; margin-bottom: 12px;
-    }
-    .service-card__icon { flex-shrink: 0; width: 50px; height: 50px; }
-    .service-card__icon img { display: block; width: 100%; height: 100%; object-fit: contain; }
-    .service-card h3 {
-      font-family: var(--font-head); font-size: 21px; font-weight: 700;
-      line-height: 1.15; letter-spacing: 0; color: #231F20;
-      text-transform: uppercase; margin: 0;
-    }
-    .service-card p { font-size: 14px; line-height: 22px; color: #737578; margin: 0; }
+    /* Uses the homepage "Our Services." module (.services__grid / .service-card
+       rules in css/styles.css) inside the About page's 1200px column. */
+    .abt-services { padding-block: 96px 40px; }
 
     /* --- The Team ------------------------------------------------ */
     .abt-team { background: #fff; padding-block: 96px; }
@@ -175,12 +142,9 @@
     /* --- Responsive ---------------------------------------------- */
     @media (max-width: 1024px) {
       .abt-hero h1 { font-size: 60px; line-height: 1.04; }
-      .abt-services__layout { grid-template-columns: 1fr; gap: 40px; }
-      .abt-services__intro { text-align: left; }
-      .service-grid { column-gap: 40px; }
       .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .abt-quote__layout { grid-template-columns: 1fr; gap: 32px; }
-      .abt-who, .abt-services, .abt-team { padding-block: 72px; }
+      .abt-who, .abt-team { padding-block: 72px; }
     }
     @media (max-width: 768px) {
       .abt-hero h1 { font-size: 44px; line-height: 1.05; }
@@ -189,7 +153,7 @@
       .abt-inner { padding-inline: 20px; }
       .abt-heading { font-size: 36px; }
       .abt-who__cols { grid-template-columns: 1fr; gap: 20px; }
-      .service-grid, .team-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
       .value { flex: 1 1 100%; }
     }
     @media (max-width: 480px) {
@@ -235,14 +199,12 @@
           </div>
 
           <div class="nav__item">
-            <a href="experience.html" class="nav__toplink" aria-haspopup="true"><span class="nav__label">Project Experience</span>
+            <span class="nav__toplink" role="button" tabindex="0" aria-haspopup="true"><span class="nav__label">Project Experience</span>
               <svg class="nav__caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+            </span>
             <div class="nav__dropdown" role="menu">
-              <a href="projects.html#elora-mill" role="menuitem">Elora Mill Condominiums</a>
-              <a href="projects.html#sheddon-ave" role="menuitem">Sheddon Ave Condominiums</a>
-              <a href="projects.html#tru-by-hilton" role="menuitem">Tru By Hilton</a>
-              <a href="projects.html" role="menuitem">View All Projects</a>
+              <a href="why-choose-us.html" role="menuitem">Why Choose Us</a>
+              <a href="recent-projects.html" role="menuitem">Recent Projects</a>
             </div>
           </div>
           <a href="about.html" aria-current="page">About</a>
@@ -274,11 +236,9 @@
       <a href="door-automation.html" class="nav__mobile-sub">Door Automation</a>
       <a href="hardware.html" class="nav__mobile-sub">Hardware</a>
       <a href="division-10.html" class="nav__mobile-sub">Division 10</a>
-      <a href="experience.html">Project Experience</a>
-      <a href="projects.html#elora-mill" class="nav__mobile-sub">Elora Mill Condominiums</a>
-      <a href="projects.html#sheddon-ave" class="nav__mobile-sub">Sheddon Ave Condominiums</a>
-      <a href="projects.html#tru-by-hilton" class="nav__mobile-sub">Tru By Hilton</a>
-      <a href="projects.html" class="nav__mobile-sub">View All Projects</a>
+      <span class="nav__mobile-label">Project Experience</span>
+      <a href="why-choose-us.html" class="nav__mobile-sub">Why Choose Us</a>
+      <a href="recent-projects.html" class="nav__mobile-sub">Recent Projects</a>
       <a href="about.html" aria-current="page">About</a>
       <a href="contact.html">Contact</a>
       <a href="contact.html" class="btn-nav">Request a Quote</a>
@@ -333,60 +293,82 @@
     <!-- ============================================================
          OUR SERVICES
          ============================================================ -->
-    <section class="abt-services" aria-label="Our services">
+    <section class="services abt-services" aria-label="Our services">
       <div class="abt-inner">
-        <div class="abt-services__layout">
+        <div class="services__grid">
 
-          <div class="abt-services__intro">
-            <h2 class="abt-heading">Our Services.</h2>
-            <p>Comprehensive Division 8 supply, installation and project solutions for every scale of build.</p>
-            <a href="services.html" class="btn-outline-red">Learn More</a>
+          <!-- Intro -->
+          <div class="services__intro">
+            <h2>Our Services.</h2>
+            <p>
+              Comprehensive Division 8 supply,
+              installation and project solutions
+              for every scale of build.
+            </p>
+            <a href="services.html" class="btn-outline">Learn More</a>
           </div>
 
-          <div class="service-grid">
-            <article class="service-card">
-              <div class="service-card__head">
-                <div class="service-card__icon"><img src="images/supply-division-8-material.svg" alt="" aria-hidden="true" /></div>
-                <h3>Supply of Division 8 Material</h3>
+          <!-- Cards -->
+          <div class="services__cards">
+
+            <!-- Supply of Division 8 Material -->
+            <div class="service-card">
+              <div class="service-card__top">
+                <div class="service-card__icon" aria-hidden="true">
+                  <img src="images/supply-division-8-material.svg" alt="" width="50" height="44">
+                </div>
+                <h3>Supply of<br>Division 8 Material</h3>
               </div>
               <p>Doors, frames, hardware and related products sourced from industry-leading manufacturers.</p>
-            </article>
+            </div>
 
-            <article class="service-card">
-              <div class="service-card__head">
-                <div class="service-card__icon"><img src="images/custom-division-8-products-via-weld-shop.svg" alt="" aria-hidden="true" /></div>
-                <h3>Custom Division 8 Products via Weld Shop</h3>
+            <!-- Custom Division 8 Products Via Weld Shop -->
+            <div class="service-card">
+              <div class="service-card__top">
+                <div class="service-card__icon" aria-hidden="true">
+                  <img src="images/custom-division-8-products-via-weld-shop.svg" alt="" width="36" height="44">
+                </div>
+                <h3>Custom Division 8 Products<br>Via Weld Shop</h3>
               </div>
               <p>Fabricated to order — custom frames, specialty doors and unique assemblies built in-house.</p>
-            </article>
+            </div>
 
-            <article class="service-card">
-              <div class="service-card__head">
-                <div class="service-card__icon"><img src="images/division-8-installation.svg" alt="" aria-hidden="true" /></div>
-                <h3>Division 8 Installation</h3>
+            <!-- Division 8 Installation -->
+            <div class="service-card">
+              <div class="service-card__top">
+                <div class="service-card__icon" aria-hidden="true">
+                  <img src="images/division-8-installation.svg" alt="" width="39" height="44">
+                </div>
+                <h3>Division 8<br>Installation</h3>
               </div>
               <p>Professional installation ensuring every product is fitted to specification and code.</p>
-            </article>
+            </div>
 
-            <article class="service-card">
-              <div class="service-card__head">
-                <div class="service-card__icon"><img src="images/supply-installation-automatic-openers.svg" alt="" aria-hidden="true" /></div>
-                <h3>Supply &amp; Installation of Automatic Operators</h3>
+            <!-- Supply & Installation of Automatic Operators -->
+            <div class="service-card">
+              <div class="service-card__top">
+                <div class="service-card__icon" aria-hidden="true">
+                  <img src="images/supply-installation-automatic-openers.svg" alt="" width="44" height="44">
+                </div>
+                <h3>Supply &amp; Installation of<br>Automatic Operators</h3>
               </div>
               <p>Complete supply and installation of automatic door operators for commercial applications.</p>
-            </article>
+            </div>
 
-            <article class="service-card">
-              <div class="service-card__head">
-                <div class="service-card__icon"><img src="images/project-management.svg" alt="" aria-hidden="true" /></div>
-                <h3>Project Management</h3>
+            <!-- Project Management -->
+            <div class="service-card">
+              <div class="service-card__top">
+                <div class="service-card__icon" aria-hidden="true">
+                  <img src="images/project-management.svg" alt="" width="44" height="43">
+                </div>
+                <h3>Project<br>Management</h3>
               </div>
               <p>End-to-end coordination keeping your build on schedule and on budget.</p>
-            </article>
-          </div>
+            </div>
 
-        </div>
-      </div>
+          </div><!-- /.services__cards -->
+        </div><!-- /.services__grid -->
+      </div><!-- /.container -->
     </section>
 
     <!-- ============================================================
@@ -556,7 +538,7 @@
             <a href="index.html">Home</a>
             <a href="services.html">Services</a>
             <a href="manufacturers.html">Manufacturers</a>
-            <a href="experience.html">Project Experience</a>
+            <a href="why-choose-us.html">Why Choose Us</a><a href="recent-projects.html">Recent Projects</a>
             <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
             <a href="contact.html">Request a Quote</a>
