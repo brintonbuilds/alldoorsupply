@@ -165,6 +165,7 @@
 
     /* View More — Figma "Button Secondary Outline" with a down chevron. */
     .prj-more { display: flex; justify-content: center; margin-top: 56px; }
+    .btn-outline-red[hidden] { display: none; }
     .btn-outline-red {
       display: inline-flex; align-items: center; justify-content: center; gap: 10px;
       padding: 16px 40px; border: 1.5px solid var(--red); border-radius: 4px; background: transparent;
@@ -345,7 +346,7 @@
           <button class="filter-chip" type="button" data-filter="residential" aria-pressed="false">Residential</button>
         </div>
         <hr class="filter-divider" />
-        <p class="filter-count" id="prj-count" aria-live="polite">Showing 9 projects</p>
+        <p class="filter-count" id="prj-count" aria-live="polite">Showing 9 of 32 projects</p>
       </div>
     </section>
 
@@ -371,7 +372,7 @@
             </p>
           </article>
 
-          <article id="sheddon-ave" class="project-card" data-category="condominiums">
+          <article id="sheddon-ave" class="project-card" data-category="residential">
             <div class="project-card__image">
               <img src="images/projects/sheddon-ave-condominiums.jpg" alt="Sheddon Ave Condominiums, a brick low-rise development in Oakville, Ontario" loading="lazy" />
             </div>
@@ -485,15 +486,347 @@
             </p>
           </article>
 
+          <article class="project-card" data-category="hotels">
+            <div class="project-card__image">
+              <img src="images/projects/Home2-Suites-Huntsville.webp" alt="Home2 Suites Huntsville in Huntsville, Ontario" loading="lazy" />
+            </div>
+            <h3>Home2 Suites Huntsville</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Hotel &middot; Huntsville, ON</span>
+              <strong>Architect:</strong> Saplys Architectures Inc.<br>
+              <strong>General Contractor:</strong> API Development Consultants Inc.<br>
+              <strong>Description:</strong> 5 Storey, 95 Room Hotel<br>
+              <strong>Status:</strong> Complete
+            </p>
+          </article>
+
+          <article class="project-card" data-category="hotels">
+            <div class="project-card__image">
+              <img src="images/projects/Holiday-Inn-Express-and-Staybridge-Suites-Niagara-on-the-Lake.webp" alt="Holiday Inn Express and Staybridge Suites in Niagara-on-the-Lake, Ontario" loading="lazy" />
+            </div>
+            <h3>Holiday Inn Express &amp; Staybridge Suites</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Hotel &middot; Niagara-on-the-Lake, ON</span>
+              <strong>Architect:</strong> Saplys Architectures Inc.<br>
+              <strong>General Contractor:</strong> Vrancor Group<br>
+              <strong>Developer:</strong> Vrancor Group<br>
+              <strong>Description:</strong> 2x 6 Storey, 174 Units<br>
+              <strong>Status:</strong> Complete
+            </p>
+          </article>
+
+          <article class="project-card" data-category="condominiums">
+            <div class="project-card__image">
+              <img src="images/projects/Ambrose-Condominiums-Brantford.webp" alt="Ambrose Condominiums in Brantford, Ontario" loading="lazy" />
+            </div>
+            <h3>Ambrose Condominiums</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Multi-Residential &middot; Brantford, ON</span>
+              <strong>Architect:</strong> SRM Architects Inc.<br>
+              <strong>General Contractor:</strong> Brooklyn Construction<br>
+              <strong>Developer:</strong> Elite Development<br>
+              <strong>Description:</strong> 10 Storey, 198 Units<br>
+              <strong>Status:</strong> Complete
+            </p>
+          </article>
+
+          <article class="project-card" data-category="condominiums">
+            <div class="project-card__image">
+              <img src="images/projects/Beau-Soleil-Condominiums-Burlington.webp" alt="Beau Soleil in Burlington, Ontario" loading="lazy" />
+            </div>
+            <h3>Beau Soleil</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Multi-Residential &middot; Burlington, ON</span>
+              <strong>Architect:</strong> Turner Fleisher<br>
+              <strong>General Contractor:</strong> Legacy Constructors<br>
+              <strong>Developer:</strong> Carriage Gate Homes<br>
+              <strong>Description:</strong> 29 Storey, 314 Units<br>
+              <strong>Status:</strong> Under Construction
+            </p>
+          </article>
+
+          <article class="project-card" data-category="condominiums">
+            <div class="project-card__image">
+              <img src="images/projects/Platinum-Condominiums-Hamilton.webp" alt="Platinum Condos in Hamilton, Ontario" loading="lazy" />
+            </div>
+            <h3>Platinum Condos</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Multi-Residential &middot; Hamilton, ON</span>
+              <strong>Architect:</strong> Kozlowski Architect<br>
+              <strong>General Contractor:</strong> Coletara Developments<br>
+              <strong>Developer:</strong> Coletara Developments<br>
+              <strong>Description:</strong> 24 Storey, 292 Units<br>
+              <strong>Status:</strong> Complete
+            </p>
+          </article>
+
+          <article class="project-card" data-category="condominiums">
+            <div class="project-card__image">
+              <img src="images/projects/Grand-Bell-Condominiums-33-Erie-Avenue-Brantford.webp" alt="Grand Bell Condos, 33 Erie Ave in Brantford, Ontario" loading="lazy" />
+            </div>
+            <h3>Grand Bell Condos, 33 Erie Ave</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Multi-Residential &middot; Brantford, ON</span>
+              <strong>Architect:</strong> AFA Architecture<br>
+              <strong>General Contractor:</strong> KCL Group<br>
+              <strong>Developer:</strong> Lakeview Developments<br>
+              <strong>Description:</strong> 18 Storey, 226 Units<br>
+              <strong>Status:</strong> Under Construction
+            </p>
+          </article>
+
+          <article class="project-card" data-category="condominiums">
+            <div class="project-card__image">
+              <img src="images/projects/LJM-Tower-Apartments.webp" alt="LJM Tower" loading="lazy" />
+            </div>
+            <h3>LJM Tower</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Multi-Residential</span>
+              <strong>Architect:</strong> Raw Design<br>
+              <strong>General Contractor:</strong> LJM Developments Inc.<br>
+              <strong>Developer:</strong> LJM Developments Inc.<br>
+              <strong>Description:</strong> 17 Storey, 313 Units<br>
+              <strong>Status:</strong> Complete
+            </p>
+          </article>
+
+          <article class="project-card" data-category="condominiums">
+            <div class="project-card__image">
+              <img src="images/projects/Mile-and-Creek-Condominiums-Milton.webp" alt="Mile and Creek in Milton, Ontario" loading="lazy" />
+            </div>
+            <h3>Mile &amp; Creek</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Multi-Residential &middot; Milton, ON</span>
+              <strong>Architect:</strong> KNYMH Inc.<br>
+              <strong>General Contractor:</strong> Mattamy Homes<br>
+              <strong>Developer:</strong> Mattamy Homes<br>
+              <strong>Description:</strong> 6x 8 Storey Buildings, 3 Storey Amenity, 612 Units<br>
+              <strong>Status:</strong> Under Construction
+            </p>
+          </article>
+
+          <article class="project-card" data-category="apartments">
+            <div class="project-card__image">
+              <img src="images/projects/1295-Bleams-Road-Kitchener-Apartments.webp" alt="1295 Bleams Road in Kitchener, Ontario" loading="lazy" />
+            </div>
+            <h3>1295 Bleams Road</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Multi-Residential &middot; Kitchener, ON</span>
+              <strong>Architect:</strong> SRM Architects Inc.<br>
+              <strong>General Contractor:</strong> Grandview Homes (Bost Group)<br>
+              <strong>Description:</strong> 13 Storey, 202 Units<br>
+              <strong>Status:</strong> Under Construction
+            </p>
+          </article>
+
+          <article class="project-card" data-category="apartments">
+            <div class="project-card__image">
+              <img src="images/projects/1295-Bleams-Road-Kitchener-Apartments-2.webp" alt="1295 Bleams Road in Kitchener, Ontario" loading="lazy" />
+            </div>
+            <h3>1295 Bleams Road</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Multi-Residential &middot; Kitchener, ON</span>
+              <strong>Architect:</strong> SRM Architects Inc.<br>
+              <strong>General Contractor:</strong> Grandview Homes (Bost Group)<br>
+              <strong>Description:</strong> 8 Storey, 193 Units<br>
+              <strong>Status:</strong> Complete
+            </p>
+          </article>
+
+          <article class="project-card" data-category="apartments">
+            <div class="project-card__image">
+              <img src="images/projects/Bayview-Apartments-Barrie.webp" alt="Bayview Apartments in Barrie, Ontario" loading="lazy" />
+            </div>
+            <h3>Bayview Apartments</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Multi-Residential &middot; Barrie, ON</span>
+              <strong>Architect:</strong> SRM Architects Inc.<br>
+              <strong>General Contractor:</strong> Grandview Homes (Bost Group)<br>
+              <strong>Description:</strong> 10 Storey, 116 Units<br>
+              <strong>Status:</strong> Complete
+            </p>
+          </article>
+
+          <article class="project-card" data-category="apartments">
+            <div class="project-card__image">
+              <img src="images/projects/Landmark-Tower-Barrie.webp" alt="Landmark Tower in Barrie, Ontario" loading="lazy" />
+            </div>
+            <h3>Landmark Tower</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Multi-Residential &middot; Barrie, ON</span>
+              <strong>Architect:</strong> SRM Architects Inc.<br>
+              <strong>General Contractor:</strong> Grandview Homes (Bost Group)<br>
+              <strong>Description:</strong> 9 Storey, 199 Units<br>
+              <strong>Status:</strong> Complete
+            </p>
+          </article>
+
+          <article class="project-card" data-category="apartments">
+            <div class="project-card__image">
+              <img src="images/projects/Roxy-Rentals-Hamilton-Apartments.webp" alt="Roxy Rentals in Hamilton, Ontario" loading="lazy" />
+            </div>
+            <h3>Roxy Rentals</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Multi-Residential &middot; Hamilton, ON</span>
+              <strong>Architect:</strong> KNYMH Inc.<br>
+              <strong>General Contractor:</strong> Legacy Constructors<br>
+              <strong>Developer:</strong> Carriage Gate Homes<br>
+              <strong>Description:</strong> 2x 12 Storey Buildings, 348 Units<br>
+              <strong>Status:</strong> Complete
+            </p>
+          </article>
+
+          <article class="project-card" data-category="apartments">
+            <div class="project-card__image">
+              <img src="images/projects/Coral-Sophia-Lane-Apartments-Barrie.webp" alt="Coral Sophia Lane in Barrie, Ontario" loading="lazy" />
+            </div>
+            <h3>Coral Sophia Lane</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Multi-Residential &middot; Barrie, ON</span>
+              <strong>Architect:</strong> Kirkor Architects &amp; Planners<br>
+              <strong>General Contractor:</strong> Gillam Group Inc.<br>
+              <strong>Developer:</strong> DMS Group<br>
+              <strong>Description:</strong> 8 Storey, 108 Units<br>
+              <strong>Status:</strong> Under Construction
+            </p>
+          </article>
+
+          <article class="project-card" data-category="apartments">
+            <div class="project-card__image">
+              <img src="images/projects/KOC-1001-King-Street-East-Kitchener-Apartments.webp" alt="K.O.C., 1001 King Street East in Kitchener, Ontario" loading="lazy" />
+            </div>
+            <h3>K.O.C., 1001 King Street East</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Multi-Residential &middot; Kitchener, ON</span>
+              <strong>Architect:</strong> Reinders &amp; Law Ltd<br>
+              <strong>General Contractor:</strong> Jackman Ltd.<br>
+              <strong>Developer:</strong> Vive Developments<br>
+              <strong>Description:</strong> 29 Storey, 267 Units<br>
+              <strong>Status:</strong> Under Construction
+            </p>
+          </article>
+
+          <article class="project-card" data-category="apartments">
+            <div class="project-card__image">
+              <img src="images/projects/7081-McLeod-Road-Niagara-Falls-Apartments.webp" alt="7081 McLeod Apartments in Niagara Falls, Ontario" loading="lazy" />
+            </div>
+            <h3>7081 McLeod Apartments</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Multi-Residential &middot; Niagara Falls, ON</span>
+              <strong>Architect:</strong> Patrick David Trottier Architect<br>
+              <strong>General Contractor:</strong> Livwell Developments<br>
+              <strong>Description:</strong> 5 Storey, 50 Units<br>
+              <strong>Status:</strong> Complete
+            </p>
+          </article>
+
+          <article class="project-card" data-category="apartments">
+            <div class="project-card__image">
+              <img src="images/projects/7081-McLeod-Road-Niagara-Falls-Apartments-2.webp" alt="7081 McLeod Apartments in Niagara Falls, Ontario" loading="lazy" />
+            </div>
+            <h3>7081 McLeod Apartments</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Multi-Residential &middot; Niagara Falls, ON</span>
+              <strong>Architect:</strong> Patrick David Trottier Architect<br>
+              <strong>General Contractor:</strong> Livwell Developments<br>
+              <strong>Description:</strong> Phase 1 &ndash; 7 Storey, 123 Units<br>
+              <strong>Status:</strong> Under Construction &ndash; Multi Phase
+            </p>
+          </article>
+
+          <article class="project-card" data-category="retirement">
+            <div class="project-card__image">
+              <img src="images/projects/Woodwind-Retirement-Residence-Brantford.webp" alt="Woodwind Retirement Residence in Brantford, Ontario" loading="lazy" />
+            </div>
+            <h3>Woodwind Retirement Residence</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Retirement Residence &middot; Brantford, ON</span>
+              <strong>Architect:</strong> Saplys Architectures Inc.<br>
+              <strong>General Contractor:</strong> FPC Construction<br>
+              <strong>Description:</strong> 3 Storey, 99 Units<br>
+              <strong>Status:</strong> Complete
+            </p>
+          </article>
+
+          <article class="project-card" data-category="retirement">
+            <div class="project-card__image">
+              <img src="images/projects/Sudbury-Retirement-Residence.webp" alt="Sudbury Retirement Residence in Sudbury, Ontario" loading="lazy" />
+            </div>
+            <h3>Sudbury Retirement Residence</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Retirement Residence &middot; Sudbury, ON</span>
+              <strong>Architect:</strong> Saplys Architectures Inc.<br>
+              <strong>General Contractor:</strong> FPC Construction<br>
+              <strong>Description:</strong> 6 Storey, 137 Units (185 Beds)<br>
+              <strong>Status:</strong> Complete
+            </p>
+          </article>
+
+          <article class="project-card" data-category="retirement">
+            <div class="project-card__image">
+              <img src="images/projects/Gardens-of-Ingersoll-Retirement-Residence.webp" alt="Gardens of Ingersoll in Ingersoll, Ontario" loading="lazy" />
+            </div>
+            <h3>Gardens of Ingersoll</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Retirement Residence &middot; Ingersoll, ON</span>
+              <strong>Architect:</strong> Farid Motamedi Architect Inc.<br>
+              <strong>General Contractor:</strong> Leeswood Construction<br>
+              <strong>Description:</strong> 4 Storey, 74 Units<br>
+              <strong>Status:</strong> Complete
+            </p>
+          </article>
+
+          <article class="project-card" data-category="retirement">
+            <div class="project-card__image">
+              <img src="images/projects/Gardens-of-Wasaga-Beach-Retirement-Residence.webp" alt="Gardens of Wasaga Beach in Wasaga Beach, Ontario" loading="lazy" />
+            </div>
+            <h3>Gardens of Wasaga Beach</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Retirement Residence &middot; Wasaga Beach, ON</span>
+              <strong>Architect:</strong> Farid Motamedi Architect Inc.<br>
+              <strong>General Contractor:</strong> Leeswood Construction<br>
+              <strong>Description:</strong> 4 Storey, 102 Units<br>
+              <strong>Status:</strong> Complete
+            </p>
+          </article>
+
+          <article class="project-card" data-category="retirement">
+            <div class="project-card__image">
+              <img src="images/projects/Arabella-Retirement-Residence.webp" alt="Arabella Retirement Residence" loading="lazy" />
+            </div>
+            <h3>Arabella Retirement Residence</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Retirement Residence</span>
+              <strong>Architect:</strong> Alexander Wilson Architect Inc.<br>
+              <strong>General Contractor:</strong> K. Knudsen Construction Ltd.<br>
+              <strong>Description:</strong> 6 Storey, 125 Units<br>
+              <strong>Status:</strong> Complete
+            </p>
+          </article>
+
+          <article class="project-card" data-category="residential">
+            <div class="project-card__image">
+              <img src="images/projects/Uptowns-Condominiums-Brampton.webp" alt="Uptowns in Brampton, Ontario" loading="lazy" />
+            </div>
+            <h3>Uptowns</h3>
+            <p class="project-card__meta">
+              <span class="project-card__loc">Residential &middot; Brampton, ON</span>
+              <strong>Architect:</strong> Kohn Partnership Architects Inc.<br>
+              <strong>General Contractor:</strong> ELM Developments<br>
+              <strong>Description:</strong> 345 Residential Stacked Townhouses<br>
+              <strong>Status:</strong> Under Construction
+            </p>
+          </article>
+
         </div>
 
         <p class="prj-empty" id="prj-empty">No projects in this sector yet — more are being added as they complete.</p>
 
         <div class="prj-more">
-          <a href="#" class="btn-outline-red">
+          <button type="button" class="btn-outline-red" id="prj-more-btn" hidden>
             View More Projects
             <svg width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="#C52028" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -574,24 +907,40 @@
     var cards = [].slice.call(grid.querySelectorAll('.project-card'));
     var count = document.getElementById('prj-count');
     var empty = document.getElementById('prj-empty');
+    var more = document.getElementById('prj-more-btn');
+    var PAGE = 9;
+    var filter = 'all';
+    var limit = PAGE;
 
-    function apply(filter) {
-      var shown = 0;
+    function apply() {
+      var matched = 0, shown = 0;
       cards.forEach(function (card) {
         var match = filter === 'all' || card.getAttribute('data-category') === filter;
-        card.hidden = !match;
-        if (match) shown++;
+        var visible = match && matched < limit;
+        if (match) matched++;
+        card.hidden = !visible;
+        if (visible) shown++;
       });
-      count.textContent = 'Showing ' + shown + (shown === 1 ? ' project' : ' projects');
-      empty.classList.toggle('is-shown', shown === 0);
+      count.textContent = 'Showing ' + shown + ' of ' + matched + (matched === 1 ? ' project' : ' projects');
+      empty.classList.toggle('is-shown', matched === 0);
+      more.hidden = matched <= limit;
     }
 
     chips.forEach(function (chip) {
       chip.addEventListener('click', function () {
         chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c === chip)); });
-        apply(chip.getAttribute('data-filter'));
+        filter = chip.getAttribute('data-filter');
+        limit = PAGE;
+        apply();
       });
     });
+
+    more.addEventListener('click', function () {
+      limit += PAGE;
+      apply();
+    });
+
+    apply();
   })();
   </script>
 </body>
