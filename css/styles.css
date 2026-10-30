@@ -1948,16 +1948,18 @@ ul { list-style: none; }
   align-items: stretch;
 }
 
+/* Logo is top-aligned with the "CONTACT US" heading (Figma: 225 x 168
+   logo, top edge ~7px above the column headings), not vertically centred */
 .footer__logo {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   min-height: 300px;
-  padding-inline: 20px 62px;
+  padding: 5px 56px 0 21px;
 }
 
 .footer__logo-img {
   display: block;
-  width: 220px;
+  width: 225px;
   height: auto;
 }
 
@@ -2291,7 +2293,7 @@ ul { list-style: none; }
   .footer__logo {
     grid-column: 1 / -1;
     min-height: 0;
-    padding-right: 0;
+    padding: 0;
   }
 
   .footer__col {
