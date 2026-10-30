@@ -71,19 +71,19 @@
     }
     .abt-who__cols p { font-size: 15px; line-height: 24px; color: #737578; margin: 0; }
 
-    /* Values carry the same red accent bar used across the site. */
-    .value-row { display: flex; gap: 24px; flex-wrap: wrap; }
+    /* Values: Figma 384x150 tinted cards with a short red accent bar. */
+    .value-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
     .value {
-      position: relative; flex: 1 1 0; min-width: 220px;
-      padding: 4px 0 4px 20px;
+      position: relative; min-height: 150px; border-radius: 8px;
+      background: rgba(208, 210, 211, 0.25); padding: 48px 28px 23px;
     }
     .value::before {
-      content: ''; position: absolute; top: 0; bottom: 0; left: 0;
-      width: 4px; background: var(--red);
+      content: ''; position: absolute; top: 28px; left: 28px;
+      width: 28px; height: 3px; border-radius: 2px; background: var(--red);
     }
     .value h3 {
-      font-family: var(--font-head); font-size: 22px; font-weight: 700;
-      line-height: 1.1; letter-spacing: 0; color: #231F20; margin: 0 0 6px;
+      font-family: var(--font-head); font-size: 26px; font-weight: 700;
+      line-height: normal; letter-spacing: 0; color: #231F20; margin: 0 0 8px;
     }
     .value p { font-size: 13px; line-height: 19.5px; color: #737578; margin: 0; }
 
@@ -93,7 +93,7 @@
     .abt-services { padding-block: 96px 40px; }
 
     /* --- The Team ------------------------------------------------ */
-    .abt-team { background: #fff; padding-block: 96px; }
+    .abt-team { background: rgba(208, 210, 211, 0.25); padding-block: 85px 107px; }
     .abt-team .abt-eyebrow { margin-bottom: 15px; }
     .abt-team .abt-heading { margin-bottom: 16px; }
     .abt-team__sub {
@@ -165,7 +165,7 @@
       .abt-quote__text { font-size: 24px; }
       .abt-who__cols { grid-template-columns: 1fr; gap: 20px; }
       .team-grid { grid-template-columns: 1fr; }
-      .value { flex: 1 1 100%; }
+      .value-row { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
       .abt-hero h1 { font-size: 38px; }

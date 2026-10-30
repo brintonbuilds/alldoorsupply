@@ -352,45 +352,20 @@
     .project-card__meta strong { font-weight: 500; color: #C52028; }
 
 
-    /* Hover interaction on the recent-project images: slow zoom, soft dark
-       wash and a "View Project" pill that rises in. Cards link through to
-       the project on the Projects page. */
+    /* Hover interaction on the recent-project images: slow zoom and a red
+       title. Cards link to the Recent Projects page (no case studies yet). */
     .prj-recent .project-card__image { position: relative; display: block; }
     .prj-recent .project-card__image img {
       transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
       will-change: transform;
     }
-    .prj-recent .project-card__image::after {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: linear-gradient(180deg, rgba(35, 31, 32, 0) 45%, rgba(35, 31, 32, 0.6) 100%);
-      opacity: 0; transition: opacity 0.5s ease;
-    }
-    .prj-recent .project-card__view {
-      position: absolute; left: 20px; bottom: 20px; z-index: 1;
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 10px 16px; border-radius: 4px; background: #fff; color: #231F20;
-      font-family: var(--font-body); font-size: 12px; font-weight: 500;
-      line-height: 16px; text-transform: uppercase; letter-spacing: 0.6px;
-      opacity: 0; transform: translateY(10px);
-      transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s, color 0.2s;
-    }
-    .prj-recent .project-card__view svg { transition: transform 0.3s ease; }
     .prj-recent .project-card__image:hover img,
     .prj-recent .project-card__image:focus-visible img { transform: scale(1.06); }
-    .prj-recent .project-card__image:hover::after,
-    .prj-recent .project-card__image:focus-visible::after { opacity: 1; }
-    .prj-recent .project-card__image:hover .project-card__view,
-    .prj-recent .project-card__image:focus-visible .project-card__view { opacity: 1; transform: none; }
-    .prj-recent .project-card__image:hover .project-card__view svg { transform: translateX(3px); }
     .prj-recent .project-card__image:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
     .prj-recent .project-card h3 { transition: color 0.25s ease; }
     .prj-recent .project-card:has(.project-card__image:hover) h3 { color: var(--red); }
-    @media (hover: none) {
-      .prj-recent .project-card__view { opacity: 1; transform: none; }
-    }
     @media (prefers-reduced-motion: reduce) {
-      .prj-recent .project-card__image img,
-      .prj-recent .project-card__view { transition: none; }
+      .prj-recent .project-card__image img { transition: none; }
       .prj-recent .project-card__image:hover img { transform: none; }
     }
 
@@ -711,7 +686,6 @@
           <article class="project-card">
             <a class="project-card__image" href="recent-projects.html#elora-mill" aria-label="View Elora Mill Condominiums">
               <img src="images/projects/Elora-Mill-Condominiums-2.webp" alt="Elora Mill Condominiums overlooking the Grand River in Elora, Ontario" loading="lazy" />
-              <span class="project-card__view">View Project <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M1 5h11M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </a>
             <h3>Elora Mill Condominiums</h3>
             <p class="project-card__meta">
@@ -727,7 +701,6 @@
           <article class="project-card">
             <a class="project-card__image" href="recent-projects.html#sheddon-ave" aria-label="View Sheddon Ave Condominiums">
               <img src="images/projects/Sheddon-Avenue-Condominiums-Oakville-2.webp" alt="Sheddon Ave Condominiums, a brick low-rise condominium development in Oakville, Ontario" loading="lazy" />
-              <span class="project-card__view">View Project <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M1 5h11M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </a>
             <h3>Sheddon Ave Condominiums</h3>
             <p class="project-card__meta">
@@ -742,7 +715,6 @@
           <article class="project-card">
             <a class="project-card__image" href="recent-projects.html#tru-by-hilton" aria-label="View Tru By Hilton">
               <img src="images/projects/TRU-by-Hilton-Milton-2.webp" alt="Tru by Hilton hotel exterior in Milton, Ontario" loading="lazy" />
-              <span class="project-card__view">View Project <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M1 5h11M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </a>
             <h3>Tru By Hilton</h3>
             <p class="project-card__meta">
