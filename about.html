@@ -62,14 +62,14 @@
     .abt-hero__logo { flex-shrink: 0; width: 210px; height: auto; opacity: 0.9; }
 
     /* --- About ADS ----------------------------------------------- */
-    .abt-who { background: #fff; padding-block: 96px; }
+    .abt-who { background: #fff; padding-block: 96px 16px; }
     .abt-who .abt-eyebrow { margin-bottom: 15px; }
     .abt-who .abt-heading { margin-bottom: 24px; }
     .abt-who__cols {
-      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 48px; margin-bottom: 48px;
+      display: grid; grid-template-columns: repeat(2, minmax(0, 560px));
+      justify-content: space-between; gap: 48px; margin-bottom: 56px;
     }
-    .abt-who__cols p { font-size: 15px; line-height: 24px; color: #737578; margin: 0; }
+    .abt-who__cols p { font-size: 16px; line-height: 1.7; color: #737578; margin: 0; }
 
     /* Values: Figma 384x150 tinted cards with a short red accent bar. */
     .value-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
@@ -90,33 +90,45 @@
     /* --- Our Services -------------------------------------------- */
     /* Uses the homepage "Our Services." module (.services__grid / .service-card
        rules in css/styles.css) inside the About page's 1200px column. */
-    .abt-services { padding-block: 96px 40px; }
+    .abt-services { padding-block: 99px 116px; }
+    /* Figma module: 360px intro column, then two 350px cards 100px apart. */
+    @media (min-width: 1025px) {
+      .abt-services .services__grid { grid-template-columns: 360px minmax(0, 800px); gap: 0; }
+      .abt-services .services__intro h2 { margin-bottom: 13px; }
+      .abt-services .services__intro p { max-width: 264px; margin-bottom: 29px; }
+      .abt-services .services__cards {
+        grid-template-columns: repeat(2, minmax(0, 350px));
+        justify-content: space-between; gap: 57px 0; margin-top: 9px;
+      }
+    }
 
     /* --- The Team ------------------------------------------------ */
     .abt-team { background: rgba(208, 210, 211, 0.25); padding-block: 85px 107px; }
     .abt-team .abt-eyebrow { margin-bottom: 15px; }
     .abt-team .abt-heading { margin-bottom: 16px; }
     .abt-team__sub {
-      font-size: 15px; line-height: 24px; color: #737578;
-      max-width: 820px; margin: 0 0 48px;
+      font-size: 16px; line-height: 1.7; color: #737578;
+      max-width: 782px; margin: 0 0 56px;
     }
     .team-grid {
       display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;
     }
+    /* Figma member card: 384x150, 24px side padding, name / role / rule /
+       email + phone on a 22px line pitch. */
     .team-card {
       background: #fff; border: 1px solid #D0D2D3; border-radius: 8px;
-      padding: 28px 32px;
+      padding: 21px 23px 0; min-height: 150px; box-sizing: border-box;
     }
     .team-card h3 {
-      font-family: var(--font-head); font-size: 24px; font-weight: 700;
-      line-height: 1.1; letter-spacing: 0; color: #231F20; margin: 0 0 4px;
+      font-family: var(--font-head); font-size: 22px; font-weight: 700;
+      line-height: 26px; letter-spacing: 0; color: #231F20; margin: 0 0 3px;
     }
     .team-card__role {
-      font-size: 13px; line-height: 19.5px; color: var(--red);
-      margin: 0 0 18px;
+      font-size: 11px; font-weight: 500; line-height: 13px; letter-spacing: 0.66px;
+      color: var(--red); margin: 0 0 14px;
     }
-    .team-card__divider { height: 1px; background: #D0D2D3; border: 0; margin: 0 0 16px; }
-    .team-card__contact { font-size: 13px; line-height: 21px; color: #737578; margin: 0; }
+    .team-card__divider { height: 1px; background: #D0D2D3; border: 0; margin: 0 0 8.5px; }
+    .team-card__contact { font-size: 12px; line-height: 22px; color: #737578; margin: 0; }
     .team-card__contact a { color: #737578; text-decoration: none; }
     .team-card__contact a:hover { color: var(--red); }
 
@@ -133,7 +145,7 @@
     .abt-quote blockquote { margin: 0; }
     .abt-quote__text {
       font-family: var(--font-head); font-size: 32px; font-weight: 700;
-      line-height: 46.4px; letter-spacing: 0; color: #fff; margin: 0 0 30px;
+      line-height: 46.4px; letter-spacing: 0; color: #fff; margin: 0 0 30.4px;
     }
     .abt-quote__rule { width: 48px; height: 2px; background: var(--red); border: 0; margin: 0 0 22px; }
     .abt-quote__name {
@@ -144,6 +156,12 @@
       font-size: 13px; line-height: 16px; letter-spacing: 0.65px;
       color: rgba(255,255,255,0.6); margin: 0;
     }
+
+    /* --- CTA: Figma 268px band, 293x41 button, no eyebrow --------- */
+    .abt-cta { padding-block: 61px 55px; }
+    .abt-cta h2 { margin-bottom: 8px; }
+    .abt-cta p { margin-bottom: 21px; }
+    .abt-cta .btn-outline-white { width: 293px; height: 41px; }
 
     /* --- Responsive ---------------------------------------------- */
     @media (max-width: 1024px) {
@@ -398,6 +416,7 @@
             <p class="team-card__role">President / Owner</p>
             <hr class="team-card__divider" />
             <p class="team-card__contact">
+              <a href="mailto:info@alldoorsupply.com">info@alldoorsupply.com</a><br>
               905.335.1638
             </p>
           </article>
@@ -513,9 +532,8 @@
     <!-- ============================================================
          CTA BANNER
          ============================================================ -->
-    <section class="cta-banner" aria-label="Request a quote">
+    <section class="cta-banner abt-cta" aria-label="Request a quote">
       <div class="container">
-        <p class="cta-banner__eyebrow">Ready to Get Started?</p>
         <h2>Have a Project Coming Up?</h2>
         <p>Let's talk about how All Door Supply can support your next build from day one.</p>
         <a href="contact.html" class="btn-outline-white">Request a Quote</a>
