@@ -30,44 +30,23 @@
     });
   });
 
-  /* --- Scroll: transparent hero nav ----------------------- */
-  if (nav && nav.classList.contains('nav--hero')) {
-    var heroSection = document.querySelector('.hero');
-    var navScrolled = false;
+  /* --- Scroll: translucent over the hero, solid once it has passed --
+     Every page opens with a hero as the first block in <main>; the nav
+     turns solid when that block's bottom edge reaches the nav's bottom
+     edge, whatever the hero's height or the viewport size. */
+  if (nav) {
+    var hero = document.querySelector('main > :first-child');
 
     function updateNavState() {
-      /* Compact: trigger at 60px */
-      nav.classList.toggle('nav--compact', window.scrollY > 60);
-
-      /* Background: switch to solid once hero is past */
-      var threshold = heroSection
-        ? heroSection.offsetHeight - nav.offsetHeight
-        : window.innerHeight * 0.8;
-      var should = window.scrollY > threshold;
-      if (should !== navScrolled) {
-        navScrolled = should;
-        nav.classList.toggle('nav--scrolled', should);
-        nav.style.boxShadow = should ? '0 2px 12px rgba(0,0,0,0.12)' : 'none';
-      }
+      var pastHero = hero
+        ? hero.getBoundingClientRect().bottom <= nav.offsetHeight
+        : window.scrollY > 0;
+      nav.classList.toggle('nav--scrolled', pastHero);
     }
 
     window.addEventListener('scroll', updateNavState, { passive: true });
+    window.addEventListener('resize', updateNavState);
     updateNavState();
-
-  } else {
-    /* --- Scroll: nav shadow + compact (non-hero pages) ---- */
-    var scrolled = false;
-    window.addEventListener('scroll', function () {
-      nav.classList.toggle('nav--compact', window.scrollY > 60);
-
-      var should = window.scrollY > 8;
-      if (should !== scrolled) {
-        scrolled = should;
-        nav.style.boxShadow = should
-          ? '0 2px 12px rgba(0,0,0,0.12)'
-          : 'none';
-      }
-    }, { passive: true });
   }
 
 })();

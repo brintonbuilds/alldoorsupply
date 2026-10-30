@@ -50,19 +50,23 @@ ul { list-style: none; }
 /* ============================================================
    NAVIGATION
    ============================================================ */
+/* Figma Main Navigation: an 80px bar with a 91 x 68 logo (6px above and
+   below it). The bar and logo sizes are tokens so breakpoints only change
+   the tokens, never the rules. */
 .nav {
+  --nav-h: 80px;
+  --nav-logo-h: 68px;
+  --nav-fade: 0.3s ease;
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 50;
   background: var(--white);
-  border-bottom: 1px solid #e8e8e8;
-  transition: background 0.3s, border-color 0.3s;
+  transition: background-color var(--nav-fade), box-shadow var(--nav-fade);
 }
 
-/* Translucent dark nav — homepage hero overlay */
+/* Translucent dark nav over the hero; every page opens with one */
 .nav--hero {
   background: rgba(23, 18, 18, 0.52);
-  border-bottom-color: rgba(255,255,255,0.06);
 }
 
 .nav--hero .nav__links a {
@@ -73,11 +77,15 @@ ul { list-style: none; }
   background: var(--white);
 }
 
-/* Restore solid nav when scrolled or mobile menu is open */
+/* Solid white once the hero has scrolled under the bar (js/main.js), or
+   while the mobile menu is open */
 .nav--hero.nav--scrolled,
 .nav--hero.nav--open {
   background: var(--white);
-  border-bottom-color: #e8e8e8;
+}
+
+.nav--hero.nav--scrolled {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
 }
 
 .nav--hero.nav--scrolled .nav__links a,
@@ -90,21 +98,26 @@ ul { list-style: none; }
   background: var(--black);
 }
 
+/* Figma lays the bar out on a 1440 frame: logo at x=177, CTA ending at
+   x=1324. From the 1201px menu breakpoint (32px margins) the margins grow
+   linearly to those values at 1440, then the bar stays centred. */
+.nav .container {
+  max-width: 1440px;
+}
+
+@media (min-width: 1201px) {
+  .nav .container {
+    padding-inline:
+      clamp(32px, calc(32px + (100vw - 1201px) * 0.6067), 177px)
+      clamp(32px, calc(32px + (100vw - 1201px) * 0.3515), 116px);
+  }
+}
+
 .nav__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px; /* Figma Nav/Hero bar = 1439 × 80 */
-  transition: height 0.25s ease;
-}
-
-/* Compact state — applied on scroll */
-.nav--compact .nav__inner {
-  height: 70px;
-}
-
-.nav--compact .nav__logo-img {
-  height: 50px;
+  height: var(--nav-h);
 }
 
 /* Logo */
@@ -116,16 +129,17 @@ ul { list-style: none; }
 
 .nav__logo-img {
   display: block;
-  height: 56px;
+  height: var(--nav-logo-h);
   width: auto;
-  transition: height 0.25s ease;
 }
 
 /* Links */
 .nav__links {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 28px;
+  /* Figma: links and CTA sit 7px below the logo's centre line */
+  margin-top: 14px;
 }
 
 .nav__links a {
@@ -136,7 +150,7 @@ ul { list-style: none; }
   line-height: normal;
   text-transform: uppercase;
   color: var(--black);
-  transition: color 0.2s;
+  transition: color var(--nav-fade);
 }
 
 /* Hover feedback for primary links lives in the shared underline
@@ -192,7 +206,7 @@ ul { list-style: none; }
   width: 24px;
   height: 2px;
   background: var(--black);
-  transition: transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity 0.3s, background-color var(--nav-fade);
 }
 
 /* Mobile nav */
@@ -232,15 +246,6 @@ ul { list-style: none; }
 }
 
 .nav--open .nav__mobile { display: flex; }
-
-/* ============================================================
-   NAV — dropdown menus (Who We Serve / Products & Manufacturers)
-   ============================================================ */
-
-/* Interior nav carries the fuller menu — give it more room and a
-   slightly tighter gap so everything fits on one line. */
-.nav .container { max-width: 1280px; }
-.nav__links { gap: 28px; }
 
 /* ============================================================
    NAV — active-page + hover indicator (shared underline system)
@@ -307,6 +312,10 @@ ul { list-style: none; }
   font-weight: 600;
   box-shadow: inset 3px 0 0 var(--red);
 }
+
+/* ============================================================
+   NAV — dropdown menus (Who We Serve / Products & Manufacturers)
+   ============================================================ */
 
 /* Dropdown parent */
 .nav__item {
@@ -2474,10 +2483,6 @@ ul { list-style: none; }
 
   .hero { min-height: 90vh; }
 
-  .nav__logo-img { height: 72px; }
-  .nav--compact .nav__logo-img { height: 64px; }
-  .nav--compact .nav__inner { height: 76px; }
-
   .hero__content {
     justify-content: center;
     align-items: flex-start;
@@ -2816,22 +2821,22 @@ ul { list-style: none; }
    MOBILE / TABLET MENU BAR — spacing
    - Hamburger bars sit on the same page gutter as the logo (the 44px
      tap target stays; its empty 10px margin is pulled outside the gutter).
-   - Phone: a 92px bar (84px once scrolled) with a 46px logo (was a 72px logo crammed into the same
-     bar), and the open menu's links line up with the logo's left edge.
+   - Phone: a 92px bar with a 46px logo (was a 72px logo crammed into the
+     same bar), and the open menu's links line up with the logo's left edge.
    ============================================================ */
 @media (max-width: 1200px) {
   .nav__hamburger { margin-right: -10px; }
 }
 
 @media (max-width: 768px) {
-  .nav__inner { height: 92px; }
-  .nav .nav__logo-img { height: 46px; }
-  .nav--compact .nav__inner { height: 84px; }
-  .nav--compact .nav__logo-img { height: 44px; }
+  .nav {
+    --nav-h: 92px;
+    --nav-logo-h: 46px;
+  }
 
   .nav__mobile {
     padding: 8px 0 20px;
-    max-height: calc(100vh - 92px);
+    max-height: calc(100vh - var(--nav-h));
     overflow-y: auto;
   }
   .nav__mobile a { padding-inline: 20px; }
@@ -2866,7 +2871,7 @@ span.nav__toplink { cursor: default; }
   line-height: normal;
   text-transform: uppercase;
   color: var(--black);
-  transition: color 0.2s;
+  transition: color var(--nav-fade);
 }
 .nav--hero .nav__links span.nav__toplink { color: var(--white); }
 .nav--hero.nav--scrolled .nav__links span.nav__toplink,
