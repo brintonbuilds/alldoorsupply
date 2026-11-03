@@ -9,7 +9,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,600&display=swap" rel="stylesheet" />
 
   <link rel="icon" href="images/ADS_Logo_primary.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/styles.css?v=20261030-hero1" />
@@ -130,11 +130,10 @@
     .process__col--up::after   { bottom: 50%; height: 80px; }
     .process__col--down::after { top: 50%; height: 80px; }
 
-    /* --- Hardware Inspiration (Figma 668:1365) — showcase.
-       Only one product's content is populated in the Figma source
-       (see build notes), so this is a single static showcase rather
-       than a multi-slide carousel — no arrows/dots to navigate to
-       content that doesn't exist. --------------------------------- */
+    /* --- Hardware Inspiration (Figma 1052:2357) — product showcase carousel
+       Section: 1440x1075, bg #D0D2D3 @ 20%. Header left @120px; the
+       showcase (door image + info) is centred; red arrows flank it and
+       6 pagination dots sit centred beneath. --------------------------- */
     .inspiration { background: rgba(208, 210, 211, 0.2); padding: 80px 0 101px; overflow: hidden; }
     .inspiration__inner { max-width: 1440px; margin-inline: auto; padding-inline: 120px; }
     .inspiration h2 {
@@ -143,64 +142,87 @@
     }
     .inspiration__sub { font-size: 15px; line-height: 24px; color: #676A6D; max-width: 700px; margin-bottom: 0; }
 
+    /* Carousel row: prev arrow · centred 880px slide · next arrow.
+       Slide (Figma 599:1816): 400x628 image | 60px gap | 420px info column. */
     .inspiration__carousel {
-      position: relative; max-width: 1071px; margin: 45px auto 0;
-      display: flex; align-items: center; justify-content: center; gap: 22px;
+      position: relative; max-width: 1092px; margin: 34px auto 0;
+      display: flex; align-items: center; justify-content: center; gap: 36px;
     }
-    .inspiration__stage { position: relative; flex: 0 1 995px; min-height: 600px; }
+    .inspiration__stage { position: relative; flex: 0 1 880px; min-height: 628px; }
     .inspiration__slide {
-      display: flex; align-items: center;
-      justify-content: center; gap: 88px; min-height: 600px;
+      position: absolute; inset: 0; display: flex; align-items: flex-start;
+      justify-content: center; gap: 60px;
+      opacity: 0; visibility: hidden; transition: opacity 0.45s ease;
     }
-    .inspiration__figure { flex: 0 0 176px; align-self: center; }
-    .inspiration__figure img { display: block; width: 176px; height: 573px; object-fit: contain; object-position: center; }
-    .inspiration__info { flex: 0 0 401px; max-width: 401px; }
-    .inspiration__logo { margin-bottom: 26px; display: flex; align-items: flex-end; min-height: 28px; }
-    .inspiration__logo img { max-height: 44px; max-width: 213px; width: auto; height: auto; display: block; }
+    .inspiration__slide.is-active { opacity: 1; visibility: visible; position: relative; min-height: 628px; }
+    .inspiration__figure { flex: 0 0 400px; height: 628px; }
+    .inspiration__figure img { display: block; width: 400px; height: 628px; object-fit: contain; object-position: center; }
+    .inspiration__info { flex: 0 1 420px; max-width: 420px; padding-top: 42px; }
+    .inspiration__logo { width: 203px; height: 102px; margin-bottom: 24px; border-radius: 4px; overflow: hidden; mix-blend-mode: multiply; }
+    .inspiration__logo img { display: block; width: 100%; height: 100%; object-fit: contain; }
     .inspiration__name {
       font-family: var(--font-head); font-size: 48px; font-weight: 700; color: var(--red);
-      line-height: 1; letter-spacing: 0; margin: 0 0 6px;
+      line-height: normal; letter-spacing: 0; margin: 0 0 8px;
     }
     .inspiration__tagline {
-      font-family: var(--font-head); font-size: 28px; font-weight: 500; color: #A6A6AB;
-      line-height: 1.1; letter-spacing: 0; margin: 0 0 26px; max-width: 360px;
+      font-family: var(--font-head); font-size: 28px; font-weight: 500; color: #A6A8AB;
+      line-height: 1.15; letter-spacing: 0; margin: 0 0 24px; max-width: 420px;
     }
-    .inspiration__features { list-style: none; margin: 0 0 32px; padding: 0; }
+    .inspiration__features { list-style: none; margin: 0 0 28px; padding: 0; display: flex; flex-direction: column; gap: 4px; }
     .inspiration__features li {
-      position: relative; padding-left: 20px;
-      font-family: var(--font-body); font-size: 15px; line-height: 24px; color: #000;
-    }
-    .inspiration__features li::before {
-      content: ''; position: absolute; left: 3px; top: 10px;
-      width: 4px; height: 4px; border-radius: 50%; background: #676A6D;
+      font-family: var(--font-body); font-size: 15px; line-height: normal; color: #000;
     }
     .inspiration__cta {
       display: inline-flex; align-items: center; justify-content: center;
-      padding: 12px 24px; border: 1.5px solid var(--red); background: transparent;
-      color: #000; font-family: var(--font-body); font-size: 13px; font-weight: 500;
-      text-transform: uppercase; letter-spacing: 0.3px; line-height: 1;
+      width: 164px; height: 42px; border: 1.5px solid var(--red); background: transparent;
+      color: #000; font-family: var(--font-body); font-size: 15px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0; line-height: normal;
       transition: background 0.2s, color 0.2s;
     }
     .inspiration__cta:hover, .inspiration__cta:focus-visible { background: var(--red); color: #fff; }
 
+    .inspiration__arrow {
+      flex: 0 0 auto; width: 16px; height: 40px; border: none; background: transparent;
+      padding: 0; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+    }
+    .inspiration__arrow svg { width: 16px; height: 20px; display: block; }
+    .inspiration__arrow--prev svg { transform: scaleX(-1); }
+    .inspiration__arrow:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
+
+    .inspiration__dots { display: flex; justify-content: center; gap: 12px; margin-top: 60px; }
+    .inspiration__dot {
+      width: 8px; height: 8px; border-radius: 50%; border: none; padding: 0;
+      background: rgba(103, 106, 109, 0.3); cursor: pointer; transition: background 0.2s;
+    }
+    .inspiration__dot.is-active { background: var(--red); }
+    .inspiration__dot:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .inspiration__slide { transition: none; }
+    }
+
+    /* Inspiration — responsive (laptop / tablet / mobile) */
     @media (max-width: 1180px) {
       .inspiration__carousel { max-width: 100%; padding-inline: 40px; column-gap: 18px; }
       .inspiration__stage { flex: 1 1 auto; }
+      .inspiration__slide { gap: 32px; }
+      .inspiration__figure { flex: 0 0 340px; }
+      .inspiration__figure img { width: 340px; }
     }
     @media (max-width: 900px) {
-      .inspiration__slide { gap: 64px; }
-      .inspiration__info { flex: 0 1 401px; }
+      .inspiration__stage { min-height: 0; }
+      .inspiration__slide, .inspiration__slide.is-active { flex-direction: column; align-items: center; gap: 24px; text-align: left; min-height: 0; }
+      .inspiration__figure { flex: 0 0 auto; height: auto; }
+      .inspiration__figure img { width: 100%; max-width: 320px; height: auto; max-height: 520px; aspect-ratio: 594 / 742; }
+      .inspiration__info { flex: 1 1 auto; width: 100%; max-width: 420px; padding-top: 0; }
     }
     @media (max-width: 760px) {
       .inspiration { padding: 56px 0 72px; }
       .inspiration__carousel { padding-inline: 24px; column-gap: 10px; margin-top: 36px; }
-      .inspiration__stage { min-height: 0; }
-      .inspiration__slide { flex-direction: column; align-items: center; gap: 30px; text-align: left; min-height: 0; }
-      .inspiration__figure img { width: 150px; height: 488px; }
-      .inspiration__info { flex: 1 1 auto; max-width: 420px; }
+      .inspiration__figure img { max-width: 280px; }
+      .inspiration__dots { margin-top: 32px; }
     }
     @media (max-width: 480px) {
-      .inspiration__figure img { width: 118px; height: 384px; }
       .inspiration__name { font-size: 40px; }
       .inspiration__tagline { font-size: 24px; }
       .inspiration__carousel { column-gap: 6px; padding-inline: 12px; }
@@ -521,29 +543,153 @@
         <p class="inspiration__sub">Browse spec sheets and technical drawings across our hardware range — from commercial locksets and closers to decorative residential finishes.</p>
       </div>
 
-      <div class="inspiration__carousel">
-        <div class="inspiration__stage">
-          <article class="inspiration__slide">
-            <div class="inspiration__figure"><img src="images/inspiration/daybar-delta-tr.png" width="176" height="573" alt="Daybar Delta TR temperature-rise-rated hollow metal door" loading="lazy" /></div>
+      <div class="inspiration__carousel" role="group" aria-roledescription="carousel" aria-label="Featured door products">
+        <button class="inspiration__arrow inspiration__arrow--prev" type="button" aria-label="Previous product" data-insp-prev>
+          <svg viewBox="0 0 16 20" aria-hidden="true"><path d="M2 2l12 8-12 8V2z" fill="#C52028"/></svg>
+        </button>
+
+        <div class="inspiration__stage" id="insp-stage" aria-live="polite">
+
+          <article class="inspiration__slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 6">
+            <div class="inspiration__figure"><img src="images/inspiration/hardware-1-accentra-4600ln.png" alt="Accentra ASSA ABLOY 4600LN Series" /></div>
             <div class="inspiration__info">
-              <div class="inspiration__logo"><img src="images/inspiration/logo-daybar.svg" alt="Daybar" /></div>
-              <h3 class="inspiration__name">Delta TR</h3>
-              <p class="inspiration__tagline">Enhanced fire protection for critical life safety requirements</p>
+              <div class="inspiration__logo"><img src="images/inspiration/logo-accentra-slide.png" alt="Accentra ASSA ABLOY" /></div>
+              <h3 class="inspiration__name">4600LN Series</h3>
+              <p class="inspiration__tagline">Grade 2 cylindrical locks for commercial applications</p>
               <ul class="inspiration__features">
-                <li>Premium fire protection</li>
-                <li>450&deg;F / 250&deg;C temperature rise</li>
-                <li>10-year warranty</li>
-                <li>Full size closer reinforcing</li>
-                <li>Temperature rise rated core</li>
-                <li>Beveled edges</li>
-                <li>7-Gauge hinge reinforcing</li>
-                <li>18-Gauge A60 galvanneal</li>
-                <li>Water-based primer finish</li>
+                <li>ANSI/BHMA A156.2 Series 4000, Grade 2 certified</li>
+                <li>UL listed for 3 hour fire doors</li>
+                <li>2-3/4" standard backset · 2-3/8" optional</li>
+                <li>Adjustable for doors 1-3/8" to 1-3/4" thick</li>
+                <li>Field reversible handing for easy installation</li>
+                <li>Through-bolted lever construction</li>
+                <li>Windstorm certified · ICC A117.1 compliant</li>
+                <li>ADA compliant for accessibility</li>
+                <li>3 year limited warranty</li>
               </ul>
-              <a class="inspiration__cta" href="manufacturers.html">View Product</a>
+              <a class="inspiration__cta" href="https://www.accentra-assaabloy.com/en/products/commercial-door-locks/cylindrical-locks/product-details.aehpdp-4600ln-series-aeh_assa_abloy_accentra_1184" target="_blank" rel="noopener">View Product</a>
             </div>
           </article>
+
+          <article class="inspiration__slide" role="group" aria-roledescription="slide" aria-label="2 of 6" hidden>
+            <div class="inspiration__figure"><img src="images/inspiration/hardware-2-canaropa-8500.png" alt="Canaropa 8500 Series" loading="lazy" /></div>
+            <div class="inspiration__info">
+              <div class="inspiration__logo"><img src="images/inspiration/logo-canaropa-slide.png" alt="Canaropa" loading="lazy" /></div>
+              <h3 class="inspiration__name">8500 Series</h3>
+              <p class="inspiration__tagline">Grade 2 panic and fire exit hardware</p>
+              <ul class="inspiration__features">
+                <li>ANSI/BHMA A156.3 Grade 2</li>
+                <li>cULus listed panic hardware</li>
+                <li>cULus listed 1½ hr fire exit hardware</li>
+                <li>For wood or hollow metal doors 30–48" wide</li>
+                <li>Rim and surface vertical rod models, non-handed</li>
+                <li>Field sizeable</li>
+                <li>Stainless steel latchbolt, 3/4" throw</li>
+                <li>Hex key dogging standard on non-fire models</li>
+                <li>Wide range of exterior trims and accessories</li>
+              </ul>
+              <a class="inspiration__cta" href="https://canaropa.com/product/8500-series-grade-2/" target="_blank" rel="noopener">View Product</a>
+            </div>
+          </article>
+
+          <article class="inspiration__slide" role="group" aria-roledescription="slide" aria-label="3 of 6" hidden>
+            <div class="inspiration__figure"><img src="images/inspiration/hardware-3-mckinney-mp79.png" alt="McKinney ASSA ABLOY MP79 / MPB79" loading="lazy" /></div>
+            <div class="inspiration__info">
+              <div class="inspiration__logo"><img src="images/inspiration/logo-mckinney-slide.png" alt="McKinney ASSA ABLOY" loading="lazy" /></div>
+              <h3 class="inspiration__name">MP79 / MPB79</h3>
+              <p class="inspiration__tagline">MacPRO five knuckle full mortise hinges</p>
+              <ul class="inspiration__features">
+                <li>Contractor grade MacPRO® series</li>
+                <li>Five knuckle full mortise, standard weight</li>
+                <li>Steel base material, .134 gauge</li>
+                <li>MP79 plain bearing · MPB79 ball bearing</li>
+                <li>Use MPB79 on doors with closing devices</li>
+                <li>Conforms to ANSI/BHMA A156.1 and A156.7</li>
+                <li>MPB79 approved for NFPA 80 fire-rated openings</li>
+                <li>Wood and machine screws included</li>
+                <li>Ideal for large quantity standard hinge orders</li>
+              </ul>
+              <a class="inspiration__cta" href="https://www.mckinneyhinge.com/en/products/full-mortise-door-butt-hinges/five-knuckle/product-detail.aehpdp-mp79-mpb79-ag_mckinney_77284" target="_blank" rel="noopener">View Product</a>
+            </div>
+          </article>
+
+          <article class="inspiration__slide" role="group" aria-roledescription="slide" aria-label="4 of 6" hidden>
+            <div class="inspiration__figure"><img src="images/inspiration/hardware-4-lawrence-lh816bcda.png" alt="Lawrence Hardware LH816BCDA" loading="lazy" /></div>
+            <div class="inspiration__info">
+              <div class="inspiration__logo"><img src="images/inspiration/logo-lawrence-slide.png" alt="Lawrence Hardware" loading="lazy" /></div>
+              <h3 class="inspiration__name">LH816BCDA</h3>
+              <p class="inspiration__tagline">Medium to heavy duty door closer</p>
+              <ul class="inspiration__features">
+                <li>Suitable for schools, hospitals and high traffic</li>
+                <li>Adjustable size 1–6</li>
+                <li>Tri-packed: regular, top jamb and parallel arm</li>
+                <li>3 valves regulate closing, latching and back check</li>
+                <li>Track arm, hold open and cush-n-stop available</li>
+                <li>BHMA ANSI A156.4 Grade 1 to 1,500,000 cycles</li>
+                <li>UL 10C and CAN/ULC-S133 listed</li>
+                <li>Approved for fire rated openings up to 3 hr</li>
+                <li>20 year warranty</li>
+              </ul>
+              <a class="inspiration__cta" href="https://lawrencehardware.com/product/lh816bcda/" target="_blank" rel="noopener">View Product</a>
+            </div>
+          </article>
+
+          <article class="inspiration__slide" role="group" aria-roledescription="slide" aria-label="5 of 6" hidden>
+            <div class="inspiration__figure"><img src="images/inspiration/hardware-5-kn-crowder-w13s.png" alt="KN Crowder W-13S" loading="lazy" /></div>
+            <div class="inspiration__info">
+              <div class="inspiration__logo"><img src="images/inspiration/logo-kn-crowder-slide.png" alt="KN Crowder" loading="lazy" /></div>
+              <h3 class="inspiration__name">W-13S</h3>
+              <p class="inspiration__tagline">Door sweep weatherstripping</p>
+              <ul class="inspiration__features">
+                <li>Maximum length 144" [3658 mm]</li>
+                <li>Solid neoprene seal</li>
+                <li>Standard finish: clear anodized</li>
+                <li>Optional: bronze anodized, black anodized</li>
+                <li>Special order finishes available</li>
+                <li>Listed for fire door assemblies to 1½ hours</li>
+                <li>Tested to CAN/ULC S104, NFPA 252, UL 10B</li>
+                <li>Tested by Intertek Testing Services</li>
+                <li>Manufactured in Canada since 1951</li>
+              </ul>
+              <a class="inspiration__cta" href="https://www.kncrowder.com/product/w-13s" target="_blank" rel="noopener">View Product</a>
+            </div>
+          </article>
+
+          <article class="inspiration__slide" role="group" aria-roledescription="slide" aria-label="6 of 6" hidden>
+            <div class="inspiration__figure"><img src="images/inspiration/hardware-6-kn-crowder-type-cc.png" alt="KN Crowder Type CC" loading="lazy" /></div>
+            <div class="inspiration__info">
+              <div class="inspiration__logo"><img src="images/inspiration/logo-kn-crowder-slide.png" alt="KN Crowder" loading="lazy" /></div>
+              <h3 class="inspiration__name">Type CC</h3>
+              <p class="inspiration__tagline">Catch 'N' Close pocket door system</p>
+              <ul class="inspiration__features">
+                <li>Complete pocket door kit, up to 150 lbs [68 kg]</li>
+                <li>Catch 'N' Close gas spring closing system</li>
+                <li>Nylon wheels with precision ball bearings</li>
+                <li>CC-493 Easy Connect top mount hangers</li>
+                <li>Install door before or after drywall</li>
+                <li>Roll-formed steel uprights for less deflection</li>
+                <li>For 2x4 wood or 3-5/8" metal stud walls</li>
+                <li>Single or bi-parting door applications</li>
+                <li>Barrier-free / ADA compliant</li>
+              </ul>
+              <a class="inspiration__cta" href="https://www.kncrowder.com/product/type-cc-series" target="_blank" rel="noopener">View Product</a>
+            </div>
+          </article>
+
         </div>
+
+        <button class="inspiration__arrow inspiration__arrow--next" type="button" aria-label="Next product" data-insp-next>
+          <svg viewBox="0 0 16 20" aria-hidden="true"><path d="M2 2l12 8-12 8V2z" fill="#C52028"/></svg>
+        </button>
+      </div>
+
+      <div class="inspiration__dots" id="insp-dots" role="tablist" aria-label="Choose product">
+        <button class="inspiration__dot is-active" type="button" role="tab" aria-selected="true" aria-label="Accentra ASSA ABLOY 4600LN Series"></button>
+        <button class="inspiration__dot" type="button" role="tab" aria-selected="false" aria-label="Canaropa 8500 Series"></button>
+        <button class="inspiration__dot" type="button" role="tab" aria-selected="false" aria-label="McKinney ASSA ABLOY MP79 / MPB79"></button>
+        <button class="inspiration__dot" type="button" role="tab" aria-selected="false" aria-label="Lawrence Hardware LH816BCDA"></button>
+        <button class="inspiration__dot" type="button" role="tab" aria-selected="false" aria-label="KN Crowder W-13S"></button>
+        <button class="inspiration__dot" type="button" role="tab" aria-selected="false" aria-label="KN Crowder Type CC"></button>
       </div>
     </section>
 
@@ -704,5 +850,47 @@
   </footer>
 
   <script src="js/main.js?v=20261030-nav4"></script>
+  <script>
+    /* Door Inspiration — product showcase carousel */
+    (function () {
+      var stage = document.getElementById('insp-stage');
+      var dotsWrap = document.getElementById('insp-dots');
+      if (!stage || !dotsWrap) return;
+      var slides = Array.prototype.slice.call(stage.querySelectorAll('.inspiration__slide'));
+      var dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('.inspiration__dot'));
+      var prev = document.querySelector('[data-insp-prev]');
+      var next = document.querySelector('[data-insp-next]');
+      var current = 0;
+
+      function show(i) {
+        current = (i + slides.length) % slides.length;
+        slides.forEach(function (s, n) {
+          var on = n === current;
+          s.classList.toggle('is-active', on);
+          if (on) { s.removeAttribute('hidden'); } else { s.setAttribute('hidden', ''); }
+        });
+        dots.forEach(function (d, n) {
+          var on = n === current;
+          d.classList.toggle('is-active', on);
+          d.setAttribute('aria-selected', on ? 'true' : 'false');
+          d.setAttribute('tabindex', on ? '0' : '-1');
+        });
+      }
+
+      dots.forEach(function (d, n) { d.addEventListener('click', function () { show(n); }); });
+      if (prev) prev.addEventListener('click', function () { show(current - 1); });
+      if (next) next.addEventListener('click', function () { show(current + 1); });
+
+      /* Keyboard: arrow keys move between products when a control is focused. */
+      dotsWrap.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); show(current - 1); dots[current].focus(); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); show(current + 1); dots[current].focus(); }
+        else if (e.key === 'Home') { e.preventDefault(); show(0); dots[current].focus(); }
+        else if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); dots[current].focus(); }
+      });
+
+      show(0);
+    })();
+  </script>
 </body>
 </html>
