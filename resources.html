@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources — All Door Supply</title>
+  <meta name="description" content="Download All Door Supply's fillable hollow metal frame, borrowed lite, door order and wood door machining forms, then send them to our estimating team for a quote." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,600&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="images/ADS_Logo_primary.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/styles.css?v=20261030-hero1" />
+
+  <style>
+    /* ============================================================
+       RESOURCES — built from the client's content package
+       (alldoor-resources-page), rebuilt on the site's shared nav,
+       hero band, type scale and footer. No Figma frame yet.
+
+         Hero ............... shared .hero-band, elevation drawing
+         Intro .............. "Forms & Shop Drawings."
+         Downloads .......... 5 fillable PDF cards
+         CTA band ........... shared .cta-banner (help + quote)
+
+       Phase two: the online Frame Builder (frame-builder.html +
+       send-drawing.php) is deliberately left out of this build.
+       ============================================================ */
+
+    .res-inner { max-width: 1280px; margin-inline: auto; padding-inline: 40px; }
+
+    /* --- Hero ---------------------------------------------------- */
+    /* The source image is a black-on-white shop drawing; inverting it
+       turns it into faint light linework on the dark band. */
+    .hero-band--resources .hero-band__image img {
+      filter: invert(1); opacity: 0.22; object-position: center 35%;
+    }
+    .hero-band--resources h1 { font-size: 78px; line-height: 86px; }
+    @media (max-width: 1024px) { .hero-band--resources h1 { font-size: 60px; line-height: 1.04; } }
+    @media (max-width: 768px)  { .hero-band--resources h1 { font-size: 44px; line-height: 1.05; } }
+    @media (max-width: 480px)  { .hero-band--resources h1 { font-size: 38px; } }
+
+    /* --- Intro --------------------------------------------------- */
+    .res-intro { background: #fff; padding-block: 120px 0; }
+    .res-intro h2 {
+      font-family: var(--font-head); font-size: 48px; font-weight: 700;
+      color: var(--red); line-height: 1.02; letter-spacing: 0;
+      max-width: 679px; margin-bottom: 24px;
+    }
+    .res-intro p { font-size: 15px; line-height: 24px; color: #000; max-width: 679px; }
+
+    /* --- Downloads ----------------------------------------------- */
+    .res-downloads { background: #fff; padding-block: 84px 120px; }
+    .res-eyebrow {
+      display: block; font-family: var(--font-body); font-size: 11px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 1.65px; color: var(--red);
+      margin-bottom: 12px;
+    }
+    .res-downloads h2 {
+      font-family: var(--font-head); font-size: 40px; font-weight: 700;
+      color: #231F20; line-height: 1.1; letter-spacing: 0; margin-bottom: 12px;
+    }
+    .res-downloads__sub {
+      font-size: 15px; line-height: 24px; color: #737578; max-width: 679px; margin-bottom: 40px;
+    }
+
+    .res-grid {
+      display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px;
+    }
+    .res-card {
+      display: flex; flex-direction: column; background: #fff;
+      border: 1px solid #D0D2D3; overflow: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .res-card:hover { border-color: #A6A8AB; box-shadow: 0 10px 24px rgba(35, 31, 32, 0.08); }
+    .res-card__thumb {
+      display: flex; justify-content: center; background: #F4F4F4;
+      padding: 24px 24px 0; border-bottom: 1px solid #D0D2D3;
+    }
+    .res-card__thumb img {
+      display: block; width: 100%; max-width: 180px; height: auto; aspect-ratio: 674 / 872;
+      border: 1px solid #D0D2D3; box-shadow: 0 6px 16px rgba(35, 31, 32, 0.14);
+    }
+    .res-card__body { display: flex; flex-direction: column; flex-grow: 1; padding: 20px 20px 24px; }
+    .res-card__tag {
+      align-self: flex-start; background: var(--red); color: #fff;
+      font-family: var(--font-body); font-size: 10px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 1px; line-height: normal;
+      padding: 4px 8px; margin-bottom: 12px;
+    }
+    .res-card h3 {
+      font-family: var(--font-head); font-size: 24px; font-weight: 700;
+      color: #231F20; line-height: 1.1; letter-spacing: 0; margin-bottom: 8px;
+    }
+    .res-card__meta {
+      font-family: var(--font-body); font-size: 10px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 1.2px; color: #737578; margin-bottom: 12px;
+    }
+    .res-card__desc { font-size: 14px; line-height: 22px; color: #231F20; flex-grow: 1; margin-bottom: 20px; }
+    .res-card__btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      align-self: flex-start; height: 38px; padding-inline: 16px;
+      border: 1.5px solid var(--red); color: #000; background: transparent;
+      font-family: var(--font-body); font-size: 13px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0; line-height: normal;
+      transition: background 0.2s, color 0.2s;
+    }
+    .res-card__btn svg { width: 14px; height: 14px; flex: none; }
+    .res-card__btn:hover, .res-card__btn:focus-visible { background: var(--red); color: #fff; }
+
+    .res-note { font-size: 13px; line-height: 20px; color: #737578; margin-top: 28px; }
+    .res-note a { color: var(--red); text-decoration: underline; text-underline-offset: 2px; }
+
+    /* --- CTA band: phone numbers sit inline in the copy ---------- */
+    .res-cta p a { color: #fff; font-weight: 500; text-decoration: underline; text-underline-offset: 2px; }
+
+    /* --- Responsive ---------------------------------------------- */
+    @media (max-width: 1180px) {
+      .res-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 1024px) {
+      .res-intro { padding-top: 88px; }
+      .res-downloads { padding-block: 64px 88px; }
+    }
+    @media (max-width: 768px) {
+      .res-inner { padding-inline: 20px; }
+      .res-intro { padding-top: 56px; }
+      .res-intro h2 { font-size: 36px; }
+      .res-downloads { padding-block: 48px 64px; }
+      .res-downloads h2 { font-size: 30px; }
+      .res-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    }
+    @media (max-width: 520px) {
+      .res-grid { grid-template-columns: 1fr; }
+      .res-card__thumb img { max-width: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <header class="nav nav--hero" id="nav" role="banner">
+    <div class="container">
+      <div class="nav__inner">
+
+        <a href="index.html" class="nav__logo" aria-label="All Door Supply — Home">
+          <img src="images/ADS_Logo_primary.svg" alt="All Door Supply" class="nav__logo-img" />
+        </a>
+
+        <nav class="nav__links" aria-label="Main navigation">
+          <div class="nav__item">
+            <a href="services.html" class="nav__toplink" aria-haspopup="true"><span class="nav__label">Services</span>
+              <svg class="nav__caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <div class="nav__dropdown" role="menu">
+              <a href="contractors.html" role="menuitem">Contractors</a>
+              <a href="design-professionals.html" role="menuitem">Design Professionals</a>
+              <a href="residential-homeowners.html" role="menuitem">Residential Homeowners</a>
+            </div>
+          </div>
+
+          <div class="nav__item">
+            <a href="manufacturers.html" class="nav__toplink" aria-haspopup="true"><span class="nav__label">Manufacturers</span>
+              <svg class="nav__caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <div class="nav__dropdown" role="menu">
+              <a href="doors.html" role="menuitem">Doors</a>
+              <a href="door-automation.html" role="menuitem">Door Automation</a>
+              <a href="hardware.html" role="menuitem">Hardware</a>
+              <a href="division-10.html" role="menuitem">Division 10</a>
+            </div>
+          </div>
+
+          <div class="nav__item">
+            <span class="nav__toplink" role="button" tabindex="0" aria-haspopup="true"><span class="nav__label">Project Experience</span>
+              <svg class="nav__caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="nav__dropdown" role="menu">
+              <a href="why-choose-us.html" role="menuitem">Why Choose Us</a>
+              <a href="recent-projects.html" role="menuitem">Recent Projects</a>
+            </div>
+          </div>
+          <a href="resources.html" aria-current="page">Resources</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="contact.html" class="btn-nav" aria-label="Request a quote">Request a Quote</a>
+        </nav>
+
+        <button
+          class="nav__hamburger"
+          id="hamburger"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="nav__mobile" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="services.html">Services</a>
+      <a href="contractors.html" class="nav__mobile-sub">Contractors</a>
+      <a href="design-professionals.html" class="nav__mobile-sub">Design Professionals</a>
+      <a href="residential-homeowners.html" class="nav__mobile-sub">Residential Homeowners</a>
+      <a href="manufacturers.html">Manufacturers</a>
+      <a href="doors.html" class="nav__mobile-sub">Doors</a>
+      <a href="door-automation.html" class="nav__mobile-sub">Door Automation</a>
+      <a href="hardware.html" class="nav__mobile-sub">Hardware</a>
+      <a href="division-10.html" class="nav__mobile-sub">Division 10</a>
+      <span class="nav__mobile-label">Project Experience</span>
+      <a href="why-choose-us.html" class="nav__mobile-sub">Why Choose Us</a>
+      <a href="recent-projects.html" class="nav__mobile-sub">Recent Projects</a>
+      <a href="resources.html" aria-current="page">Resources</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="btn-nav">Request a Quote</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero-band hero-band--resources" aria-label="Resources">
+      <div class="hero-band__image">
+        <img src="images/resources/elev_draw.jpg" alt="" loading="eager" />
+      </div>
+      <div class="hero-band__overlay" aria-hidden="true"></div>
+      <div class="hero-band__content">
+        <h1>Resources for Every Opening.</h1>
+        <p class="hero-band__sub">Order forms and machining sheets for hollow metal frames, doors and wood door machining. Download what you need, fill it in, and send it to our estimating team for a quote.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         INTRO
+         ============================================================ -->
+    <section class="res-intro" aria-label="Resources overview">
+      <div class="res-inner">
+        <h2>Forms &amp; Shop Drawings.</h2>
+        <p>Every opening starts with the right information. Use the forms below to spec hollow metal frames and screens, borrowed lites, hollow metal doors and wood door machining. Our team checks every sheet before anything goes to fabrication.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         DOWNLOADS — fillable PDFs (served as-is from /downloads so the
+         form fields and self-drawing elevations keep working)
+         ============================================================ -->
+    <section class="res-downloads" aria-labelledby="dl-title">
+      <div class="res-inner">
+        <span class="res-eyebrow">Order Forms &amp; Sheets</span>
+        <h2 id="dl-title">Download, Fill In, Send Back.</h2>
+        <p class="res-downloads__sub">All forms are fillable PDFs. Open them in the free Adobe Acrobat Reader so the fields and auto-fill work, then email the completed form to your All Door Supply representative.</p>
+
+        <div class="res-grid">
+
+          <article class="res-card">
+            <div class="res-card__thumb">
+              <img src="images/resources/elev.jpg" width="674" height="872" alt="First page of the HM Frames &amp; Screens Elevation form" loading="lazy" />
+            </div>
+            <div class="res-card__body">
+              <span class="res-card__tag">New · Draws Itself</span>
+              <h3>HM Frames &amp; Screens Elevation</h3>
+              <p class="res-card__meta">PDF · Fillable · 3 Pages · 626 KB</p>
+              <p class="res-card__desc">3-sided door frames and screens: fill in door size, handing, transom, sidelites, anchors and glazing, and the elevation and glass schedule draw themselves.</p>
+              <a class="res-card__btn" href="downloads/Alldoor_HM_Frame_Elevation.pdf" download>Download PDF
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m0 0l-3.5-3.5M8 10l3.5-3.5M3 13.5h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="res-card">
+            <div class="res-card__thumb">
+              <img src="images/resources/borrowed-lite.jpg" width="674" height="872" alt="First page of the HM Borrowed Lite / Window Elevation form" loading="lazy" />
+            </div>
+            <div class="res-card__body">
+              <span class="res-card__tag">New · Draws Itself</span>
+              <h3>HM Borrowed Lite / Window Elevation</h3>
+              <p class="res-card__meta">PDF · Fillable · 3 Pages · 597 KB</p>
+              <p class="res-card__desc">4-sided borrowed lite windows: enter the size, sill height, base, rails (2" or 8" each) and vertical mullions, and the elevation and glass schedule draw themselves.</p>
+              <a class="res-card__btn" href="downloads/Alldoor_HM_Borrowed_Lite_Window_Elevation.pdf" download>Download PDF
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m0 0l-3.5-3.5M8 10l3.5-3.5M3 13.5h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="res-card">
+            <div class="res-card__thumb">
+              <img src="images/resources/frame.jpg" width="674" height="872" alt="First page of the Hollow Metal Frame Order form" loading="lazy" />
+            </div>
+            <div class="res-card__body">
+              <h3>Hollow Metal Frame Order</h3>
+              <p class="res-card__meta">PDF · Fillable · 2 Pages · 262 KB</p>
+              <p class="res-card__desc">Frame specification, anchors, hardware preparation and locations. Complete one sheet per frame type.</p>
+              <a class="res-card__btn" href="downloads/Alldoor_HM_Frame_Order_Form.pdf" download>Download PDF
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m0 0l-3.5-3.5M8 10l3.5-3.5M3 13.5h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="res-card">
+            <div class="res-card__thumb">
+              <img src="images/resources/door.jpg" width="674" height="872" alt="First page of the Hollow Metal Door Order form" loading="lazy" />
+            </div>
+            <div class="res-card__body">
+              <h3>Hollow Metal Door Order</h3>
+              <p class="res-card__meta">PDF · Fillable · 2 Pages · 186 KB</p>
+              <p class="res-card__desc">Door specification, core, edge seam, fire rating, hardware preparation and locations. Complete one sheet per door type.</p>
+              <a class="res-card__btn" href="downloads/Alldoor_HM_Door_Order_Form.pdf" download>Download PDF
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m0 0l-3.5-3.5M8 10l3.5-3.5M3 13.5h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="res-card">
+            <div class="res-card__thumb">
+              <img src="images/resources/wood.jpg" width="674" height="872" alt="First page of the Wood Door Machining Sheet" loading="lazy" />
+            </div>
+            <div class="res-card__body">
+              <h3>Wood Door Machining Sheet</h3>
+              <p class="res-card__meta">PDF · Fillable · 1 Page · 156 KB</p>
+              <p class="res-card__desc">Hinge, viewer, deadbolt and lever locations plus edge and latch prep for wood door machining.</p>
+              <a class="res-card__btn" href="downloads/Alldoor_Wood_Door_Machining_Sheet.pdf" download>Download PDF
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m0 0l-3.5-3.5M8 10l3.5-3.5M3 13.5h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="res-note">Don't have Acrobat Reader? <a href="https://get.adobe.com/reader/" target="_blank" rel="noopener">Download it free from Adobe</a>.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CTA — "Not sure which form you need?"
+         ============================================================ -->
+    <section class="cta-banner res-cta" aria-label="Help choosing a form">
+      <div class="container">
+        <p class="cta-banner__eyebrow">Need a Hand?</p>
+        <h2>Not Sure Which Form You Need?</h2>
+        <p>Call us at <a href="tel:19053351638">1.905.335.1638</a> or toll free <a href="tel:18667693667">1.866.769.3667</a>. We'll point you to the right sheet or take the details over the phone.</p>
+        <a href="contact.html" class="btn-outline-white">Request a Quote</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__logo">
+          <img src="images/ADS_Logo_primary.svg" alt="All Door Supply" class="footer__logo-img" />
+        </div>
+        <div class="footer__col">
+          <h4>Contact Us</h4>
+          <address>
+            <p>Toll Free: 1.866.769.3667</p>
+            <p>Phone: 1-905.335.1638</p>
+            <p>Fax: 1.905.335.6822</p>
+            <p>Email: <a href="mailto:info@alldoorsupply.com">info@alldoorsupply.com</a></p>
+            <p>Location: 559 King Forest Court,<br>Burlington, Ontario L7P 5C1</p>
+          </address>
+        </div>
+        <div class="footer__col">
+          <h4>Navigate</h4>
+          <nav aria-label="Footer navigation">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="manufacturers.html">Manufacturers</a>
+            <a href="why-choose-us.html">Why Choose Us</a><a href="recent-projects.html">Recent Projects</a>
+            <a href="resources.html">Resources</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="contact.html">Request a Quote</a>
+          </nav>
+        </div>
+        <div class="footer__col">
+          <h4>Hours</h4>
+          <p>Showroom &amp; Warehouse</p>
+          <p>Mon – Fri: 7:30am – 4:30pm</p>
+          <br/>
+          <p class="hours-highlight">24 Hour Service for<br>Established Customers</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <p>© 2026 All Door Supply. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=20261030-nav4"></script>
+</body>
+</html>
