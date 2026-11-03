@@ -9,7 +9,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,600&display=swap" rel="stylesheet" />
 
   <link rel="icon" href="images/ADS_Logo_primary.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/styles.css?v=20261030-hero1" />
@@ -129,7 +129,7 @@
     /* --- Door Inspiration (Figma 476:1115) — product showcase carousel
        Section: 1440x1075, bg #D0D2D3 @ 20%. Header left @120px; the
        showcase (door image + info) is centred; red arrows flank it and
-       5 pagination dots sit centred beneath. --------------------------- */
+       7 pagination dots sit centred beneath. --------------------------- */
     .inspiration { background: rgba(208, 210, 211, 0.2); padding: 80px 0 101px; overflow: hidden; }
     .inspiration__inner { max-width: 1440px; margin-inline: auto; padding-inline: 120px; }
     .inspiration h2 {
@@ -138,45 +138,41 @@
     }
     .inspiration__sub { font-size: 15px; line-height: 24px; color: #676A6D; max-width: 700px; margin-bottom: 0; }
 
-    /* Carousel row: prev arrow · centred stage · next arrow (≈1071px span). */
+    /* Carousel row: prev arrow · centred 880px slide · next arrow.
+       Slide (Figma 599:1816): 400x628 image | 60px gap | 420px info column. */
     .inspiration__carousel {
-      position: relative; max-width: 1071px; margin: 45px auto 0;
-      display: flex; align-items: center; justify-content: center; gap: 22px;
+      position: relative; max-width: 1092px; margin: 34px auto 0;
+      display: flex; align-items: center; justify-content: center; gap: 36px;
     }
-    .inspiration__stage { position: relative; flex: 0 1 995px; min-height: 600px; }
+    .inspiration__stage { position: relative; flex: 0 1 880px; min-height: 628px; }
     .inspiration__slide {
-      position: absolute; inset: 0; display: flex; align-items: center;
-      justify-content: center; gap: 88px;
+      position: absolute; inset: 0; display: flex; align-items: flex-start;
+      justify-content: center; gap: 60px;
       opacity: 0; visibility: hidden; transition: opacity 0.45s ease;
     }
-    .inspiration__slide.is-active { opacity: 1; visibility: visible; position: relative; min-height: 600px; }
-    .inspiration__figure { flex: 0 0 176px; align-self: center; }
-    .inspiration__figure img { display: block; width: 176px; height: 573px; object-fit: contain; object-position: center; }
-    .inspiration__info { flex: 0 0 401px; max-width: 401px; }
-    .inspiration__logo { margin-bottom: 26px; display: flex; align-items: flex-end; min-height: 28px; }
-    .inspiration__logo img { max-height: 44px; max-width: 213px; width: auto; height: auto; display: block; }
+    .inspiration__slide.is-active { opacity: 1; visibility: visible; position: relative; min-height: 628px; }
+    .inspiration__figure { flex: 0 0 400px; height: 628px; }
+    .inspiration__figure img { display: block; width: 400px; height: 628px; object-fit: contain; object-position: center; }
+    .inspiration__info { flex: 0 1 420px; max-width: 420px; padding-top: 42px; }
+    .inspiration__logo { width: 203px; height: 102px; margin-bottom: 24px; border-radius: 4px; overflow: hidden; mix-blend-mode: multiply; }
+    .inspiration__logo img { display: block; width: 100%; height: 100%; object-fit: contain; }
     .inspiration__name {
       font-family: var(--font-head); font-size: 48px; font-weight: 700; color: var(--red);
-      line-height: 1; letter-spacing: 0; margin: 0 0 6px;
+      line-height: normal; letter-spacing: 0; margin: 0 0 8px;
     }
     .inspiration__tagline {
-      font-family: var(--font-head); font-size: 28px; font-weight: 500; color: #A6A6AB;
-      line-height: 1.1; letter-spacing: 0; margin: 0 0 26px; max-width: 360px;
+      font-family: var(--font-head); font-size: 28px; font-weight: 500; color: #A6A8AB;
+      line-height: 1.15; letter-spacing: 0; margin: 0 0 24px; max-width: 420px;
     }
-    .inspiration__features { list-style: none; margin: 0 0 32px; padding: 0; }
+    .inspiration__features { list-style: none; margin: 0 0 28px; padding: 0; display: flex; flex-direction: column; gap: 4px; }
     .inspiration__features li {
-      position: relative; padding-left: 20px;
-      font-family: var(--font-body); font-size: 15px; line-height: 24px; color: #000;
-    }
-    .inspiration__features li::before {
-      content: ''; position: absolute; left: 3px; top: 10px;
-      width: 4px; height: 4px; border-radius: 50%; background: #676A6D;
+      font-family: var(--font-body); font-size: 15px; line-height: normal; color: #000;
     }
     .inspiration__cta {
       display: inline-flex; align-items: center; justify-content: center;
-      padding: 12px 24px; border: 1.5px solid var(--red); background: transparent;
-      color: #000; font-family: var(--font-body); font-size: 13px; font-weight: 500;
-      text-transform: uppercase; letter-spacing: 0.3px; line-height: 1;
+      width: 164px; height: 42px; border: 1.5px solid var(--red); background: transparent;
+      color: #000; font-family: var(--font-body); font-size: 15px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0; line-height: normal;
       transition: background 0.2s, color 0.2s;
     }
     .inspiration__cta:hover, .inspiration__cta:focus-visible { background: var(--red); color: #fff; }
@@ -205,22 +201,24 @@
     @media (max-width: 1180px) {
       .inspiration__carousel { max-width: 100%; padding-inline: 40px; column-gap: 18px; }
       .inspiration__stage { flex: 1 1 auto; }
+      .inspiration__slide { gap: 32px; }
+      .inspiration__figure { flex: 0 0 340px; }
+      .inspiration__figure img { width: 340px; }
     }
     @media (max-width: 900px) {
-      .inspiration__slide { gap: 64px; }
-      .inspiration__info { flex: 0 1 401px; }
+      .inspiration__stage { min-height: 0; }
+      .inspiration__slide, .inspiration__slide.is-active { flex-direction: column; align-items: center; gap: 24px; text-align: left; min-height: 0; }
+      .inspiration__figure { flex: 0 0 auto; height: auto; }
+      .inspiration__figure img { width: 100%; max-width: 320px; height: auto; max-height: 520px; aspect-ratio: 594 / 742; }
+      .inspiration__info { flex: 1 1 auto; width: 100%; max-width: 420px; padding-top: 0; }
     }
     @media (max-width: 760px) {
       .inspiration { padding: 56px 0 72px; }
       .inspiration__carousel { padding-inline: 24px; column-gap: 10px; margin-top: 36px; }
-      .inspiration__stage { min-height: 0; }
-      .inspiration__slide, .inspiration__slide.is-active { flex-direction: column; align-items: center; gap: 30px; text-align: left; min-height: 0; }
-      .inspiration__figure img { width: 150px; height: 488px; }
-      .inspiration__info { flex: 1 1 auto; max-width: 420px; }
+      .inspiration__figure img { max-width: 280px; }
       .inspiration__dots { margin-top: 32px; }
     }
     @media (max-width: 480px) {
-      .inspiration__figure img { width: 118px; height: 384px; }
       .inspiration__name { font-size: 40px; }
       .inspiration__tagline { font-size: 24px; }
       .inspiration__carousel { column-gap: 6px; padding-inline: 12px; }
@@ -513,95 +511,146 @@
 
         <div class="inspiration__stage" id="insp-stage" aria-live="polite">
 
-          <article class="inspiration__slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 5">
-            <div class="inspiration__figure"><img src="images/inspiration/daybar-delta-tr.png" width="176" height="573" alt="Daybar Delta TR temperature-rise-rated hollow metal door" loading="lazy" /></div>
+          <article class="inspiration__slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 7">
+            <div class="inspiration__figure"><img src="images/inspiration/product-1-daybar-delta.png" width="594" height="742" alt="Daybar Delta" /></div>
             <div class="inspiration__info">
-              <div class="inspiration__logo"><img src="images/inspiration/logo-daybar.svg" alt="Daybar" /></div>
-              <h3 class="inspiration__name">Delta TR</h3>
-              <p class="inspiration__tagline">Enhanced fire protection for critical life safety requirements</p>
+              <div class="inspiration__logo"><img src="images/inspiration/logo-daybar-slide.png" alt="Daybar" /></div>
+              <h3 class="inspiration__name">Delta</h3>
+              <p class="inspiration__tagline">Premium non-insulated<br>commercial steel doors</p>
               <ul class="inspiration__features">
-                <li>Premium fire protection</li>
-                <li>450&deg;F / 250&deg;C temperature rise</li>
-                <li>10-year warranty</li>
-                <li>Full size closer reinforcing</li>
-                <li>Temperature rise rated core</li>
-                <li>Beveled edges</li>
-                <li>7-Gauge hinge reinforcing</li>
-                <li>18-Gauge A60 galvanneal</li>
-                <li>Water-based primer finish</li>
+            <li>Rust-inhibiting galvanneal steel</li>
+            <li>Tested to 1,000,000 cycles (Level A)</li>
+            <li>10-year warranty</li>
+            <li>Fire-rated up to 3 hours — singles and pairs</li>
+            <li>Hurricane rated up to +/- 90psf</li>
+            <li>Full size closer reinforcing</li>
+            <li>Fully bonded 3/4" HexCor core</li>
+            <li>7-Gauge hinge reinforcing</li>
+            <li>18-Gauge A60 galvanneal</li>
               </ul>
-              <a class="inspiration__cta" href="manufacturers.html">View Product</a>
+              <a class="inspiration__cta" href="https://cdn.prod.website-files.com/629e5535c7f1524ac61a80fe/630e92c2bef73253aadd462f_Daybar%20-%20Sell%20Sheet%20-%20Delta.pdf" target="_blank" rel="noopener">View Product</a>
             </div>
           </article>
 
-          <article class="inspiration__slide" role="group" aria-roledescription="slide" aria-label="2 of 5" hidden>
-            <div class="inspiration__figure"><img src="images/inspiration/daybar-delta-tr.png" alt="Fleming hollow metal steel door" loading="lazy" /></div>
+          <article class="inspiration__slide" role="group" aria-roledescription="slide" aria-label="2 of 7" hidden>
+            <div class="inspiration__figure"><img src="images/inspiration/product-2-daybar-delta-r7.png" width="594" height="742" alt="Daybar Delta R7" loading="lazy" /></div>
             <div class="inspiration__info">
-              <div class="inspiration__logo"><img src="images/logos/logo-baron-fleming.svg" alt="Fleming Door Products" /></div>
-              <h3 class="inspiration__name">Hollow Metal Doors</h3>
-              <p class="inspiration__tagline">ASSA ABLOY engineering for commercial and institutional openings</p>
+              <div class="inspiration__logo"><img src="images/inspiration/logo-daybar-slide.png" alt="Daybar" loading="lazy" /></div>
+              <h3 class="inspiration__name">Delta R7</h3>
+              <p class="inspiration__tagline">Premium insulated steel doors<br>for thermal performance</p>
               <ul class="inspiration__features">
-                <li>Part of the ASSA ABLOY Group</li>
-                <li>Recognized leader in hollow metal</li>
-                <li>Broad, standardized product range</li>
-                <li>Engineering precision</li>
-                <li>Global security-solutions backing</li>
-                <li>Commercial &amp; institutional rated</li>
+            <li>R Value = 7.14 · U Value = 0.14</li>
+            <li>Rust-inhibiting galvanneal steel</li>
+            <li>Tested to 1,000,000 cycles (Level A)</li>
+            <li>10-year warranty</li>
+            <li>Fire-rated up to 3 hours — singles and pairs</li>
+            <li>Hurricane rated up to +/- 75psf</li>
+            <li>Fully bonded rigid polystyrene core</li>
+            <li>7-Gauge hinge reinforcing</li>
+            <li>18-Gauge A60 galvanneal</li>
               </ul>
-              <a class="inspiration__cta" href="manufacturers.html">View Product</a>
+              <a class="inspiration__cta" href="https://cdn.prod.website-files.com/629e5535c7f1524ac61a80fe/62fd5fa66eed32d17fc9629d_Daybar%20-%20Sales%20Sheets%20-%20Delta%20R7%20-%20V7.pdf" target="_blank" rel="noopener">View Product</a>
             </div>
           </article>
 
-          <article class="inspiration__slide" role="group" aria-roledescription="slide" aria-label="3 of 5" hidden>
-            <div class="inspiration__figure"><img src="images/inspiration/daybar-delta-tr.png" alt="Artek Door steel door and frame" loading="lazy" /></div>
+          <article class="inspiration__slide" role="group" aria-roledescription="slide" aria-label="3 of 7" hidden>
+            <div class="inspiration__figure"><img src="images/inspiration/product-3-daybar-as-frames.png" width="594" height="742" alt="Daybar AS Frames" loading="lazy" /></div>
             <div class="inspiration__info">
-              <div class="inspiration__logo"><img src="images/logos/logo-artek@2x.png" alt="Artek Door" /></div>
-              <h3 class="inspiration__name">Steel Doors &amp; Frames</h3>
-              <p class="inspiration__tagline">Fire-rated and non-rated assemblies built for demanding projects</p>
+              <div class="inspiration__logo"><img src="images/inspiration/logo-daybar-slide.png" alt="Daybar" loading="lazy" /></div>
+              <h3 class="inspiration__name">AS Frames</h3>
+              <p class="inspiration__tagline">Premium steel door frames for<br>one-piece or welded applications</p>
               <ul class="inspiration__features">
-                <li>Canadian-owned, 30+ years</li>
-                <li>Fire-rated &amp; non-rated steel</li>
-                <li>Commercial, industrial &amp; institutional</li>
-                <li>High-rise applications</li>
-                <li>Precision manufacturing</li>
-                <li>Reliable service across Canada &amp; the US</li>
+            <li>Rust-inhibiting galvanneal steel</li>
+            <li>Tested to 1,000,000 cycles (Level A)</li>
+            <li>For interior and exterior use</li>
+            <li>Die-mitered multi-tab corner assembly</li>
+            <li>7-Gauge hinge reinforcing</li>
+            <li>Water-based primer finish</li>
+            <li>16-Gauge A60 galvanneal</li>
+            <li>Fire-rated, hurricane and STC rated</li>
+            <li>Power ready</li>
               </ul>
-              <a class="inspiration__cta" href="manufacturers.html">View Product</a>
+              <a class="inspiration__cta" href="https://daybar.com/as-frames" target="_blank" rel="noopener">View Product</a>
             </div>
           </article>
 
-          <article class="inspiration__slide" role="group" aria-roledescription="slide" aria-label="4 of 5" hidden>
-            <div class="inspiration__figure"><img src="images/inspiration/daybar-delta-tr.png" alt="Vision hollow metal door system" loading="lazy" /></div>
+          <article class="inspiration__slide" role="group" aria-roledescription="slide" aria-label="4 of 7" hidden>
+            <div class="inspiration__figure"><img src="images/inspiration/product-4-daybar-cbo-frames.png" width="594" height="742" alt="Daybar CBO Frames" loading="lazy" /></div>
             <div class="inspiration__info">
-              <div class="inspiration__logo"><img src="images/logos/logo-vision.svg" alt="Vision Hollow Metal" /></div>
-              <h3 class="inspiration__name">Hollow Metal Systems</h3>
-              <p class="inspiration__tagline">Efficient production and flexible lead times, stocked for quick shipment</p>
+              <div class="inspiration__logo"><img src="images/inspiration/logo-daybar-slide.png" alt="Daybar" loading="lazy" /></div>
+              <h3 class="inspiration__name">CBO Frames</h3>
+              <p class="inspiration__tagline">Casing-ready flush-fit steel<br>door frames</p>
               <ul class="inspiration__features">
-                <li>Ontario-based specialist</li>
-                <li>130+ years combined expertise</li>
-                <li>Efficient production</li>
-                <li>Flexible lead times</li>
-                <li>Warehouse-stocked for quick shipment</li>
+            <li>Maintains design intent and code compliance</li>
+            <li>Easy to install</li>
+            <li>Allows for overlay of trim</li>
+            <li>Die-mitered multi-tab corner assembly</li>
+            <li>Unequal double rabbeted profile</li>
+            <li>10-Gauge hinge reinforcing</li>
+            <li>Water-based primer finish</li>
+            <li>16-Gauge A60 galvanneal steel</li>
+            <li>Fire-rated, STC rated and power ready</li>
               </ul>
-              <a class="inspiration__cta" href="manufacturers.html">View Product</a>
+              <a class="inspiration__cta" href="https://daybar.com/cbo-frames" target="_blank" rel="noopener">View Product</a>
             </div>
           </article>
 
-          <article class="inspiration__slide" role="group" aria-roledescription="slide" aria-label="5 of 5" hidden>
-            <div class="inspiration__figure"><img src="images/Manufacturer%20Card%20-%20Doors%20Image.png" alt="Jeld-Wen residential wood entry door" loading="lazy" /></div>
+          <article class="inspiration__slide" role="group" aria-roledescription="slide" aria-label="5 of 7" hidden>
+            <div class="inspiration__figure"><img src="images/inspiration/product-5-artek-expandable-frames.png" width="594" height="742" alt="Artek Door Expandable Frames" loading="lazy" /></div>
             <div class="inspiration__info">
-              <div class="inspiration__logo"><img src="images/logos/logo-jeld-wen@2x.png" alt="Jeld-Wen" /></div>
-              <h3 class="inspiration__name">Wood &amp; Fibreglass Doors</h3>
-              <p class="inspiration__tagline">Residential solutions built for performance and lasting curb appeal</p>
+              <div class="inspiration__logo"><img src="images/inspiration/logo-artek-slide.png" alt="Artek Door" loading="lazy" /></div>
+              <h3 class="inspiration__name">Expandable Frames</h3>
+              <p class="inspiration__tagline">Adjustable frames for varying<br>wall thicknesses</p>
               <ul class="inspiration__features">
-                <li>50+ years of experience</li>
-                <li>Wood, fibreglass &amp; steel doors</li>
-                <li>Full residential range</li>
-                <li>Energy-efficient designs</li>
-                <li>Performance-engineered</li>
-                <li>Lasting curb appeal</li>
+            <li>Adjusts from 3½" to 12" wall thickness</li>
+            <li>Available in three model series</li>
+            <li>Fire rated up to 1½ hours</li>
+            <li>Available in 16 and 18 gauge</li>
+            <li>Fire label available</li>
+            <li>One year limited warranty</li>
+            <li>Manufactured in Oakville, Ontario</li>
               </ul>
-              <a class="inspiration__cta" href="manufacturers.html">View Product</a>
+              <a class="inspiration__cta" href="https://www.artekdoor.com/frames/expandable/#toggle-id-4" target="_blank" rel="noopener">View Product</a>
+            </div>
+          </article>
+
+          <article class="inspiration__slide" role="group" aria-roledescription="slide" aria-label="6 of 7" hidden>
+            <div class="inspiration__figure"><img src="images/inspiration/product-6-forte-standard-paintable.png" width="594" height="742" alt="Forte Opening Solutions Standard Paintable" loading="lazy" /></div>
+            <div class="inspiration__info">
+              <div class="inspiration__logo"><img src="images/inspiration/logo-forte-slide.png" alt="Forte Opening Solutions" loading="lazy" /></div>
+              <h3 class="inspiration__name">Standard Paintable</h3>
+              <p class="inspiration__tagline">Factory-finished surfaces for<br>consistent colour uniformity</p>
+              <ul class="inspiration__features">
+            <li>Cendura® Series</li>
+            <li>Hardboard (HDF) and molded panel surfaces</li>
+            <li>High-density smooth surface, no pronounced woodgrain</li>
+            <li>11 standard and Standard+ paint colours</li>
+            <li>Flush and embossed door styles</li>
+            <li>Custom lite openings and glass options</li>
+            <li>Standard softwood or closed grain vertical edges</li>
+            <li>Applied mouldings available</li>
+              </ul>
+              <a class="inspiration__cta" href="https://www.forteopenings.com/products/standard-paintable" target="_blank" rel="noopener">View Product</a>
+            </div>
+          </article>
+
+          <article class="inspiration__slide" role="group" aria-roledescription="slide" aria-label="7 of 7" hidden>
+            <div class="inspiration__figure"><img src="images/inspiration/product-7-forte-standard-wood-veneer.png" width="594" height="742" alt="Forte Opening Solutions Standard Wood Veneer" loading="lazy" /></div>
+            <div class="inspiration__info">
+              <div class="inspiration__logo"><img src="images/inspiration/logo-forte-slide.png" alt="Forte Opening Solutions" loading="lazy" /></div>
+              <h3 class="inspiration__name">Standard Wood Veneer</h3>
+              <p class="inspiration__tagline">Birch, oak and maple veneer doors<br>for commercial projects</p>
+              <ul class="inspiration__features">
+            <li>Cendura® Series</li>
+            <li>Hardwood veneer — birch, maple or oak</li>
+            <li>26 standard and Standard+ stain options</li>
+            <li>Particleboard, SCL and mineral core options</li>
+            <li>Acoustic-rated cores available</li>
+            <li>Fire-rated up to 90 minutes with mineral core</li>
+            <li>Custom lite openings and glass options</li>
+            <li>Applied mouldings available</li>
+              </ul>
+              <a class="inspiration__cta" href="https://www.forteopenings.com/products/standard-wood-veneer" target="_blank" rel="noopener">View Product</a>
             </div>
           </article>
 
@@ -613,11 +662,13 @@
       </div>
 
       <div class="inspiration__dots" id="insp-dots" role="tablist" aria-label="Choose product">
-        <button class="inspiration__dot is-active" type="button" role="tab" aria-selected="true" aria-label="Daybar Delta TR"></button>
-        <button class="inspiration__dot" type="button" role="tab" aria-selected="false" aria-label="Fleming Hollow Metal Doors"></button>
-        <button class="inspiration__dot" type="button" role="tab" aria-selected="false" aria-label="Artek Steel Doors &amp; Frames"></button>
-        <button class="inspiration__dot" type="button" role="tab" aria-selected="false" aria-label="Vision Hollow Metal Systems"></button>
-        <button class="inspiration__dot" type="button" role="tab" aria-selected="false" aria-label="Jeld-Wen Wood &amp; Fibreglass Doors"></button>
+        <button class="inspiration__dot is-active" type="button" role="tab" aria-selected="true" aria-label="Daybar Delta"></button>
+        <button class="inspiration__dot" type="button" role="tab" aria-selected="false" aria-label="Daybar Delta R7"></button>
+        <button class="inspiration__dot" type="button" role="tab" aria-selected="false" aria-label="Daybar AS Frames"></button>
+        <button class="inspiration__dot" type="button" role="tab" aria-selected="false" aria-label="Daybar CBO Frames"></button>
+        <button class="inspiration__dot" type="button" role="tab" aria-selected="false" aria-label="Artek Door Expandable Frames"></button>
+        <button class="inspiration__dot" type="button" role="tab" aria-selected="false" aria-label="Forte Opening Solutions Standard Paintable"></button>
+        <button class="inspiration__dot" type="button" role="tab" aria-selected="false" aria-label="Forte Opening Solutions Standard Wood Veneer"></button>
       </div>
     </section>
 
