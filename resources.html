@@ -113,8 +113,9 @@
     .res-note { font-size: 13px; line-height: 20px; color: #737578; margin-top: 28px; }
     .res-note a { color: var(--red); text-decoration: underline; text-underline-offset: 2px; }
 
-    /* --- CTA band: phone numbers sit inline in the copy ---------- */
-    .res-cta p a { color: #fff; font-weight: 500; text-decoration: underline; text-underline-offset: 2px; }
+    /* --- CTA band: phone numbers read as plain copy (like every other
+       band); underline only on hover so they still feel tappable. ---- */
+    .res-cta p a:hover, .res-cta p a:focus-visible { text-decoration: underline; text-underline-offset: 2px; }
 
     /* --- Responsive ---------------------------------------------- */
     @media (max-width: 1180px) {
@@ -345,7 +346,7 @@
          ============================================================ -->
     <section class="cta-banner res-cta" aria-label="Help choosing a form">
       <div class="container">
-        <p class="cta-banner__eyebrow">Need a Hand?</p>
+        <p class="cta-banner__eyebrow">Ready to Get Started?</p>
         <h2>Not Sure Which Form You Need?</h2>
         <p>Call us at <a href="tel:19053351638">1.905.335.1638</a> or toll free <a href="tel:18667693667">1.866.769.3667</a>. We'll point you to the right sheet or take the details over the phone.</p>
         <a href="contact.html" class="btn-outline-white">Request a Quote</a>
