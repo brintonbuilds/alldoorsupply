@@ -22,7 +22,7 @@
 
          Hero ............... shared .hero-band, elevation drawing
          Intro .............. "Forms & Shop Drawings."
-         Downloads .......... 5 fillable PDF cards
+         Downloads .......... 7 fillable PDF cards
          CTA band ........... shared .cta-banner (help + quote)
 
        Phase two: the online Frame Builder (frame-builder.html +
@@ -67,7 +67,7 @@
     }
 
     .res-grid {
-      display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px;
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px;
     }
     .res-card {
       display: flex; flex-direction: column; background: #fff;
@@ -76,13 +76,16 @@
     }
     .res-card:hover { border-color: #A6A8AB; box-shadow: 0 10px 24px rgba(35, 31, 32, 0.08); }
     .res-card__thumb {
-      display: flex; justify-content: center; background: #F4F4F4;
-      padding: 24px 24px 0; border-bottom: 1px solid #D0D2D3;
+      display: flex; justify-content: center; align-items: flex-start; height: 257px;
+      background: #F4F4F4; padding: 24px 24px 0; border-bottom: 1px solid #D0D2D3; overflow: hidden;
     }
     .res-card__thumb img {
       display: block; width: 100%; max-width: 180px; height: auto; aspect-ratio: 674 / 872;
       border: 1px solid #D0D2D3; box-shadow: 0 6px 16px rgba(35, 31, 32, 0.14);
     }
+    /* Door elevation tools are landscape sheets: centred in the same band. */
+    .res-card__thumb--landscape { align-items: center; padding-bottom: 24px; }
+    .res-card__thumb--landscape img { max-width: 100%; aspect-ratio: 674 / 521; }
     .res-card__body { display: flex; flex-direction: column; flex-grow: 1; padding: 20px 20px 24px; }
     .res-card__tag {
       align-self: flex-start; background: var(--red); color: #fff;
@@ -135,7 +138,6 @@
     }
     @media (max-width: 520px) {
       .res-grid { grid-template-columns: 1fr; }
-      .res-card__thumb img { max-width: 200px; }
     }
   </style>
 </head>
@@ -232,7 +234,7 @@
          ============================================================ -->
     <section class="hero-band hero-band--resources" aria-label="Resources">
       <div class="hero-band__image">
-        <img src="images/resources/elev_draw.jpg" alt="" loading="eager" />
+        <img src="images/resources/hollow-metal-frame-shop-drawing-hero.jpg" alt="" loading="eager" />
       </div>
       <div class="hero-band__overlay" aria-hidden="true"></div>
       <div class="hero-band__content">
@@ -247,7 +249,7 @@
     <section class="res-intro" aria-label="Resources overview">
       <div class="res-inner">
         <h2>Forms &amp; Shop Drawings.</h2>
-        <p>Every opening starts with the right information. Use the forms below to spec hollow metal frames and screens, borrowed lites, hollow metal doors and wood door machining. Our team checks every sheet before anything goes to fabrication.</p>
+        <p>Every opening starts with the right information. Use the forms below to spec hollow metal frames and screens, borrowed lites, hollow metal doors, wood doors and wood door machining. Our team checks every sheet before anything goes to fabrication.</p>
       </div>
     </section>
 
@@ -265,14 +267,14 @@
 
           <article class="res-card">
             <div class="res-card__thumb">
-              <img src="images/resources/elev.jpg" width="674" height="872" alt="First page of the HM Frames &amp; Screens Elevation form" loading="lazy" />
+              <img src="images/resources/hollow-metal-frame-elevation-drawing-tool-preview.jpg" width="674" height="872" alt="First page of the HM Frames &amp; Screens Elevation form" loading="lazy" />
             </div>
             <div class="res-card__body">
               <span class="res-card__tag">New · Draws Itself</span>
               <h3>HM Frames &amp; Screens Elevation</h3>
               <p class="res-card__meta">PDF · Fillable · 3 Pages · 626 KB</p>
               <p class="res-card__desc">3-sided door frames and screens: fill in door size, handing, transom, sidelites, anchors and glazing, and the elevation and glass schedule draw themselves.</p>
-              <a class="res-card__btn" href="downloads/Alldoor_HM_Frame_Elevation.pdf" download>Download PDF
+              <a class="res-card__btn" aria-label="Download PDF: HM Frames &amp; Screens Elevation" href="downloads/all-door-supply-hollow-metal-frame-elevation-drawing-tool.pdf" download>Download PDF
                 <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m0 0l-3.5-3.5M8 10l3.5-3.5M3 13.5h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
@@ -280,14 +282,44 @@
 
           <article class="res-card">
             <div class="res-card__thumb">
-              <img src="images/resources/borrowed-lite.jpg" width="674" height="872" alt="First page of the HM Borrowed Lite / Window Elevation form" loading="lazy" />
+              <img src="images/resources/hollow-metal-borrowed-lite-window-elevation-drawing-tool-preview.jpg" width="674" height="872" alt="First page of the HM Borrowed Lite / Window Elevation form" loading="lazy" />
             </div>
             <div class="res-card__body">
               <span class="res-card__tag">New · Draws Itself</span>
               <h3>HM Borrowed Lite / Window Elevation</h3>
               <p class="res-card__meta">PDF · Fillable · 3 Pages · 597 KB</p>
               <p class="res-card__desc">4-sided borrowed lite windows: enter the size, sill height, base, rails (2" or 8" each) and vertical mullions, and the elevation and glass schedule draw themselves.</p>
-              <a class="res-card__btn" href="downloads/Alldoor_HM_Borrowed_Lite_Window_Elevation.pdf" download>Download PDF
+              <a class="res-card__btn" aria-label="Download PDF: HM Borrowed Lite / Window Elevation" href="downloads/all-door-supply-hollow-metal-borrowed-lite-window-elevation-drawing-tool.pdf" download>Download PDF
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m0 0l-3.5-3.5M8 10l3.5-3.5M3 13.5h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="res-card">
+            <div class="res-card__thumb res-card__thumb--landscape">
+              <img src="images/resources/hollow-metal-door-elevation-drawing-tool-preview.jpg" width="674" height="521" alt="First page of the HM Door Elevation form" loading="lazy" />
+            </div>
+            <div class="res-card__body">
+              <span class="res-card__tag">New · Draws Itself</span>
+              <h3>HM Door Elevation</h3>
+              <p class="res-card__meta">PDF · Fillable · 2 Pages · 234 KB</p>
+              <p class="res-card__desc">Single doors and pairs: pick the size, handing, hardware preparation, lites and louvers from the lists, and the door elevation redraws as you go.</p>
+              <a class="res-card__btn" aria-label="Download PDF: HM Door Elevation" href="downloads/all-door-supply-hollow-metal-door-elevation-drawing-tool.pdf" download>Download PDF
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m0 0l-3.5-3.5M8 10l3.5-3.5M3 13.5h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="res-card">
+            <div class="res-card__thumb res-card__thumb--landscape">
+              <img src="images/resources/wood-door-elevation-drawing-tool-preview.jpg" width="674" height="521" alt="First page of the Wood Door Elevation form" loading="lazy" />
+            </div>
+            <div class="res-card__body">
+              <span class="res-card__tag">New · Draws Itself</span>
+              <h3>Wood Door Elevation</h3>
+              <p class="res-card__meta">PDF · Fillable · 2 Pages · 296 KB</p>
+              <p class="res-card__desc">Baillargeon wood doors: pick the size, series, veneer, hardware and machining from the lists, and the door elevation redraws as you go.</p>
+              <a class="res-card__btn" aria-label="Download PDF: Wood Door Elevation" href="downloads/all-door-supply-wood-door-elevation-drawing-tool.pdf" download>Download PDF
                 <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m0 0l-3.5-3.5M8 10l3.5-3.5M3 13.5h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
@@ -295,13 +327,13 @@
 
           <article class="res-card">
             <div class="res-card__thumb">
-              <img src="images/resources/frame.jpg" width="674" height="872" alt="First page of the Hollow Metal Frame Order form" loading="lazy" />
+              <img src="images/resources/hollow-metal-frame-order-form-preview.jpg" width="674" height="872" alt="First page of the Hollow Metal Frame Order form" loading="lazy" />
             </div>
             <div class="res-card__body">
               <h3>Hollow Metal Frame Order</h3>
               <p class="res-card__meta">PDF · Fillable · 2 Pages · 262 KB</p>
               <p class="res-card__desc">Frame specification, anchors, hardware preparation and locations. Complete one sheet per frame type.</p>
-              <a class="res-card__btn" href="downloads/Alldoor_HM_Frame_Order_Form.pdf" download>Download PDF
+              <a class="res-card__btn" aria-label="Download PDF: Hollow Metal Frame Order" href="downloads/all-door-supply-hollow-metal-frame-order-form.pdf" download>Download PDF
                 <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m0 0l-3.5-3.5M8 10l3.5-3.5M3 13.5h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
@@ -309,13 +341,13 @@
 
           <article class="res-card">
             <div class="res-card__thumb">
-              <img src="images/resources/door.jpg" width="674" height="872" alt="First page of the Hollow Metal Door Order form" loading="lazy" />
+              <img src="images/resources/hollow-metal-door-order-form-preview.jpg" width="674" height="872" alt="First page of the Hollow Metal Door Order form" loading="lazy" />
             </div>
             <div class="res-card__body">
               <h3>Hollow Metal Door Order</h3>
               <p class="res-card__meta">PDF · Fillable · 2 Pages · 186 KB</p>
               <p class="res-card__desc">Door specification, core, edge seam, fire rating, hardware preparation and locations. Complete one sheet per door type.</p>
-              <a class="res-card__btn" href="downloads/Alldoor_HM_Door_Order_Form.pdf" download>Download PDF
+              <a class="res-card__btn" aria-label="Download PDF: Hollow Metal Door Order" href="downloads/all-door-supply-hollow-metal-door-order-form.pdf" download>Download PDF
                 <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m0 0l-3.5-3.5M8 10l3.5-3.5M3 13.5h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
@@ -323,13 +355,13 @@
 
           <article class="res-card">
             <div class="res-card__thumb">
-              <img src="images/resources/wood.jpg" width="674" height="872" alt="First page of the Wood Door Machining Sheet" loading="lazy" />
+              <img src="images/resources/wood-door-machining-sheet-preview.jpg" width="674" height="872" alt="First page of the Wood Door Machining Sheet" loading="lazy" />
             </div>
             <div class="res-card__body">
               <h3>Wood Door Machining Sheet</h3>
               <p class="res-card__meta">PDF · Fillable · 1 Page · 156 KB</p>
               <p class="res-card__desc">Hinge, viewer, deadbolt and lever locations plus edge and latch prep for wood door machining.</p>
-              <a class="res-card__btn" href="downloads/Alldoor_Wood_Door_Machining_Sheet.pdf" download>Download PDF
+              <a class="res-card__btn" aria-label="Download PDF: Wood Door Machining Sheet" href="downloads/all-door-supply-wood-door-machining-sheet.pdf" download>Download PDF
                 <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m0 0l-3.5-3.5M8 10l3.5-3.5M3 13.5h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
