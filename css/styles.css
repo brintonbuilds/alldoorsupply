@@ -2903,3 +2903,17 @@ span.nav__toplink { cursor: default; }
 .nav--hero.nav--scrolled .nav__links span.nav__toplink,
 .nav--hero.nav--open .nav__links span.nav__toplink { color: var(--black); }
 .nav__links span.nav__toplink:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
+
+/* --- Contact and quote form messages (js/forms.js) --------- */
+.form-status { margin: 0; font-size: 15px; line-height: 1.5; }
+.form-status--success,
+.form-status--error {
+  margin-top: 16px; padding: 12px 16px;
+  background: #fff; color: #141414;
+  border: 1px solid #D0D2D3; border-left: 4px solid #2E7D32; border-radius: 4px;
+}
+.form-status--error { border-left-color: var(--red); }
+.form-status a { color: var(--red); text-decoration: underline; }
+.form-trap {
+  position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0;
+}
