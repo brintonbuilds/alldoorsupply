@@ -100,6 +100,10 @@
       send(form).then(function () {
         form.reset();
         showStatus(status, 'success');
+        /* Counted as a lead in Google Analytics (live domain only). */
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'generate_lead', { form_page: pageName() });
+        }
       }).catch(function () {
         /* Keep what they typed so they can retry. */
         showStatus(status, 'error');
